@@ -1,0 +1,143 @@
+ERROR - 2023-03-10 10:09:31 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'this WHERE a.user_id = 22 and a.project_id = 94' at line 1
+CRITICAL - 2023-03-10 10:09:31 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'this WHERE a.user_id = 22 and a.project_id = 94' at line 1
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `assignp...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `assignp...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `assignp...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(274): CodeIgniter\Database\BaseConnection->query('UPDATE `assignp...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(302): App\Models\ProjectModel->rejectProject('94', '22', 'Cancel this')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->rejectProject('94')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-10 10:12:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'this WHERE a.`user_id` = 22 and a.`project_id` = 94' at line 1
+CRITICAL - 2023-03-10 10:12:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'this WHERE a.`user_id` = 22 and a.`project_id` = 94' at line 1
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `assignp...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `assignp...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `assignp...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(274): CodeIgniter\Database\BaseConnection->query('UPDATE `assignp...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(302): App\Models\ProjectModel->rejectProject('94', '22', 'Cancel this')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->rejectProject('94')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-10 10:13:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'this WHERE a.user_id = 22 and a.project_id = 94' at line 1
+CRITICAL - 2023-03-10 10:13:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'this WHERE a.user_id = 22 and a.project_id = 94' at line 1
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `assignp...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `assignp...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `assignp...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(274): CodeIgniter\Database\BaseConnection->query('UPDATE `assignp...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(302): App\Models\ProjectModel->rejectProject('94', '22', 'Cancel this')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->rejectProject('94')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-10 11:16:49 --> Undefined variable $count
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\index.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 193)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/i...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(52): view('ClientProject/i...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->index()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-10 11:19:32 --> Undefined variable $count
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\index.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 193)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/i...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(52): view('ClientProject/i...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->index()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-10 11:20:58 --> Undefined variable $count
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\index.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 193)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/i...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(52): view('ClientProject/i...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->index()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-10 11:35:53 --> Attempt to read property "profile_image" on null
+#0 C:\xampp\htdocs\remsportal\app\Views\Layouts\top-nav.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 32)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(424): CodeIgniter\View\View->render('Layouts/top-nav', NULL, true)
+#4 C:\xampp\htdocs\remsportal\app\Views\Layouts\default.php(10): CodeIgniter\View\View->include('Layouts/top-nav')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(226): CodeIgniter\View\View->render('Layouts/default', Array, true)
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/i...', Array, true)
+#9 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(52): view('ClientProject/i...', Array)
+#10 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->index()
+#11 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#12 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2023-03-10 11:36:53 --> Undefined variable $data
+#0 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 44)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-03-10 11:41:43 --> Attempt to read property "profile_image" on null
+#0 C:\xampp\htdocs\remsportal\app\Views\Layouts\top-nav.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 32)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(424): CodeIgniter\View\View->render('Layouts/top-nav', NULL, true)
+#4 C:\xampp\htdocs\remsportal\app\Views\Layouts\default.php(10): CodeIgniter\View\View->include('Layouts/top-nav')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(226): CodeIgniter\View\View->render('Layouts/default', Array, true)
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#9 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(44): view('Home/index', Array)
+#10 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#11 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#12 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2023-03-10 11:58:23 --> Attempt to read property "profile_image" on null
+#0 C:\xampp\htdocs\remsportal\app\Views\Layouts\top-nav.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 32)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(424): CodeIgniter\View\View->render('Layouts/top-nav', NULL, true)
+#4 C:\xampp\htdocs\remsportal\app\Views\Layouts\default.php(10): CodeIgniter\View\View->include('Layouts/top-nav')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(226): CodeIgniter\View\View->render('Layouts/default', Array, true)
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#9 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(44): view('Home/index', Array)
+#10 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#11 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#12 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#14 {main}
+ERROR - 2023-03-10 11:59:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+CRITICAL - 2023-03-10 11:59:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT u.id FRO...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT u.id FRO...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT u.id FRO...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(212): CodeIgniter\Database\BaseConnection->query('SELECT u.id FRO...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(135): App\Models\ProjectModel->getFilteredUsersForAProject(NULL)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->getusersforassignproject()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-10 11:59:32 --> Undefined variable $data
+#0 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 32)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->index()
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

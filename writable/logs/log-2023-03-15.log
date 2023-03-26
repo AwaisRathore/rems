@@ -1,0 +1,12 @@
+ERROR - 2023-03-15 13:47:10 --> Unknown column 'www.google.com' in 'where clause'
+CRITICAL - 2023-03-15 13:47:10 --> Unknown column 'www.google.com' in 'where clause'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT q.Client...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT q.Client...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT q.Client...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(54): CodeIgniter\Database\BaseConnection->query('SELECT q.Client...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(149): App\Models\ProjectModel->getAllClientProjectsbyID('www.google.com')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('www.google.com')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

@@ -1,0 +1,133 @@
+CRITICAL - 2023-03-24 07:50:52 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\remsportal\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+CRITICAL - 2023-03-24 07:54:03 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\remsportal\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+CRITICAL - 2023-03-24 07:54:05 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\remsportal\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+CRITICAL - 2023-03-24 07:57:56 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\remsportal\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+CRITICAL - 2023-03-24 07:57:58 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\remsportal\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+CRITICAL - 2023-03-24 08:08:32 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\remsportal\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+CRITICAL - 2023-03-24 08:08:34 --> Call to undefined function CodeIgniter\locale_set_default()
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\bootstrap.php(146): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\remsportal\index.php(28): require('C:\\xampp\\htdocs...')
+#2 {main}
+ERROR - 2023-03-24 05:29:41 --> Error connecting to the database: Unknown database 'liverems'
+CRITICAL - 2023-03-24 05:29:41 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'liverems'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(103): CodeIgniter\Database\BaseConnection->query('SELECT p.*,q.* ...')
+#2 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(21): App\Models\ProjectModel->getAllProjectsWithQuotations()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#4 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2023-03-24 05:29:47 --> Error connecting to the database: Unknown database 'liverems'
+CRITICAL - 2023-03-24 05:29:47 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'liverems'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#4 C:\xampp\htdocs\remsportal\app\Models\UserModel.php(40): CodeIgniter\BaseModel->first()
+#5 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(13): App\Models\UserModel->findUserByEmail('asfandrathore11...')
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Login.php(17): App\Libraries\Authentication->login('asfandrathore11...', 'admin123')
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Login->index()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-24 05:32:34 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'liverems.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+CRITICAL - 2023-03-24 05:32:34 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'liverems.a.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT q.Client...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT q.Client...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT q.Client...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(57): CodeIgniter\Database\BaseConnection->query('SELECT q.Client...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(32): App\Models\ProjectModel->getAllClientProjects()
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-24 05:45:14 --> Unknown column 'created_at' in 'field list'
+CRITICAL - 2023-03-24 05:45:14 --> Unknown column 'created_at' in 'field list'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT DATE(cre...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE(cre...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE(cre...')
+#3 C:\xampp\htdocs\remsportal\app\Models\QuotationModel.php(21): CodeIgniter\Database\BaseConnection->query('SELECT DATE(cre...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(39): App\Models\QuotationModel->getNOofQuotationperday()
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-24 05:48:19 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'RECURSIVE comment_tree AS (
+            SELECT c.id, c.comment,c.user_id, c.par' at line 1
+CRITICAL - 2023-03-24 05:48:19 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'RECURSIVE comment_tree AS (
+            SELECT c.id, c.comment,c.user_id, c.par' at line 1
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('WITH RECURSIVE ...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('WITH RECURSIVE ...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('WITH RECURSIVE ...')
+#3 C:\xampp\htdocs\remsportal\app\Models\CommentsModel.php(35): CodeIgniter\Database\BaseConnection->query('WITH RECURSIVE ...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(171): App\Models\CommentsModel->getCommentsbyId('227')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('227')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-24 09:58:59 --> Cannot access offset of type string on string
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#3 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(59): view('Home/index', Array)
+#4 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2023-03-24 10:00:31 --> Unsupported operand types: int - array
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#3 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(59): view('Home/index', Array)
+#4 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2023-03-24 10:01:48 --> Undefined array key "project_count"
+#0 C:\xampp\htdocs\remsportal\app\Views\Home\index.php(333): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 333)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(59): view('Home/index', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-24 10:02:32 --> Cannot access offset of type string on string
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('Home/index', Array, true)
+#3 C:\xampp\htdocs\remsportal\app\Controllers\Home.php(59): view('Home/index', Array)
+#4 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}

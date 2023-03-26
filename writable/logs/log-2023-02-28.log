@@ -1,0 +1,173 @@
+CRITICAL - 2023-02-28 03:49:05 --> syntax error, unexpected token "}", expecting ";"
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('ClientProject/v...')
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('ClientProject/v...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-02-28 03:49:16 --> Undefined variable $Quotation
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 107)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(132): view('ClientProject/v...')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-28 08:31:37 --> Undefined variable $project
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 24)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(137): view('ClientProject/v...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('81')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-28 08:31:53 --> Undefined array key "Project_Name"
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 24)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(137): view('ClientProject/v...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('81')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-28 08:54:06 --> Unknown column 'www.google.com' in 'where clause'
+CRITICAL - 2023-02-28 08:54:06 --> Unknown column 'www.google.com' in 'where clause'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT q.Client...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT q.Client...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT q.Client...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT q.Client...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(135): App\Models\ProjectModel->getAllClientProjectsbyID('www.google.com')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('www.google.com')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-28 08:54:52 --> Unknown column 'www.google.com' in 'where clause'
+CRITICAL - 2023-02-28 08:54:52 --> Unknown column 'www.google.com' in 'where clause'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT q.Client...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT q.Client...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT q.Client...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT q.Client...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(135): App\Models\ProjectModel->getAllClientProjectsbyID('www.google.com')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('www.google.com')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-28 08:55:07 --> Unknown column 'www.google.com' in 'where clause'
+CRITICAL - 2023-02-28 08:55:07 --> Unknown column 'www.google.com' in 'where clause'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT q.Client...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT q.Client...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT q.Client...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT q.Client...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(135): App\Models\ProjectModel->getAllClientProjectsbyID('www.google.com')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('www.google.com')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-28 09:09:09 --> Too few arguments to function App\Controllers\ClientProject::deleleAssignUser(), 0 passed in C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php on line 832 and exactly 1 expected
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->deleleAssignUser()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-02-28 09:27:04 --> Undefined variable $Assignuser
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 57)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(140): view('ClientProject/v...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('82')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-28 09:27:56 --> Undefined variable $Assignuser
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 57)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(140): view('ClientProject/v...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('81')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-28 09:28:15 --> Undefined variable $Assignuser
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 57)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(140): view('ClientProject/v...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('81')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-28 09:28:17 --> Undefined variable $Assignuser
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 57)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(140): view('ClientProject/v...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('81')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-28 09:28:27 --> Undefined variable $Assignuser
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\view.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 57)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/v...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(140): view('ClientProject/v...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('81')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-28 09:49:34 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+CRITICAL - 2023-02-28 09:49:34 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT u.id FRO...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT u.id FRO...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT u.id FRO...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(153): CodeIgniter\Database\BaseConnection->query('SELECT u.id FRO...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(127): App\Models\ProjectModel->getFilteredUsersForAProject('')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->getusersforassignproject()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-28 10:32:28 --> Unknown column 'www.google.com' in 'where clause'
+CRITICAL - 2023-02-28 10:32:28 --> Unknown column 'www.google.com' in 'where clause'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT q.Client...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT q.Client...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT q.Client...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT q.Client...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(135): App\Models\ProjectModel->getAllClientProjectsbyID('www.google.com')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('www.google.com')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-28 10:32:35 --> Unknown column 'www.facebook.com' in 'where clause'
+CRITICAL - 2023-02-28 10:32:35 --> Unknown column 'www.facebook.com' in 'where clause'
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT q.Client...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT q.Client...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT q.Client...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(53): CodeIgniter\Database\BaseConnection->query('SELECT q.Client...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(135): App\Models\ProjectModel->getAllClientProjectsbyID('www.facebook.co...')
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->view('www.facebook.co...')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

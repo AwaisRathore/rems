@@ -1,0 +1,23 @@
+CRITICAL - 2023-03-14 08:37:55 --> Undefined variable $i
+#0 C:\xampp\htdocs\remsportal\app\Views\ClientProject\edit.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 44)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Common.php(1089): CodeIgniter\View\View->render('ClientProject/e...', Array, true)
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(228): view('ClientProject/e...', Array)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->edit('99')
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-14 12:43:48 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+CRITICAL - 2023-03-14 12:43:48 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT u.id FRO...', 0)
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT u.id FRO...')
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT u.id FRO...')
+#3 C:\xampp\htdocs\remsportal\app\Models\ProjectModel.php(212): CodeIgniter\Database\BaseConnection->query('SELECT u.id FRO...')
+#4 C:\xampp\htdocs\remsportal\app\Controllers\ClientProject.php(138): App\Models\ProjectModel->getFilteredUsersForAProject(NULL)
+#5 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\ClientProject->getusersforassignproject()
+#6 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientProject))
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

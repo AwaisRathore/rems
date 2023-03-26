@@ -1,0 +1,67 @@
+CRITICAL - 2023-02-09 10:02:14 --> Undefined variable $output
+#0 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 125)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->deleteproject()
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2023-02-09 10:17:31 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+CRITICAL - 2023-02-09 10:17:31 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*, pt...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*, pt...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*, pt...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(121): CodeIgniter\Database\BaseConnection->query('SELECT ps.*, pt...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(77): App\Models\QuotationModel->getProjectScopes('')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('19')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-09 10:17:43 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+CRITICAL - 2023-02-09 10:17:43 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*, pt...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*, pt...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*, pt...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(121): CodeIgniter\Database\BaseConnection->query('SELECT ps.*, pt...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(77): App\Models\QuotationModel->getProjectScopes('')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('19')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-09 10:18:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+CRITICAL - 2023-02-09 10:18:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*, pt...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*, pt...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*, pt...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(121): CodeIgniter\Database\BaseConnection->query('SELECT ps.*, pt...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(77): App\Models\QuotationModel->getProjectScopes('')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('19')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-09 10:42:48 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+CRITICAL - 2023-02-09 10:42:48 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*, pt...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*, pt...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*, pt...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(121): CodeIgniter\Database\BaseConnection->query('SELECT ps.*, pt...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(77): App\Models\QuotationModel->getProjectScopes('')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('24')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-09 10:46:23 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+CRITICAL - 2023-02-09 10:46:23 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*, pt...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*, pt...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*, pt...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(121): CodeIgniter\Database\BaseConnection->query('SELECT ps.*, pt...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(77): App\Models\QuotationModel->getProjectScopes('')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('24')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

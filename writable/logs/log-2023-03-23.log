@@ -1,0 +1,180 @@
+ERROR - 2023-03-23 14:22:28 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:22:28 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:22:32 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:22:32 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:22:38 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:22:38 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:22:42 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:22:42 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:22:47 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:22:47 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:22:53 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:22:53 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:22:58 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:22:58 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:23:02 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:23:02 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:23:07 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:23:07 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:23:12 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:23:12 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:23:13 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:23:13 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2023-03-23 14:23:17 --> Error connecting to the database: No connection could be made because the target machine actively refused it
+CRITICAL - 2023-03-23 14:23:17 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+#0 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\Model.php(142): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\BaseModel.php(523): CodeIgniter\Model->doFind(true, '1')
+#4 C:\xampp\htdocs\remsportal\app\Libraries\Authentication.php(56): CodeIgniter\BaseModel->find('1')
+#5 C:\xampp\htdocs\remsportal\app\Helpers\auth_helper.php(14): App\Libraries\Authentication->getUserRole()
+#6 C:\xampp\htdocs\remsportal\app\Controllers\Notification.php(36): current_userRole()
+#7 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Notification->refresh_notifications()
+#8 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Notification))
+#9 C:\xampp\htdocs\remsportal\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\remsportal\index.php(37): CodeIgniter\CodeIgniter->run()
+#11 {main}

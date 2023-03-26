@@ -1,0 +1,300 @@
+ERROR - 2023-02-08 01:19:27 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:19:27 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(83): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(106): App\Models\QuotationModel->editQuotation(Array, '22', '2')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('23')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 01:27:49 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:27:49 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(83): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(106): App\Models\QuotationModel->editQuotation(Array, '13', '2', '23')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('23')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 01:33:36 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:33:36 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(83): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(106): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 01:34:24 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:34:24 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(83): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(106): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 01:34:56 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:34:56 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(83): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(106): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 01:38:26 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:38:26 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(83): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(106): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 01:43:15 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:43:15 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(84): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 01:43:30 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+CRITICAL - 2023-02-08 01:43:30 --> Cannot add or update a child row: a foreign key constraint fails (`rems`.`projectscopes`, CONSTRAINT `fk_projectscopes_qoutations` FOREIGN KEY (`Project_Id`) REFERENCES `projects` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE)
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `project...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `project...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `project...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(84): CodeIgniter\Database\BaseConnection->query('UPDATE `project...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 02:27:15 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''21' at line 1
+CRITICAL - 2023-02-08 02:27:15 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''21' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT * FROM `...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM `...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM `...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(84): CodeIgniter\Database\BaseConnection->query('SELECT * FROM `...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '3', '19')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('19')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-08 03:24:05 --> in_array(): Argument #2 ($haystack) must be of type array, string given
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(95): in_array(Array, '2')
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+ERROR - 2023-02-08 03:39:21 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id='28'' at line 1
+CRITICAL - 2023-02-08 03:39:21 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id='28'' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('DELETE FROM `pr...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pr...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pr...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(104): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pr...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '13', '2', '23')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('23')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 03:40:53 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id=28' at line 1
+CRITICAL - 2023-02-08 03:40:53 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id=28' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('DELETE FROM `pr...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pr...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pr...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(104): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pr...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '13', '2', '23')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('23')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 03:42:06 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id=28' at line 1
+CRITICAL - 2023-02-08 03:42:06 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id=28' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('DELETE FROM `pr...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pr...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pr...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(104): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pr...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '13', '2', '23')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('23')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-02-08 03:42:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id=28' at line 1
+CRITICAL - 2023-02-08 03:42:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p WHERE p.Project_Id=28' at line 1
+#0 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('DELETE FROM `pr...', 0)
+#1 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pr...')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pr...')
+#3 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(104): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pr...')
+#4 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '13', '2', '23')
+#5 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('23')
+#6 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-02-08 03:45:22 --> Undefined array key 0
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '13', '2', '23')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('23')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 03:52:35 --> Undefined array key "id"
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(103): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 103)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 03:53:53 --> Undefined array key 2
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 03:54:10 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 03:56:24 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 03:58:54 --> Undefined array key 2
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:00:11 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:00:42 --> Undefined array key 2
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:02:03 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:02:33 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:02:45 --> Undefined array key 4
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:03:28 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:03:46 --> Undefined array key 4
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 92)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:09:17 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 90)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:09:40 --> Undefined array key 2
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 90)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:15:16 --> Undefined array key 1
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 90)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '22', '3', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-02-08 04:16:57 --> Undefined array key 0
+#0 C:\xampp\htdocs\rems\app\Models\QuotationModel.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 90)
+#1 C:\xampp\htdocs\rems\app\Controllers\Quotation.php(107): App\Models\QuotationModel->editQuotation(Array, '20', '2', '21')
+#2 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->edit('21')
+#3 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 C:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
