@@ -1,0 +1,16 @@
+CRITICAL - 2023-03-29 14:46:38 --> Attempt to read property "Client_Name" on array
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(167): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'F:\\xampp\\htdocs...', 167)
+#1 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(205): App\Controllers\Invoices->createPayPalInvoice(Array)
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-03-29 14:49:09 --> Attempt to read property "Project_Id" on array
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(174): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'F:\\xampp\\htdocs...', 174)
+#1 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(205): App\Controllers\Invoices->createPayPalInvoice(Array)
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}

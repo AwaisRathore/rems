@@ -1,0 +1,94 @@
+ERROR - 2023-03-28 11:03:51 --> Unknown column 'created_at' in 'field list'
+CRITICAL - 2023-03-28 11:03:51 --> Unknown column 'created_at' in 'field list'
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT DATE(cre...', 0)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE(cre...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE(cre...')
+#3 F:\xampp\htdocs\rems\app\Models\QuotationModel.php(21): CodeIgniter\Database\BaseConnection->query('SELECT DATE(cre...')
+#4 F:\xampp\htdocs\rems\app\Controllers\Home.php(39): App\Models\QuotationModel->getNOofQuotationperday()
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-28 11:04:02 --> Unknown column 'created_at' in 'field list'
+CRITICAL - 2023-03-28 11:04:02 --> Unknown column 'created_at' in 'field list'
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT DATE(cre...', 0)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE(cre...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE(cre...')
+#3 F:\xampp\htdocs\rems\app\Models\QuotationModel.php(21): CodeIgniter\Database\BaseConnection->query('SELECT DATE(cre...')
+#4 F:\xampp\htdocs\rems\app\Controllers\Home.php(39): App\Models\QuotationModel->getNOofQuotationperday()
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-28 11:06:13 --> Unknown column 'created_at' in 'field list'
+CRITICAL - 2023-03-28 11:06:13 --> Unknown column 'created_at' in 'field list'
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT DATE(cre...', 0)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE(cre...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE(cre...')
+#3 F:\xampp\htdocs\rems\app\Models\QuotationModel.php(21): CodeIgniter\Database\BaseConnection->query('SELECT DATE(cre...')
+#4 F:\xampp\htdocs\rems\app\Controllers\Home.php(39): App\Models\QuotationModel->getNOofQuotationperday()
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Home->index()
+#6 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2023-03-28 11:38:15 --> Trying to access array offset on value of type null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to acces...', 'F:\\xampp\\htdocs...', 86)
+#1 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(15): App\Controllers\Invoices->getPayPalAccessToken('Aey4XuNX5a-_Lsc...', 'EMU8or-v8DG_x-y...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(809): App\Controllers\Invoices->__construct()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-03-28 11:52:59 --> Attempt to read property "CanViewInvoice" on null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'F:\\xampp\\htdocs...', 19)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Invoices->index()
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Invoices))
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2023-03-28 11:53:04 --> Attempt to read property "CanViewInvoice" on null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'F:\\xampp\\htdocs...', 19)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Invoices->index()
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Invoices))
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2023-03-28 14:24:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+CRITICAL - 2023-03-28 14:24:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*,pst...', 0)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*,pst...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*,pst...')
+#3 F:\xampp\htdocs\rems\app\Models\ProjectScopeModel.php(21): CodeIgniter\Database\BaseConnection->query('SELECT ps.*,pst...')
+#4 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(200): App\Models\ProjectScopeModel->getProjectScopesById(NULL)
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#6 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-28 14:24:37 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+CRITICAL - 2023-03-28 14:24:37 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*,pst...', 0)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*,pst...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*,pst...')
+#3 F:\xampp\htdocs\rems\app\Models\ProjectScopeModel.php(21): CodeIgniter\Database\BaseConnection->query('SELECT ps.*,pst...')
+#4 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(200): App\Models\ProjectScopeModel->getProjectScopesById(NULL)
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#6 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2023-03-28 14:26:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+CRITICAL - 2023-03-28 14:26:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT ps.*,pst...', 0)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT ps.*,pst...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT ps.*,pst...')
+#3 F:\xampp\htdocs\rems\app\Models\ProjectScopeModel.php(21): CodeIgniter\Database\BaseConnection->query('SELECT ps.*,pst...')
+#4 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(200): App\Models\ProjectScopeModel->getProjectScopesById(NULL)
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#6 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#7 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

@@ -1,0 +1,54 @@
+CRITICAL - 2023-03-30 12:05:58 --> Trying to access array offset on value of type null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to acces...', 'F:\\xampp\\htdocs...', 85)
+#1 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(15): App\Controllers\Invoices->getPayPalAccessToken('Aey4XuNX5a-_Lsc...', 'EMU8or-v8DG_x-y...')
+#2 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(204): App\Controllers\Invoices->__construct()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-03-30 12:07:46 --> Trying to access array offset on value of type null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to acces...', 'F:\\xampp\\htdocs...', 85)
+#1 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(15): App\Controllers\Invoices->getPayPalAccessToken('Aey4XuNX5a-_Lsc...', 'EMU8or-v8DG_x-y...')
+#2 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(204): App\Controllers\Invoices->__construct()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#5 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2023-03-30 12:09:00 --> Trying to access array offset on value of type null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to acces...', 'F:\\xampp\\htdocs...', 85)
+#1 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(15): App\Controllers\Invoices->getPayPalAccessToken('Aey4XuNX5a-_Lsc...', 'EMU8or-v8DG_x-y...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(809): App\Controllers\Invoices->__construct()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-03-30 12:09:25 --> Trying to access array offset on value of type null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to acces...', 'F:\\xampp\\htdocs...', 85)
+#1 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(15): App\Controllers\Invoices->getPayPalAccessToken('Aey4XuNX5a-_Lsc...', 'EMU8or-v8DG_x-y...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(809): App\Controllers\Invoices->__construct()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-03-30 12:12:04 --> Trying to access array offset on value of type null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to acces...', 'F:\\xampp\\htdocs...', 85)
+#1 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(15): App\Controllers\Invoices->getPayPalAccessToken('Aey4XuNX5a-_Lsc...', 'EMU8or-v8DG_x-y...')
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(809): App\Controllers\Invoices->__construct()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-03-30 13:18:40 --> Class "APP\Models\QuotationModel" not found
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(809): App\Controllers\Invoices->__construct()
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2023-03-30 13:19:12 --> Class "APP\Models\QuotationModel" not found
+#0 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(809): App\Controllers\Invoices->__construct()
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(410): CodeIgniter\CodeIgniter->createController()
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
