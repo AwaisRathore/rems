@@ -15,35 +15,61 @@
             <table class="datatables-basic table border-top">
                 <thead>
                     <tr>
-                        <th>Invoice Number</th>
+                        <th>Quotation Id</th>
                         <th>Client</th>
-                        <th>Status</th>
-                        <th>Invoice Date</th>
                         <th>Due Date</th>
+                        <th>Status</th>
                         <th>Total amount</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    <?php foreach ($invoices as $invoice) : ?>
+                    <?php $count = 1;
+                    foreach ($invoices as $invoice) : ?>
                         <tr>
-                            <td><?= $invoice->detail->invoice_number ?></td>
-                            <td><b><?= (isset($invoice->primary_recipients[0]->billing_info->name)) ? $invoice->primary_recipients[0]->billing_info->name->full_name : $invoice->primary_recipients[0]->billing_info->email_address ?></b></td>
+                            <td>
+                                <?php $isQuoted = false;
+                                foreach ($invoice_quotations as $quotation) : ?>
+                                    <?php if ($quotation->Invoice_Id == $invoice->id) : ?>
+                                        <?= $quotation->Quotation_Id ?>
+                                        <?php $isQuoted = true ?>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                                <?php if (!$isQuoted) : ?>
+                                    N/A
+                                <?php endif ?>
+                            </td>
+                            <td><b><?= (isset($invoice->primary_recipients[0]->billing_info->name)) ? $invoice->primary_recipients[0]->billing_info->name->full_name : $invoice->primary_recipients[0]->billing_info->email_address ?></b><br> <span class="text-sm"><?= $invoice->detail->invoice_number ?></span></td>
+                            <td><?= $invoice->detail->payment_term->due_date ?></td>
+
                             <td>
                                 <?php if ($invoice->status == "DRAFT") : ?>
                                     <span class="badge bg-draft">Draft</span>
                                 <?php elseif ($invoice->status == "SENT") : ?>
                                     <span class="badge bg-secondary">Sent</span>
+                                <?php elseif ($invoice->status == "SCHEDULED") : ?>
+                                    <span class="badge bg-primary">Scheduled</span>
+                                <?php elseif ($invoice->status == "REFUNDED") : ?>
+                                    <span class="badge bg-warning">Refunded</span>
+                                <?php elseif ($invoice->status == "PARTIALLY_REFUNDED") : ?>
+                                    <span class="badge bg-warning">PARTIALLY REFUNDED</span>
+                                <?php elseif ($invoice->status == "MARKED_AS_REFUNDED") : ?>
+                                    <span class="badge bg-warning">MARKED AS REFUNDED</span>
                                 <?php elseif ($invoice->status == "PAID") : ?>
                                     <span class="badge bg-success">Paid</span>
                                 <?php elseif ($invoice->status == "PARTIALLY_PAID") : ?>
-                                    <span class="badge bg-info">Partially paid</span>
+                                    <span class="badge bg-success">PARTIALLY PAID</span>
+                                <?php elseif ($invoice->status == "MARKED_AS_PAID") : ?>
+                                    <span class="badge bg-success">MARKED AS PAID</span>
                                 <?php elseif ($invoice->status == "CANCELLED") : ?>
                                     <span class="badge bg-danger">Cancelled</span>
+                                <?php elseif ($invoice->status == "UNPAID") : ?>
+                                    <span class="badge bg-danger">Unpaid</span>
+                                <?php elseif ($invoice->status == "PAYMENT_PENDING") : ?>
+                                    <span class="badge bg-secondary">PAYMENT PENDING</span>
                                 <?php endif ?>
+                                <br><span class="text-sm"><?= $invoice->detail->invoice_date ?></span>
                             </td>
-                            <td><?= $invoice->detail->invoice_date ?></td>
-                            <td><?= $invoice->detail->payment_term->due_date ?></td>
                             <td><b>$<?= $invoice->amount->value ?></b></td>
                             <td>
                                 <div class="dropdown">
@@ -55,12 +81,13 @@
                                         <!-- <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i>Edit</a> -->
                                         <a class="dropdown-item deleteButton" href="javascript:void(0);" data-id="<?= $invoice->id ?>"><i class="bx bx-trash me-1"></i>Delete</a>
                                         <!-- <a class="dropdown-item" href=""><i class='bx bx-download me-1'></i>Download PDF</a> -->
-                                        <a class="dropdown-item" href=""><i class='bx bx-share-alt me-1'></i> Share Link</a>
+                                        <!-- <a class="dropdown-item" href=""><i class='bx bx-share-alt me-1'></i> Share Link</a> -->
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                    <?php endforeach ?>
+                    <?php $count++;
+                    endforeach ?>
 
 
                 </tbody>

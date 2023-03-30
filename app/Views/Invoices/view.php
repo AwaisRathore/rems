@@ -12,6 +12,7 @@
     <div class="card-header d-flex justify-content-between">
         <h5>Invoice #<?= $invoice->detail->invoice_number ?></h5>
         <div>
+            <a href="<?= $invoice->detail->metadata->recipient_view_url ?>" target="_blank" class="btn btn-primary me-3 px-3"><i class='bx bxl-paypal'></i>View Invoice on PayPal</a>
             <button type="button" class="btn btn-success" id="download-pdf" data-qoutename="<?= $invoice->id ?>"><i class='bx bxs-download'></i> Download</button>
         </div>
 
@@ -95,7 +96,7 @@
                 </table>
                 <table class="table table-border-bottom-0 w-100">
                     <tr>
-                        <td colspan="2" class="fw-bold py-4">Note: <?= $invoice->detail->note ?></td>
+                        <td colspan="2" class="fw-bold py-4">Note: <?= isset($invoice->detail->note) ? $invoice->detail->note : 'All checks must be Paid to Remote Estimation LLC.'?></td>
                     </tr>
                     <tr>
                         <td class="d-flex flex-column text-center py-5">

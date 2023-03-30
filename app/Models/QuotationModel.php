@@ -69,10 +69,10 @@ class QuotationModel extends Model
         $Quotations = $this->db->query($query)->getRowArray();
         $notificatinModel = new \App\Models\NotificationModel();
         $user_id = NULL;
-        if(current_userRole()->name == 'Client'){
+        if (current_userRole()->name == 'Client') {
             $user_id = current_user()->id;
         }
-        $notificatinModel->updatedstatus($Id,$user_id);
+        $notificatinModel->updatedstatus($Id, $user_id);
         return $Quotations;
     }
     public function addNewQuotation($Project_Data, $ClientId, $Discount)
@@ -93,8 +93,8 @@ class QuotationModel extends Model
         }
         // Add Custom made quotation Id
         $project_counts = count($Project_Ids);
-        $custom_quotation_id = $QuotationId.$project_counts.date('m/d/Y');
-        $query = "UPDATE `quotations` SET `Quotation_Id`='$custom_quotation_id' WHERE Id=".$QuotationId;
+        $custom_quotation_id = $QuotationId . $project_counts . date('m/d/Y');
+        $query = "UPDATE `quotations` SET `Quotation_Id`='$custom_quotation_id' WHERE Id=" . $QuotationId;
         $this->db->query($query);
         //Add Project Scopes
         $i = 0;
@@ -107,10 +107,10 @@ class QuotationModel extends Model
             $i++;
         }
     }
-    public function editQuotation($Project_Data, $ClientId, $Discount,$id)
+    public function editQuotation($Project_Data, $ClientId, $Discount, $id)
     {
         //Edit Quotation
-        
+
         $query = "UPDATE `quotations` SET `Client_Id`='$ClientId',`Discount`='$Discount' where Id ='$id'";
         $this->db->query($query);
         $QuotationId = $id;
@@ -151,57 +151,57 @@ class QuotationModel extends Model
             }
             count($Project_scope_Ids);
             foreach ($value['project_scope'] as $project_scope_type) {
-                if(!in_array($value,$result)){
+                if (!in_array($value, $result)) {
                     $query = "INSERT INTO `projectscopes`(`Project_Id`, `ProjectScopeType`) VALUES ('$Project_Ids[$i]','$project_scope_type')";
                     $this->db->query($query);
                 }
-                
             }
-            foreach($result as $projectscope){
-                if(!in_array($projectscope,$value)){
+            foreach ($result as $projectscope) {
+                if (!in_array($projectscope, $value)) {
                     $scope_id = $projectscope['Id'];
                     $query = "DELETE FROM `projectscopes` WHERE `projectscopes`.`Project_Id`=$Project_Ids[$i] and `projectscopes`.`Id`=$scope_id";
                     $this->db->query($query);
                 }
             }
             $i++;
-           
         }
 
-        if($user_id != ''){
-            $project_name = join(',',$projects_name);
+        if ($user_id != '') {
+            $project_name = join(',', $projects_name);
             $notificatinModel = new \App\Models\NotificationModel();
-            $message = "Congratulation! Your Projects ".$project_name." are qouted!";
-            $notificatinModel->addqoutationNotification($QuotationId,$message,$user_id);
+            $message = "Congratulation! Your Projects " . $project_name . " are qouted!";
+            $notificatinModel->addqoutationNotification($QuotationId, $message, $user_id);
         }
-        
     }
-    
+
     public function deleteQuotation($QuotationId)
     {
-        $query = "DELETE q,p,ps FROM quotations q join projects p on p.Quotation_Id = q.Id join projectscopes ps on ps.Project_Id = p.Id where q.Id =".$QuotationId;
+        $query = "DELETE q,p,ps FROM quotations q join projects p on p.Quotation_Id = q.Id join projectscopes ps on ps.Project_Id = p.Id where q.Id =" . $QuotationId;
         $this->db->query($query);
     }
-    
-    public function getprojectbyQoutationID($id){
+
+    public function getprojectbyQoutationID($id)
+    {
         $query = "SELECT * FROM `projects` p WHERE p.Quotation_Id=$id";
         $result = $this->db->query($query)->getResultArray();
         return $result;
     }
-    public function getProjectScopes($project_ids){
+    public function getProjectScopes($project_ids)
+    {
         $project_ids = join(',', $project_ids);
         $sql = "SELECT ps.*, pt.Type_Names FROM `projectscopes` ps JOIN `projectscopetypes` pt on ps.ProjectScopeType = pt.Id WHERE ps.Project_Id IN ($project_ids);";
         $result = $this->db->query($sql)->getResultArray();
         return $result;
     }
 
-    public function deleteprojects($id){
+    public function deleteprojects($id)
+    {
         $query = "DELETE FROM `projects` WHERE Id = $id";
         $this->db->query($query);
     }
 
-    public function reviewqoutation($data,$id)
-    {        
+    public function reviewqoutation($data, $id)
+    {
         $review = $data['review'];
         $query = "UPDATE `quotations` SET `review`='$review' where Id = $id";
         $this->db->query($query);
@@ -213,12 +213,11 @@ class QuotationModel extends Model
         $UserId = $this->db->query($sql)->getResultArray();
         $clientName =  $UserId[0]['Name'];
         $notificatinModel = new \App\Models\NotificationModel();
-        $message = "oops! ".$clientName." Reject the Quotation.";
-        $notificatinModel->addqoutationNotificationwithoutuserid($QuotationId,$message);
-        
+        $message = "oops! " . $clientName . " Reject the Quotation.";
+        $notificatinModel->addqoutationNotificationwithoutuserid($QuotationId, $message);
     }
     public function acceptquotation($id)
-    {        
+    {
         $query = "UPDATE `quotations` SET `status`='1',`review`=NULL where Id = $id";
         $this->db->query($query);
         $QuotationId = $id;
@@ -229,7 +228,17 @@ class QuotationModel extends Model
         $UserId = $this->db->query($sql)->getResultArray();
         $clientName =  $UserId[0]['Name'];
         $notificatinModel = new \App\Models\NotificationModel();
-        $message = "Congratulation! ".$clientName." accept the Qoutation";
-        $notificatinModel->addqoutationNotificationwithoutuserid($QuotationId,$message);
+        $message = "Congratulation! " . $clientName . " accept the Qoutation";
+        $notificatinModel->addqoutationNotificationwithoutuserid($QuotationId, $message);
+    }
+    public function saveInvoice($QuotationId, $InvoiceId)
+    {
+        $sql = "INSERT INTO `invoices` (`QuotationId`, `Invoice_Id`) VALUES ('$QuotationId', '$InvoiceId');";
+        return $this->db->query($sql);
+    }
+    public function getInvoicesWithQuotations()
+    {
+        $sql = "SELECT q.Quotation_Id, i.Invoice_Id FROM `invoices` i JOIN `quotations` q on q.Id = i.QuotationId;";
+        return $this->db->query($sql)->getResultObject();
     }
 }

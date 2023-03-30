@@ -55,17 +55,15 @@
                                             <td><?= $value['Client_Name'] ?></td>
                                             <td><?= $value['Client_EmailAddress'] ?></td>
                                             <td>
-                                                <?php 
-                                                if($value['status']==0 && $value['review'] == NULL){
+                                                <?php
+                                                if ($value['status'] == 0 && $value['review'] == NULL) {
                                                     echo '<span class="text-primary">In-review</span>';
-                                                }
-                                                else if($value['status']== 0){
+                                                } else if ($value['status'] == 0) {
                                                     echo '<span class="text-danger">Rejected</span>';
-                                                }
-                                                else if($value['status'] == 1){
+                                                } else if ($value['status'] == 1) {
                                                     echo '<span class="text-success">Accepted<span>';
                                                 }
-                                                  ?>  
+                                                ?>
                                             </td>
                                             <td><?= $value['review'] ?></td>
                                             <td>
@@ -78,7 +76,7 @@
                                                         <?php if (current_userRole()->CanEditQuotation) : ?>
                                                             <a class="dropdown-item" href="<?= site_url("Quotation/edit/" . $value['Id'] . "") ?>"><i class="bx bx-edit-alt me-1"></i>Edit Quotation</a>
                                                         <?php endif ?>
-                                                        <!-- <a class="dropdown-item" href="" ?>"><i class="bx bx-edit-alt me-1"></i> Edit</a> -->
+                                                        <a class="dropdown-item generateInvoiceButton" href="" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> Generate Invoice</a>
                                                         <?php if (current_userRole()->CanDeleteQuotation) : ?>
                                                             <a class="dropdown-item deleteButton" id="<?= $value['Id'] ?>" href=""><i class="bx bx-trash me-1"></i> Delete</a>
                                                         <?php endif ?>
@@ -119,17 +117,15 @@
                                             <td><?= $value['Client_Name'] ?></td>
                                             <td><?= $value['Client_EmailAddress'] ?></td>
                                             <td>
-                                                <?php 
-                                                if($value['status']== 0 && $value['review'] == NULL){
+                                                <?php
+                                                if ($value['status'] == 0 && $value['review'] == NULL) {
                                                     echo '<span class="text-primary">In-review</span>';
-                                                }
-                                                else if($value['status']== 0){
+                                                } else if ($value['status'] == 0) {
                                                     echo '<span class="text-danger">Rejected</span>';
-                                                }
-                                                else if($value['status'] == 1){
+                                                } else if ($value['status'] == 1) {
                                                     echo '<span class="text-success">Accepted<span>';
                                                 }
-                                                  ?>  
+                                                ?>
                                             </td>
                                             <td><?= $value['review'] ?></td>
                                             <td>
@@ -142,6 +138,8 @@
                                                         <?php if (current_userRole()->CanEditQuotation) : ?>
                                                             <a class="dropdown-item" href="<?= site_url("Quotation/edit/" . $value['Id'] . "") ?>"><i class="bx bx-edit-alt me-1"></i>Edit Quotation</a>
                                                         <?php endif ?>
+                                                        <a class="dropdown-item generateInvoiceButton" href="" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> Generate Invoice</a>
+
                                                         <?php if (current_userRole()->CanDeleteQuotation) : ?>
                                                             <a class="dropdown-item deleteButton" id="<?= $value['Id'] ?>" href=""><i class="bx bx-trash me-1"></i> Delete</a>
                                                         <?php endif ?>
@@ -182,17 +180,15 @@
                                             <td><?= $value['Client_Name'] ?></td>
                                             <td><?= $value['Client_EmailAddress'] ?></td>
                                             <td>
-                                                <?php 
-                                                if($value['status']== 0 && $value['review'] == NULL){
+                                                <?php
+                                                if ($value['status'] == 0 && $value['review'] == NULL) {
                                                     echo '<span class="text-primary">In-review</span>';
-                                                }
-                                                else if($value['status']== 0){
+                                                } else if ($value['status'] == 0) {
                                                     echo '<span class="text-danger">Rejected</span>';
-                                                }
-                                                else if($value['status'] == 1){
+                                                } else if ($value['status'] == 1) {
                                                     echo '<span class="text-success">Accepted<span>';
                                                 }
-                                                  ?>  
+                                                ?>
                                             </td>
                                             <td><?= $value['review'] ?></td>
                                             <td>
@@ -206,6 +202,8 @@
                                                             <a class="dropdown-item" href="<?= site_url("Quotation/edit/" . $value['Id'] . "") ?>"><i class="bx bx-edit-alt me-1"></i>Edit Quotation</a>
                                                         <?php endif ?>
                                                         <!-- <a class="dropdown-item" href="" ?>"><i class="bx bx-edit-alt me-1"></i> Edit</a> -->
+                                                        <a class="dropdown-item generateInvoiceButton" href="" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> Generate Invoice</a>
+
                                                         <?php if (current_userRole()->CanDeleteQuotation) : ?>
                                                             <a class="dropdown-item deleteButton" id="<?= $value['Id'] ?>" href=""><i class="bx bx-trash me-1"></i> Delete</a>
                                                         <?php endif ?>
@@ -295,7 +293,51 @@
                 }
             })
         });
+        $(document).on('click', '.generateInvoiceButton', function(e) {
+            e.preventDefault();
+            var qoutation_id = $(this).data('id');
+            $.ajax({
+                url: "<?= site_url("Quotation/generateInvoice") ?>",
+                method: "POST",
+                data: {
+                    qoutation_id: qoutation_id
+                },
+                success: function(response) {
+                    response = JSON.parse(response);
+                    Swal.fire("Invoice created successfully").then(function() {
+                        location.reload();
+                    });
+                },
+                failure: function(response) {
+                    Swal.fire("Failed could not be created.");
+                }
+            });
+            // Swal.fire({
+            //     title: 'Are you sure?',
+            //     html: "On deleting Quotation, All project in its are deleted!",
+            //     icon: 'warning',
+            //     showCancelButton: true,
+            //     confirmButtonColor: '#696cff',
+            //     cancelButtonColor: '#8592a3',
+            //     confirmButtonText: 'Yes, delete it!'
+            // }).then(function(result) {
+            //     if (result.value) {
+            //         $.ajax({
+            //             url: '<?= site_url('Quotation/delete/') ?>',
+            //             type: 'get',
+            //             data: {
+            //                 delete_id: qoutation_id
+            //             },
+            //             success: function(response) {
+            //                 swal.fire("Deleted", response.status, "success").then(function() {
+            //                     location.reload();
+            //                 });
+            //             }
+            //         });
 
+            //     }
+            // })
+        });
 
     });
 </script>
