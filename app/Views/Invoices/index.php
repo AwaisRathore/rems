@@ -39,7 +39,12 @@
                                     N/A
                                 <?php endif ?>
                             </td>
-                            <td><b><?= (isset($invoice->primary_recipients[0]->billing_info->name)) ? $invoice->primary_recipients[0]->billing_info->name->full_name : $invoice->primary_recipients[0]->billing_info->email_address ?></b><br> <span class="text-sm"><?= $invoice->detail->invoice_number ?></span></td>
+
+                            <td>
+                            <?php if (isset($invoice->primary_recipients)) : ?>
+                                <b><?= (isset($invoice->primary_recipients[0]->billing_info->name)) ? $invoice->primary_recipients[0]->billing_info->name->full_name : $invoice->primary_recipients[0]->billing_info->email_address ?></b> <br>
+                            <?php endif ?>
+                            <span class="text-sm"><?= $invoice->detail->invoice_number ?></span></td>
                             <td><?= $invoice->detail->payment_term->due_date ?></td>
 
                             <td>
