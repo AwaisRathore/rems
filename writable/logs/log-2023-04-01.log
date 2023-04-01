@@ -1,0 +1,32 @@
+CRITICAL - 2023-04-01 12:18:30 --> Undefined property: stdClass::$Id
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(263): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', 'F:\\xampp\\htdocs...', 263)
+#1 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(205): App\Controllers\Invoices->createPayPalInvoice(Array)
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-04-01 12:19:13 --> Undefined property: stdClass::$Id
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(263): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined prope...', 'F:\\xampp\\htdocs...', 263)
+#1 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(205): App\Controllers\Invoices->createPayPalInvoice(Array)
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-04-01 12:19:43 --> json_decode(): Argument #1 ($json) must be of type string, stdClass given
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(265): json_decode(Object(stdClass))
+#1 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(205): App\Controllers\Invoices->createPayPalInvoice(Array)
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->generateInvoice()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2023-04-01 12:57:07 --> Undefined array key "Quotation_Id	"
+#0 F:\xampp\htdocs\rems\app\Models\QuotationModel.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'F:\\xampp\\htdocs...', 19)
+#1 F:\xampp\htdocs\rems\app\Controllers\Quotation.php(32): App\Models\QuotationModel->getAllQuotationWithClient()
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Quotation->index()
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Quotation))
+#4 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 {main}

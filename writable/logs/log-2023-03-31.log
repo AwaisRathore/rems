@@ -1,0 +1,7 @@
+CRITICAL - 2023-03-31 09:37:58 --> Attempt to read property "CanViewInvoice" on null
+#0 F:\xampp\htdocs\rems\app\Controllers\Invoices.php(23): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read...', 'F:\\xampp\\htdocs...', 23)
+#1 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(832): App\Controllers\Invoices->index()
+#2 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Invoices))
+#3 F:\xampp\htdocs\rems\vendor\codeigniter4\framework\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 F:\xampp\htdocs\rems\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 {main}

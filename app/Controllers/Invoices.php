@@ -24,6 +24,16 @@ class Invoices extends BaseController
             return redirect()->to("Home")->with('warning', "You do not have rights to perform this operation.");
         }
         $invoices = $this->getAllInvoices();
+        $total_items = $invoices->total_items;
+        if ($total_items > 100) {
+            $remaining_items = $total_items - 100;
+            $count = 2;
+            while ($remaining_items > 0) {
+                $invoices->items = array_merge($invoices->items, $this->getAllInvoices($count)->items);
+                $remaining_items = $remaining_items - 100;
+                $count++;
+            }
+        }
         $invoice_quotations = $this->quotationModel->getInvoicesWithQuotations();
         return view("Invoices/index", ['invoices' => $invoices->items, 'invoice_quotations' => $invoice_quotations]);
     }
@@ -89,11 +99,11 @@ class Invoices extends BaseController
         $response = json_decode($response, true);
         return $response['access_token'];
     }
-    private function getAllInvoices()
+    private function getAllInvoices($page = 1)
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $this->API_BASE_URL . '/v2/invoicing/invoices?page=1&page_size=10&total_required=true&fields=amount,items',
+            CURLOPT_URL => $this->API_BASE_URL . '/v2/invoicing/invoices?page=' . $page . '&page_size=100&total_required=true&fields=amount,items',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -131,15 +141,10 @@ class Invoices extends BaseController
         curl_close($curl);
         return json_decode($response);
     }
-    private function sendInvoice($invoice_id, $additionalCC = null)
+    public function sendInvoice($invoice_id, $additionalCC = null)
     {
-        // $request_id = com_create_guid();
-        $post_data = array(
-            'subject' => '<Payment Notification for Remote Estimation LLC>',
-            "send_to_recipient" => true,
-            "additional_recipients" => $additionalCC,
-            "send_to_invoicer" => false
-        );
+
+
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $this->API_BASE_URL . '/v2/invoicing/invoices/' . $invoice_id . '/send',
@@ -151,17 +156,18 @@ class Invoices extends BaseController
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
-                "subject": "<The subject of the email that is sent as a notification to the recipient.>",
-                "note": "<A note to the payer.>",
+                "subject": "<Payment Invoice | Remote Estimation LLC.>",
+                "note": "<All checks must be paid to Remote Estimation LLC.>",
                 "send_to_recipient": true,
-                "send_to_invoicer": false
+                "send_to_invoicer": true
             }',
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json',
-                'PayPal-Request-Id: c1104c36-5389-482a-b374-127bda14ca7c',
+                'PayPal-Request-Id: 509a22c1-b7f6-4f2f-990b-5d47637a72fb',
                 'Authorization: Bearer ' . $this->access_token
             ),
         ));
+
         $response = curl_exec($curl);
         curl_close($curl);
         return json_decode($response);
@@ -206,6 +212,32 @@ class Invoices extends BaseController
                 ),
                 "currency_code" => "USD",
                 "note" => "All checks must be Paid to Remote Estimation LLC.",
+            ),
+            "invoicer" => array(
+                "name" => [
+                    "given_name" => "Remote",
+                    "surname" => "Estimation",
+                    "surname" => "Remote Estimation"
+                ],
+                "address" => [
+                    "address_line_1" => "123 Townsend St",
+                    "address_line_2" => "Floor 6",
+                    "admin_area_2" => "San Francisco",
+                    "admin_area_1" => "CA",
+                    "postal_code" => "94107",
+                    "country_code" => "US"
+                ],
+                "phones" => [
+                    0 => [
+                        "country_code" => "001",
+                        "national_number" => "4085551234",
+                        "phone_type" => "MOBILE"
+                    ]
+                ],
+                "website" => "www.example.com",
+                "tax_id" => "XX-XXXXXXX",
+                "logo_url" => "https://example.com/logo.png",
+                "additional_notes" => "<Any additional information. Includes business hours.>"
             ),
             "primary_recipients" => array(
                 0 => array(
@@ -263,7 +295,8 @@ class Invoices extends BaseController
         ));
         $response = curl_exec($curl);
         curl_close($curl);
-        return json_decode($response);
+        $response = json_decode($response);
+        return ($response);
     }
     private function generateInvoiceNumber()
     {
@@ -290,53 +323,3 @@ class Invoices extends BaseController
         return $response->invoice_number;
     }
 }
-
-// CURLOPT_POSTFIELDS => '{
-//     "detail": {
-//         "invoice_number": "' . $invoice_number . '",
-//         "invoice_date": "' . date('Y-m-d') . '",
-//         "payment_term": {
-//             "term_type": "DUE_ON_RECEIPT",
-//             "due_date": "' . date('Y-m-d') . '"
-//         },
-//         "currency_code": "USD",
-//         "note": "All checks must be Paid to Remote Estimation LLC.",
-//     },
-//     "primary_recipients": [
-//         {
-//             "billing_info": {
-//                 "name": {
-//                     "given_name": "' . $client_name_array[0] . '",
-//                     "surname": "' . (isset($client_name_array[1])) ? $client_name_array[1] : "" . '"
-//                 },
-//                 "email_address": "' . $client_email . '",
-
-//             },
-
-//         }
-//     ],
-//     "items": ' . json_encode($items) . ',
-//     "configuration": {
-//         "partial_payment": {
-//             "allow_partial_payment": true,
-//             "minimum_amount_due": {
-//                 "currency_code": "USD",
-//                 "value": "' . $total_amount / 2 . '.00"
-//             }
-//         },
-//         "allow_tip": true,
-//     },
-//     "amount": {
-//         "breakdown": {
-//             "item_total": {
-//                 "currency_code": "USD",
-//                 "value": "' . $total_amount . '.00"
-//             },
-//             "discount": {
-//                 "invoice_discount": {
-//                     "percent": "' . $data["Quotation"]["Discount"] . '"
-//                 }
-//             }
-//         }
-//     }
-// }'

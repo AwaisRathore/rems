@@ -204,8 +204,13 @@ class Quotation extends BaseController
             $invoice_object = new Invoices();
             $response = $invoice_object->createPayPalInvoice($data);
             if (isset($response->id)) {
-                if ($quotationModel->saveInvoice($quotation_id, $response->id)) {
-                    $result = ['success', 'Invoice created successfully'];
+                $sendResponse = $invoice_object->sendInvoice($response->id);
+                if (isset($sendResponse->href)) {
+                    if ($quotationModel->saveInvoice($quotation_id, $response->id)) {
+                        $result = ['success', 'Invoice created successfully'];
+                    } else {
+                        $result = ['failed', 'Invoice cannot be generated.'];
+                    }
                 } else {
                     $result = ['failed', 'Invoice cannot be generated.'];
                 }

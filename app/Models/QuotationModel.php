@@ -13,6 +13,15 @@ class QuotationModel extends Model
     {
         $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
+        $invoices = $this->getInvoicesWithQuotations();
+        foreach ($Quotations as &$quotation) {
+            foreach ($invoices as $invoice) {
+                if ($quotation['Quotation_Id'] == $invoice->Quotation_Id) {
+                    $isInvoiceGenerated = true;
+                    $quotation['invoice'] = $invoice->Invoice_Id;
+                }
+            }
+        }
         return $Quotations;
     }
     public function getNOofQuotationperday()
@@ -37,6 +46,15 @@ class QuotationModel extends Model
     {
         $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges =0 GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
+        $invoices = $this->getInvoicesWithQuotations();
+        foreach ($Quotations as &$quotation) {
+            foreach ($invoices as $invoice) {
+                if ($quotation['Quotation_Id'] == $invoice->Quotation_Id) {
+                    $isInvoiceGenerated = true;
+                    $quotation['invoice'] = $invoice->Invoice_Id;
+                }
+            }
+        }
         return $Quotations;
     }
     public function getAllNotQoutedQuotationbyclientId($ClientId)
@@ -49,6 +67,15 @@ class QuotationModel extends Model
     {
         $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
+        $invoices = $this->getInvoicesWithQuotations();
+        foreach ($Quotations as &$quotation) {
+            foreach ($invoices as $invoice) {
+                if ($quotation['Quotation_Id'] == $invoice->Quotation_Id) {
+                    $isInvoiceGenerated = true;
+                    $quotation['invoice'] = $invoice->Invoice_Id;
+                }
+            }
+        }
         return $Quotations;
     }
     public function getQuotationfromprojectid($project_id)
