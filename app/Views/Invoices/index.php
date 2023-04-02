@@ -53,6 +53,12 @@
     .f-195rem {
         font-size: 1.95rem;
     }
+    tbody tr{
+        cursor: pointer;
+    }
+    tbody tr td:last-child{
+        cursor: auto;
+    }
 </style>
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
