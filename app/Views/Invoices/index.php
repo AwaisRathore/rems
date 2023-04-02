@@ -262,7 +262,27 @@
                 }
             })
         });
-        $('table').on('click', 'tr', function(event) {
+        $(document).on('click', '.sendReminderButton', function(e) {
+            e.preventDefault();
+            var invoice_id = $(this).data('id');
+            $(".loader-container").show();
+            $.ajax({
+                url: '<?= site_url('Invoices/remind') ?>',
+                type: 'POST',
+                data: {
+                    invoice_id: invoice_id
+                },
+                success: function(response) {
+                    $(".loader-container").hide();
+                    swal.fire(response.message, ' ', response.status);
+                },
+                error: function(response) {
+                    $(".loader-container").hide();
+                    swal.fire("Failed!", response.status, "failure");
+                }
+            });
+        });
+        $('table tbody').on('click', 'tr', function(event) {
             if (!$(event.target).closest('td').is(':last-child')) {
                 window.location.href = $(this).data('id');
             }
