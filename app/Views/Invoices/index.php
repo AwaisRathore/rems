@@ -78,7 +78,7 @@
                 <tbody class="table-border-bottom-0">
                     <?php $count = 1;
                     foreach ($invoices as $invoice) : ?>
-                        <tr onclick="window.location.href='<?= site_url("invoices/view/") . $invoice->id ?>';">
+                        <tr data-id="<?= site_url("invoices/view/") . $invoice->id ?>">
                             <td>
                                 <?php $isQuoted = false;
                                 foreach ($invoice_quotations as $quotation) : ?>
@@ -91,7 +91,13 @@
                                     N/A
                                 <?php endif ?>
                             </td>
-                            <td><b><?= (isset($invoice->primary_recipients[0]->billing_info->name)) ? $invoice->primary_recipients[0]->billing_info->name->full_name : $invoice->primary_recipients[0]->billing_info->email_address ?></b><br> <span class="text-sm"><?= $invoice->detail->invoice_number ?></span></td>
+
+                            <td>
+                                <?php if (isset($invoice->primary_recipients)) : ?>
+                                    <b><?= (isset($invoice->primary_recipients[0]->billing_info->name)) ? $invoice->primary_recipients[0]->billing_info->name->full_name : $invoice->primary_recipients[0]->billing_info->email_address ?></b> <br>
+                                <?php endif ?>
+                                <span class="text-sm"><?= $invoice->detail->invoice_number ?></span>
+                            </td>
                             <td><?= $invoice->detail->payment_term->due_date ?></td>
 
                             <td>
@@ -256,25 +262,10 @@
                 }
             })
         });
-        $(document).on('click', '.sendReminderButton', function(e) {
-            e.preventDefault();
-            var invoice_id = $(this).data('id');
-            $(".loader-container").show();
-            $.ajax({
-                url: '<?= site_url('Invoices/remind') ?>',
-                type: 'POST',
-                data: {
-                    invoice_id: invoice_id
-                },
-                success: function(response) {
-                    $(".loader-container").hide();
-                    swal.fire(response.message, ' ', response.status);
-                },
-                error: function(response) {
-                    $(".loader-container").hide();
-                    swal.fire("Failed!", response.status, "failure");
-                }
-            });
+        $('table').on('click', 'tr', function(event) {
+            if (!$(event.target).closest('td').is(':last-child')) {
+                window.location.href = $(this).data('id');
+            }
         });
     })
 </script>

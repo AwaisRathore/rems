@@ -239,7 +239,7 @@ class Invoices extends BaseController
                     "due_date" => date('Y-m-d')
                 ),
                 "currency_code" => "USD",
-                "note" => "All checks must be Paid to Remote Estimation LLC.",
+                "note" => "All cheques must be Paid to Remote Estimation LLC.",
             ),
             "invoicer" => array(
                 "name" => [
@@ -248,23 +248,23 @@ class Invoices extends BaseController
                     "full_name" => "Remote Estimation"
                 ],
                 "address" => [
-                    "address_line_1" => "123 Townsend St",
-                    "address_line_2" => "Floor 6",
-                    "admin_area_2" => "San Francisco",
-                    "admin_area_1" => "CA",
-                    "postal_code" => "94107",
+                    "address_line_1" => "356 wayne st",
+                    "address_line_2" => "",
+                    "admin_area_2" => "Jersey City",
+                    "admin_area_1" => "NJ",
+                    "postal_code" => "07302",
                     "country_code" => "US"
                 ],
                 "phones" => [
                     0 => [
                         "country_code" => "001",
-                        "national_number" => "4085551234",
+                        "national_number" => "2018952723",
                         "phone_type" => "MOBILE"
                     ]
                 ],
-                "website" => "www.example.com",
-                "tax_id" => "XX-XXXXXXX",
-                "logo_url" => "https://example.com/logo.png",
+                "website" => "http://remoteestimation.us",
+                "tax_id" => "85-2178360",
+                "logo_url" => "https://pics.paypal.com/00/s/NDEzWDEwNzlYSlBH/p/MGEyY2E1MmUtZmZiYi00YTU1LWEzN2UtMjgxMjhlZjMwYjM3/image_109.JPG",
                 "additional_notes" => "<Any additional information. Includes business hours.>"
             ),
             "primary_recipients" => array(
