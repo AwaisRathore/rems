@@ -143,6 +143,9 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="<?= site_url("invoices/view/") . $invoice->id ?>"><i class='bx bx-receipt'></i> View</a>
+                                        <?php if ($invoice->status == "SENT" || $invoice->status == "UNPAID" || $invoice->status == "PARTIALLY_PAID") : ?>
+                                            <a class="dropdown-item sendReminderButton" data-id="<?= $invoice->id ?>" href="javascript:void(0);"><i class='bx bx-bell'></i> Send reminder</a>
+                                        <?php endif ?>
                                         <?php if ($invoice->status == "DRAFT" || $invoice->status == "SCHEDULED") : ?>
                                             <a class="dropdown-item deleteButton" href="javascript:void(0);" data-id="<?= $invoice->id ?>"><i class="bx bx-trash me-1"></i> Delete</a>
                                         <?php elseif ($invoice->status == "SENT") : ?>

@@ -87,6 +87,19 @@ class Invoices extends BaseController
             return $this->response->setJSON($output);
         }
     }
+    public function remind()
+    {
+        $invoice_id = $this->request->getPost('invoice_id');
+        $invoice_details = $this->getInvoiceDetails($invoice_id);
+        $response = $this->sendPayPalInvoiceReminder($invoice_id, $invoice_details);
+        if ($response == null) {
+            $output = array('status' => "success", 'message' => "Invoice reminder sent successfully!");
+            return $this->response->setJSON($output);
+        } else {
+            $output = array('status' => "error", 'message' => "Failed!", "response" => $response);
+            return $this->response->setJSON($output);
+        }
+    }
     public function send($invoice_id)
     {
         dd($this->sendInvoice($invoice_id));
@@ -369,5 +382,33 @@ class Invoices extends BaseController
         }
         curl_close($curl);
         return $response;
+    }
+    private function sendPayPalInvoiceReminder($invoice_id, $invoice)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $this->API_BASE_URL . '/v2/invoicing/invoices/' . $invoice_id . '/remind',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+                "subject": "Reminder: Payment due for the invoice #'.$invoice->detail->invoice_number.'",
+                "note": "Please pay before the due date to avoid incurring late payment charges which will be adjusted in the next bill generated.",
+                "send_to_recipient": true,
+                "send_to_invoicer": true
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Authorization: Bearer ' . $this->access_token
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        return json_decode($response);
     }
 }
