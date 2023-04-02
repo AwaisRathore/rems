@@ -282,7 +282,7 @@
                 }
             });
         });
-        $('table').on('click', 'tr', function(event) {
+        $('table tbody').on('click', 'tr', function(event) {
             if (!$(event.target).closest('td').is(':last-child')) {
                 window.location.href = $(this).data('id');
             }
