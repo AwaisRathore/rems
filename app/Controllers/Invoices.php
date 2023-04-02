@@ -34,6 +34,7 @@ class Invoices extends BaseController
                 $count++;
             }
         }
+        // dd($invoices);
         $invoice_quotations = $this->quotationModel->getInvoicesWithQuotations();
         return view("Invoices/index", ['invoices' => $invoices->items, 'invoice_quotations' => $invoice_quotations]);
     }
@@ -47,10 +48,10 @@ class Invoices extends BaseController
     }
     public function delete()
     {
-        $invoice_id = $this->request->getGet('delete_id');
+        $invoice_id = $this->request->getPost('delete_id');
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $this->API_BASE_URL . $invoice_id,
+            CURLOPT_URL => $this->API_BASE_URL . '/v2/invoicing/invoices/' . $invoice_id,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -64,11 +65,25 @@ class Invoices extends BaseController
         ));
         $response = curl_exec($curl);
         curl_close($curl);
+        // return $this->response->setJSON($response);
         if (json_decode($response) == null) {
-            $output = array('success', "Invoice deleted successfully.");
+            $output = array('status' => "success", 'message' => "Invoice deleted!");
             return $this->response->setJSON($output);
         } else {
-            $output = array('failure', "Invoice cannot be deleted.");
+            $output = array('status' => "error", 'message' => "Failed!", "response" => $response);
+            return $this->response->setJSON($output);
+        }
+    }
+    public function cancel()
+    {
+        $invoice_id = $this->request->getPost('cancel_id');
+        $response = $this->cancelPayPalInvoice($invoice_id);
+        // return $this->response->setJSON($response);
+        if ($response == null) {
+            $output = array('status' => "success", 'message' => "Invoice cancelled!");
+            return $this->response->setJSON($output);
+        } else {
+            $output = array('status' => "error", 'message' => "Failed!", "response" => $response);
             return $this->response->setJSON($output);
         }
     }
@@ -256,7 +271,7 @@ class Invoices extends BaseController
                     "allow_partial_payment" => true,
                     "minimum_amount_due" => array(
                         "currency_code" => "USD",
-                        "value" => $total_amount / 2
+                        "value" => ($total_amount - ($total_amount * ($data["Quotation"]["Discount"] / 100))) / 2
                     )
                 ),
                 "allow_tip" => true,
@@ -321,5 +336,38 @@ class Invoices extends BaseController
         curl_close($curl);
         $response = json_decode($response);
         return $response->invoice_number;
+    }
+    private function cancelPayPalInvoice($invoice_id)
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $this->API_BASE_URL . '/v2/invoicing/invoices/' . $invoice_id . '/cancel',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+                "subject": "<Invoice Cancelled! Remote Estimation LLC>",
+                "note": "<Your invoice by Remote Estimation LLC has been cancelled.>",
+                "send_to_invoicer": true,
+                "send_to_recipient": true
+            }',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Authorization: Bearer ' . $this->access_token
+            ),
+        ));
+        $response = curl_exec($curl);
+        $response = json_decode($response);
+        if ($response != null) {
+            $info = curl_getinfo($curl);
+            $response->request = $info;
+        }
+        curl_close($curl);
+        return $response;
     }
 }

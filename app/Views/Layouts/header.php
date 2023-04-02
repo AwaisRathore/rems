@@ -30,6 +30,42 @@
   <script src="<?= site_url("public/assets/js/config.js") ?>"></script>
   <!-- Custom Css -->
   <link rel="stylesheet" href="<?= site_url("public/assets/css/custom.css") ?>">
+  <style>
+    /* The loader styles */
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .loader {
+      border: 0.5rem solid #f3f3f3;
+      border-top: 0.5rem solid #3333A3;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      animation: spin 2s linear infinite;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
