@@ -1211,8 +1211,6 @@
         $('.alert').alert()
 
 
-
-
         $('.datatables-basic').DataTable({
             order: [
                 [0, 'desc']
@@ -1224,10 +1222,6 @@
             ],
 
         });
-
-
-
-
 
         $("#comment_form").validate();
         $("#deliver-project").validate();
@@ -1282,6 +1276,7 @@
                 },
                 'progress_file[]': {
                     required: 'File required When progress is 100%',
+                    totalfilesize : 'Total file size must be less than 500 MB',
                 }
             }
         });
@@ -1308,6 +1303,7 @@
 
                     'project_file[]': "Please provide a file or a file link.",
                     'project_file_link': "Please provide a file or a file link.",
+                    totalfilesize : 'Total file size must be less than 500 MB',
                 }
             });
         <?php endif ?>

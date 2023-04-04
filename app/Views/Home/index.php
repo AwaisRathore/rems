@@ -1,11 +1,15 @@
 <?= $this->extend('Layouts/default') ?>
 <?= $this->section('title') ?> Remote Estimation | Home <?= $this->endSection() ?>
-<?= $this->section('content') ?>
+<?= $this->section('PageCss') ?>
 <!-- Datatable css -->
 <link rel="stylesheet" href="<?= site_url("public/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css") ?>">
 <link rel="stylesheet" href="<?= site_url("public/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css") ?>">
 <link rel="stylesheet" href="<?= site_url("public/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css") ?>">
+<link rel="stylesheet" href="<?= site_url("public/assets/vendor/libs/Select2/css/select2.css") ?>">
 <link rel="stylesheet" href="<?= site_url('public/assets/css/swiper-bundle.min.css') ?>">
+<?= $this->endSection() ?>
+<?= $this->section('content') ?>
+
 
 <?php if (current_userRole()->name == "Admin") : ?>
     <div class="row">
@@ -84,7 +88,7 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                <a class="dropdown-item" href="#">View All</a>
+                                <a class="dropdown-item" href="<?= site_url('Users/') ?>">View All</a>
                             </div>
                         </div>
                     </div>
@@ -216,11 +220,11 @@
 
     <?php if (current_userRole()->name == 'Admin') : ?>
         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-            <div class="card  mt-4">
+            <div class="card mt-4">
                 <div class="bg-light d-flex justify-content-between">
-                    <h5 class="px-4 pt-3">Project delivery</h5>
+                    <h5 class="px-4 pt-3"><i class='bx px-2 bx-time'></i> Upcoming Delivery</h5>
                 </div>
-                <div class="card-body text-dark" style="padding: 0px;">
+                <div class="card-body border-top text-dark" style="padding: 0px;">
 
                     <div class="slider">
                         <div class="swiper">
@@ -304,7 +308,7 @@
                                                                         }
                                                                         ?>
                                                                         <?php if (current_userRole()->CanAssignProject) : ?>
-                                                                            <span class="avatar rounded-circle text-center pointer sm" id=<?= $value['Id'] ?> data-bs-toggle="modal" data-bs-target="#assignProject"><i class="bx bx-plus m-t-10"></i></span>
+                                                                            <!-- <span class="avatar rounded-circle text-center pointer sm" id=<?= $value['Id'] ?> data-bs-toggle="modal" data-bs-target="#assignProject"><i class="bx bx-plus m-t-10"></i></span> -->
                                                                         <?php endif ?>
                                                                     </div>
                                                                 <?php endif ?>
@@ -499,12 +503,11 @@
     <?php if ($ProjectCount != 0) : ?>
         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
 
-
-            <div class="card  mt-4">
+            <div class="card mt-4">
                 <div class="bg-light d-flex justify-content-between">
-                    <h5 class="px-4 pt-3">Projects</h5>
+                    <h5 class="px-4 pt-3"><i class='bx px-2 bx-notepad'></i></i> Projects</h5>
                 </div>
-                <div class="card-body text-dark" style="padding: 10px;">
+                <div class="card-body text-dark border-top" style="padding: 10px;">
                     <div id="chart-container bg-white">
                         <div id="barchart_values" style="width: 100%; height: 400px;"></div>
                     </div>
@@ -517,12 +520,11 @@
     <?php if (current_userRole()->name == "Admin") : ?>
         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
 
-
             <div class="card  mt-4">
                 <div class="bg-light d-flex justify-content-between">
-                    <h5 class="px-4 pt-3">Qoutation</h5>
+                    <h5 class="px-4 pt-3"><i class='bx px-2 bxs-badge-dollar'></i> Qoutation</h5>
                 </div>
-                <div class="card-body text-dark" style="padding: 0px;">
+                <div class="card-body border-top text-dark" style="padding: 0px;">
                     <div style="padding : 30px 20px; background-color: white;">
                         <div id="curve_chart" style="height: 360px; width: 100%; "></div>
                     </div>
@@ -536,27 +538,79 @@
 </div>
 
 
+
 <?= $this->endSection() ?>
 <?= $this->section('Script') ?>
+
+
 <script src="<?= site_url("public/assets/vendor/libs/datatables/jquery.dataTables.js") ?>"></script>
 <script src="<?= site_url("public/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js") ?>"></script>
 <script src="<?= site_url("public/assets/vendor/libs/datatables-responsive/datatables.responsive.js") ?>"></script>
 <script src="<?= site_url("public/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js") ?>"></script>
 <script src="<?= site_url("public/assets/vendor/libs/datatables-buttons/datatables-buttons.js") ?>"></script>
 <script src="<?= site_url("public/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.js") ?>"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script src="<?= site_url("public/assets/vendor/libs/Select2/js/select2.js") ?>"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="<?= site_url('public/assets/js/slider.js') ?>"></script>
 
 <script src="<?= site_url('public/assets/js/graph.js') ?>"></script>
 <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+
+<!-- <div class="modal fade" id="assignProject" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Assign Project</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="submit-form-assign-project" method="post" action="<?= site_url('ClientProject/assignProject') ?>">
+                <div class="modal-body">
+
+                    <div class="row g-2">
+                        <div class="col-lg-12 mb-1">
+                            <label for="assign-project" class="form-label">Assign Project</label>
+                            <select class="select2 form-select" id="assign-project" name="assign-user[]" required multiple>
+
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="checkbox" name="CanViewFile" value="1" id="CanViewFile">
+                                <label class="form-check-label" for="CanViewFile">Can View File</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-check my-2">
+                                <input class="form-check-input" type="checkbox" name="CanViewFileUrl" value="1" id="CanViewFileUrl">
+                                <label class="form-check-label" for="CanViewFileUrl"> Can View FileUrl</label>
+                            </div>
+                        </div>
+                        <input type="hidden" value='' name='projectid' id='projectid'>
+                    </div>
+
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" name="assign-project" id="assign-project" class="btn btn-primary">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
 
 
 <?php if (current_userRole()->name == "Admin") : ?>
@@ -577,7 +631,7 @@
 
             var maxLength = Math.max(allQoutationcountthismonth.length, allacceptedQoutationcountthismonth.length);
 
-            
+
 
             for (var i = 0; i < maxLength; i++) {
                 var date = new Date(allQoutationcountthismonth[i]?.created_at);
@@ -683,24 +737,37 @@
         $(".menu-inner>li.menu-item").first().addClass("active");
 
 
-
         getNotification();
         setInterval(function() {
             getNotification();
         }, 5000);
 
-        // $(".datatables-basic").DataTable({
-        //     pageLength: 5,
-        //     lengthMenu: [
-        //         [5, 10, 25, 50, -1],
-        //         [5, 10, 25, 50, "All"]
-        //     ],
-        // });
+    });
+    $("#submit-form-assign-project").validate();
 
+    
+    $(document).on('click', '.avatar', function() {
+        let projectid = $(this).attr('id');
+
+        $('#projectid').val(projectid);
+        console.log(projectid);
+        $.ajax({
+            url: '<?= site_url("ClientProject/getusersforassignproject") ?>',
+            method: 'post',
+            data: {
+                projectid: projectid,
+            },
+            success: function(response) {
+                $('#assign-project').html('');
+                $.each(response.allusers, function(key, value) {
+                    $('#assign-project').append('<option value="' + value['id'] + '">' + value['username'] + ' (' + value['name'] + ')</option>');
+                });
+            }
+
+        });
     });
 
-
-
+    $('.select2').select2();
 
     function getNotification() {
         var no = $(".notification").text();

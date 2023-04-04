@@ -74,6 +74,7 @@ class Filters extends BaseConfig
                 'ClientType(/*)?',
                 'ClientProject(/*)?',
                 'Notification(/*)?',
+                'Invoices(/*)?',
             ],
         ]
     ];

@@ -399,8 +399,12 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 .swiper-button-prev,
 .swiper-button-next {
-    color: black !important;
+    color: #bf0a30 !important;
 
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 26px !important;
 }
 
 
