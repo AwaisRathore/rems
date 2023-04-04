@@ -16,7 +16,8 @@ class Home extends BaseController
         $projectModel = new \App\Models\ProjectModel();
         $UserModel = new \App\Models\UserModel();
         $notificationModel = new \App\Models\NotificationModel();
-
+        $ProjectScopeModel = new \App\Models\ProjectScopeModel();
+        $ProgressModel = new \App\Models\ProgressModel();
         $sales = 0;
         $allprojects = $projectModel->getAllProjectsWithQuotations();
         foreach ($allprojects as $value) {
@@ -38,7 +39,12 @@ class Home extends BaseController
                 'notification'=> $notificationModel->getAdminNotification(),
                 'allQoutationcountthismonth'=> $quotationModel->getNOofQuotationperday(),
                 'allacceptedQoutationcountthismonth'=> $quotationModel->getNOofAcceptedQuotationperday(),
+                'ProjectScopes' => $ProjectScopeModel->getProjectScopesforproject(),
+                'clientproject' => $projectModel->getAllClientProjects(),
+                'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
+                'assignproject' => $projectModel->getassignProject()
             ];
+            
         }
         if ($this->auth->getUserRole()->name=="Client") {
             $curentloginclient = $clientModel->getClientbyUserId($user_id);

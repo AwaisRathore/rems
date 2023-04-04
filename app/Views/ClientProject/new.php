@@ -162,12 +162,24 @@
             }
         });
 
+        $.validator.addMethod('totalfilesize', function(value, element, param) {
+            var totalSize = 0;
+            var files = element.files;
+
+            for (var i = 0; i < files.length; i++) {
+                totalSize += files[i].size;
+            }
+
+            return this.optional(element) || (totalSize <= param * 1024 * 1024);
+        }, 'Total file size must be less than {0} MB');
+
         $("#submit-form").validate({
             rules: {
                 'project_file_1[]': {
                     required: function() {
                         return $("#project_file_link_1").val() === "";
-                    }
+                    },
+                    totalfilesize: 500 // set the maximum total file size in MB,
                 },
                 project_file_link_1: {
                     required: function() {
@@ -177,7 +189,8 @@
                 'project_file_2[]': {
                     required: function() {
                         return $("#project_file_link_2").val() === "";
-                    }
+                    },
+                    totalfilesize: 500 // set the maximum total file size in MB,
                 },
                 project_file_link_2: {
                     required: function() {
@@ -187,7 +200,8 @@
                 'project_file_3[]': {
                     required: function() {
                         return $("#project_file_link_3").val() === "";
-                    }
+                    },
+                    totalfilesize: 500 // set the maximum total file size in MB,
                 },
                 project_file_link_3: {
                     required: function() {
@@ -197,7 +211,8 @@
                 'project_file_4[]': {
                     required: function() {
                         return $("#project_file_link_4").val() === "";
-                    }
+                    },
+                    totalfilesize: 500 // set the maximum total file size in MB,
                 },
                 project_file_link_4: {
                     required: function() {

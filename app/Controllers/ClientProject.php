@@ -125,6 +125,8 @@ class ClientProject extends BaseController
     public function assignProject()
     {
         $projectModel = new \App\Models\ProjectModel();
+        $userModel = new \App\Models\UserModel();
+        $users = $this->request->getPost('assign-user');
         $data = [
             'projectid' => $this->request->getPost('projectid'),
             'users' => $this->request->getPost('assign-user'),
@@ -134,7 +136,55 @@ class ClientProject extends BaseController
         // dd($data);
         $projectModel->assignProject($data);
 
+        $success_count = 0;
+        $error_count = 0;
+        foreach ($users as $user_id) {
+            $email = $userModel->getUseremailformUserid($user_id);
+
+            $emailVariables = array();
+
+            $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
+            $emailVariables['headicon'] = site_url('public/assets/img/icon/project.png');
+            $emailVariables['site_url'] = site_url();
+
+            $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
+            $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
+            $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
+            $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
+
+            $to = $email;
+            $message = file_get_contents(site_url('ClientProject/assignEmailTemplate'));
+            foreach ($emailVariables as $key => $value) {
+                $message = str_replace('{{ ' . $key . ' }}', $value, $message);
+            }
+
+            // $message = "Click on the link to reset password <br>" . site_url('Login/resetPassword/' . $token . '') . "";
+            $mailService = \Config\Services::email();
+            $mailService->setTo($to);
+            $mailService->setSubject('Assign for Project');
+            $mailService->setMessage($message);
+            if ($mailService->send()) {
+                $success_count++;
+            } else {
+                $error_count++;
+            }
+
+        }
+
+        if ($success_count > 0) {
+            return redirect()->back()->with('success', ' Email Send Successfully to the Assign Users.');
+        } else {
+            return redirect()->back()->with('errors', 'Email Not Send Something went wrong. ');
+        }
+
+
+
         return redirect()->back();
+    }
+
+
+    public function assignEmailTemplate(){
+        return view('Email/assignEmailTemplate.html');
     }
 
     public function getusersforassignproject()
@@ -298,11 +348,22 @@ class ClientProject extends BaseController
         }
         $username = current_user()->username;
         $projectname = $this->request->getPost("project_name");
+        $assignuser = $this->request->getPost("assignuser");
+        $assignuser = unserialize($assignuser);
+        // dd($assignuser);
         $clientId = $this->request->getPost("clientname");
         if ($commentModel->insert($data)) {
             $message = "{$username} posted a comment on {$projectname}";
             $notificationModel->addprojectNotificationwithoutUserId($id, $message);
             $notificationModel->addprojectNotification($clientId, $id, $message);
+            if (!empty($assignuser)) {
+                foreach ($assignuser as $ass_user) {
+                    // dd($ass_user);
+                    $ass_user_id = $ass_user;
+                    $notificationModel->addprojectNotification($ass_user_id, $id, $message);
+                }
+            }
+
             return redirect()->back();
         }
     }
@@ -323,11 +384,21 @@ class ClientProject extends BaseController
         $username = current_user()->username;
         $projectname = $this->request->getPost("project_name");
         $clientId = $this->request->getPost("clientname");
-
+        $assignuser = $this->request->getPost("assignuser");
+        $assignuser = unserialize($assignuser);
         if ($commentModel->insert($data)) {
             $message = "{$username} is add reply on {$projectname}";
             $notificationModel->addprojectNotificationwithoutUserId($projectid, $message);
             $notificationModel->addprojectNotification($clientId, $projectid, $message);
+            if (!empty($assignuser)) {
+                foreach ($assignuser as $ass_user) {
+                    // dd($ass_user);
+                    if ($ass_user != current_user()->id) {
+                        $ass_user_id = $ass_user;
+                        $notificationModel->addprojectNotification($ass_user_id, $projectid, $message);
+                    }
+                }
+            }
             return redirect()->back();
         }
         return redirect()->back();
@@ -434,7 +505,9 @@ class ClientProject extends BaseController
                     );
                 }
             }
-            $files_full_name = array_merge($files_full_name, $previous_file);
+            if (!empty($previous_file)) {
+                $files_full_name = array_merge($files_full_name, $previous_file);
+            }
         } else {
             $files_full_name = $this->request->getPost("previous_file");
         }
@@ -443,9 +516,8 @@ class ClientProject extends BaseController
             'projectfilelink' => $this->request->getPost("project_file_link"),
         ];
 
-        if($projectModel->addfiles($id,$data)){
+        if ($projectModel->addfiles($id, $data)) {
             return redirect()->back();
         }
-
     }
 }

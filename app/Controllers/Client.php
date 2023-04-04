@@ -92,4 +92,53 @@ class Client extends BaseController
         $clientModel->deleteClient($Id);
         return redirect()->to("Client/index");
     }
+
+    public function makeuser($id){
+        $clientModel = new \App\Models\ClientModel();
+        $data =  $clientModel->makeuser($id);
+        $email = $data['email'];
+        $password = $data['password'];
+
+
+        $emailVariables = array();
+
+
+        $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
+        $emailVariables['headicon'] = site_url('public/assets/img/icon/user.png');
+       
+        $emailVariables['email'] = $email;
+        $emailVariables['password'] = $password;
+        $emailVariables['sitelink'] = site_url();
+
+        $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
+        $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
+        $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
+        $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
+
+        $to = $email;
+        $message = file_get_contents(site_url('Client/registerUserEmailTemplate'));
+        foreach ($emailVariables as $key => $value) {
+            $message = str_replace('{{ ' . $key . ' }}', $value, $message);
+        }
+
+        $mailService = \Config\Services::email();
+        $mailService->setTo($to);
+        $mailService->setSubject('Register User');
+        $mailService->setMessage($message);
+        if ($mailService->send()) {
+            return redirect()->to("Users/index")->with('success', 'Email Sent successfully to user.');
+        } else {
+            return redirect()->to("Users/index")->with('errors', 'Something went wrong. Email Not Send.');
+        }
+        
+        
+        return redirect()->to("Users/index");
+       
+
+    }
+
+    public function registerUserEmailTemplate(){
+        return view('Email/registerUserEmailTemplate.html');
+    }
+
 }

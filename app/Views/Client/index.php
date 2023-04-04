@@ -26,6 +26,7 @@
                     <?php foreach ($clientsData as $value) : ?>
                         <tr>
                             <td><?= $value["Id"] ?></td>
+                            
                             <td><?= $value["Name"] ?></td>
                             <td><?= $value["Email_Address"] ?></td>
                             <td><?= $value["Phone_Number"] ?></td>
@@ -36,6 +37,9 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
+                                        <?php if($value["user_id"] == null): ?>
+                                            <a class="dropdown-item" href="<?= site_url("Client/Makeuser/" . $value["Id"] . "") ?>"><i class='bx bx-user'></i> Make client a User</a>
+                                        <?php endif ?>
                                         <a class="dropdown-item" href="<?= site_url("Client/edit/" . $value["Id"] . "") ?>"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                         <a class="dropdown-item" href="<?= site_url("Client/delete/" . $value["Id"] . "") ?>"><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>

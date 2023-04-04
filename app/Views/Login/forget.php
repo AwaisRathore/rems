@@ -15,8 +15,11 @@
                     </div>
                     <!-- /Logo -->
                     <h4 class="mb-2">Forget Password!</h4>
+                    <?php 
+                        if (!session()->has('success')) : 
+                        ?>
                     <p class="mb-4">Please provide your Email Address.</p>
-
+                    <?php endif ?>
                     <form id="formforget" class="mb-3" action="" method="POST">
                         <?php if (session()->has('warning')) : ?>
                             <div class="alert alert-danger" role="alert">
@@ -34,6 +37,9 @@
                             <?= session('success') ?>
                             </div>
                         <?php endif ?>
+                        <?php 
+                        if (!session()->has('success')) : 
+                        ?>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus />
@@ -43,11 +49,15 @@
                                 </div>
                             <?php endif ?>
                         </div>
+                        
 
 
                         <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Send Link</button>
                         </div>
+                        <?php 
+                        endif 
+                        ?>
                     </form>
 
                 </div>

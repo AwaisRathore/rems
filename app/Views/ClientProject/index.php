@@ -36,13 +36,23 @@
                         </button>
                     </li>
                 <?php endif ?>
+                <?php if (current_userRole()->name != 'Employee') : ?>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#Awating-Qoutation-Acceptance" aria-controls="Awating-Qoutation-Acceptance" aria-selected="false">
+                            Awaiting Quotation Acceptance
+                        </button>
+                    </li>
+                <?php endif ?>
             </ul>
             <div class="tab-content bg-lightgray">
                 <!-- All project Content Start -->
                 <div class="tab-pane fade show active" id="all-project" role="tabpanel">
                     <div class="row">
                         <?php foreach ($clientproject as $value) : ?>
-
+                            <?php 
+                                if ($value['qoutationStatus'] != 0) :
+                            ?>
+                                
                             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 mt-5">
 
                                 <div class="card">
@@ -196,7 +206,7 @@
                                                             echo "Late";
                                                         } else if ($value['projectStatus'] == 0 && $count == 0) {
                                                             echo "Not Assign";
-                                                        }else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
+                                                        } else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
                                                             echo "Delivered";
                                                         } else if ($value['projectStatus'] == 0  && $count > 0) {
                                                             echo "In-progress";
@@ -280,8 +290,9 @@
                                 </div>
 
                             </div>
-
-
+                            
+                            <?php endif ?>
+                            
 
                         <?php endforeach ?>
 
@@ -293,7 +304,7 @@
 
                     <div class="row">
                         <?php foreach ($clientproject as $value) : ?>
-                            <?php if ($value['projectStatus'] == 0 && $value['Lump_Sump_Charges'] != 0 && $value['user_id'] != null) : ?>
+                            <?php if ($value['qoutationStatus'] != 0 && $value['projectStatus'] == 0 && $value['Lump_Sump_Charges'] != 0 && $value['user_id'] != null) : ?>
                                 <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 mt-5">
 
                                     <div class="card">
@@ -446,7 +457,7 @@
                                                                 echo "Late";
                                                             } else if ($value['projectStatus'] == 0 && $count == 0) {
                                                                 echo "Not Assign";
-                                                            }else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
+                                                            } else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
                                                                 echo "Delivered";
                                                             } else if ($value['projectStatus'] == 0  && $count > 0) {
                                                                 echo "In-progress";
@@ -693,7 +704,7 @@
                                                                 echo "Late";
                                                             } else if ($value['projectStatus'] == 0 && $count == 0) {
                                                                 echo "Not Assign";
-                                                            }else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
+                                                            } else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
                                                                 echo "Delivered";
                                                             } else if ($value['projectStatus'] == 0  && $count > 0) {
                                                                 echo "In-progress";
@@ -942,7 +953,7 @@
                                                                     echo "Late";
                                                                 } else if ($value['projectStatus'] == 0 && $count == 0) {
                                                                     echo "Not Assign";
-                                                                }else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
+                                                                } else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
                                                                     echo "Delivered";
                                                                 } else if ($value['projectStatus'] == 0  && $count > 0) {
                                                                     echo "In-progress";
@@ -990,6 +1001,214 @@
                     </div>
                 <?php endif ?>
                 <!-- Not Qouted -->
+                <!-- Awating Qoutation Acceptance Content Start-->
+                <?php if (current_userRole()->name != 'Employee') : ?>
+                    <div class="tab-pane fade" id="Awating-Qoutation-Acceptance" role="tabpanel">
+                        <div class="row">
+                            <?php foreach ($clientproject as $value) : ?>
+                                
+                                <?php if ($value['qoutationStatus'] == 0 &&$value['Lump_Sump_Charges'] != 0) : ?>
+                                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 mt-5">
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div>
+                                                    <span class="small text-muted project_name fw-bold">
+                                                        <?php
+                                                        foreach ($ProjectScopes as $projectscope) {
+                                                            if ($projectscope['Project_Id'] == $value['Id']) {
+                                                                echo $projectscope['Type_Names'] . "<br>";
+                                                            }
+                                                        } ?></span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                                    <div class="lesson_name">
+                                                        <div class="
+                                                <?php
+                                                foreach ($ProjectScopes as $projectscope) {
+                                                    if ($projectscope['Project_Id'] == $value['Id']) {
+
+                                                        if ($projectscope['Type_Names'] == 'Castings' || $projectscope['Type_Names'] == 'All Concrete Except Curb') {
+                                                            echo "light-success-bg ";
+                                                            break;
+                                                        } else if ($projectscope['Type_Names'] == 'Polish Concrete' || $projectscope['Type_Names'] == 'Piping' || $projectscope['Type_Names'] == 'pipings') {
+                                                            echo "light-warning-bg  ";
+                                                            break;
+                                                        } else if ($projectscope['Type_Names'] == 'Hatches & Modular Retaining Walls Takeoffs' || $projectscope['Type_Names'] == 'All Trades Including MEP') {
+                                                            echo "light-danger-bg ";
+                                                            break;
+                                                        } else if ($projectscope['Type_Names'] == 'Erosion & Sediment Control' || $projectscope['Type_Names'] == 'Earthwork - Cut/Fill Analysis' || $projectscope['Type_Names'] == 'Flooring') {
+                                                            echo "bg-lightgreen ";
+                                                            break;
+                                                        } else {
+                                                            echo "bg-lightgreen ";
+                                                            break;
+                                                        }
+                                                    }
+                                                } ?>
+                                                
+                                                project-block">
+                                                            <img src="<?= site_url('public/assets/img/icons/briefing.png') ?>" alt="">
+                                                        </div>
+
+                                                        <h6 class="mb-0 fw-bold  fs-6  mb-2"><?= $value['Project_Name'] ?></h6>
+                                                    </div>
+                                                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                        <a href="<?= site_url("ClientProject/view/" . $value['Id'] . "") ?>" class="btn btn-outline-secondary"><i class='bx bx-info-circle text-info'></i></a>
+
+                                                        <?php if ($value['Lump_Sump_Charges'] == 0) : ?>
+                                                            <?php if (current_userRole()->CanEditClientProject) : ?>
+                                                                <a class="btn btn-outline-secondary" href="<?= site_url('ClientProject/edit/' . $value['Id'] . '') ?>"><i class="bx bx-edit-alt text-success"></i></a>
+                                                            <?php endif ?>
+                                                            <?php if (current_userRole()->CanDeleteClientProject) : ?>
+                                                                <a class="btn btn-outline-secondary deleteButton" id="<?= $value['Id'] ?>" href=""><i class="bx bx-trash text-danger"></i></a>
+                                                            <?php endif ?>
+                                                        <?php endif ?>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <?php if (current_userRole()->name == 'Admin' || current_userRole()->name == 'Employee') : ?>
+                                                        <div class="avatar-list avatar-list-stacked pt-2">
+                                                            <?php
+                                                            $count = 0;
+                                                            foreach ($assignproject as $assignprojects) {
+                                                                if ($assignprojects['project_id'] == $value['Id']) { ?>
+                                                                    <img class="avatar rounded-circle sm" src="<?= site_url($assignprojects['profile_image']) ?>" alt="">';
+                                                            <?php
+
+                                                                    $count++;
+                                                                }
+                                                            }
+                                                            ?>
+                                                            <?php if (current_userRole()->CanAssignProject) : ?>
+                                                                <span class="avatar rounded-circle text-center pointer sm" id=<?= $value['Id'] ?> data-bs-toggle="modal" data-bs-target="#assignProject"><i class="bx bx-plus m-t-10"></i></span>
+                                                            <?php endif ?>
+                                                        </div>
+                                                    <?php endif ?>
+                                                    <?php if (current_userRole()->name == 'Client') : ?>
+                                                        <Span class="">
+                                                            <?php
+                                                            $count = 0;
+                                                            foreach ($assignproject as $assignprojects) {
+                                                                if ($assignprojects['project_id'] == $value['Id']) {
+                                                                    $count++;
+                                                                }
+                                                            }
+
+                                                            if ($count != 0) {
+                                                                echo "Assign for " . $value['project_type'] . "";
+                                                            }
+                                                            ?>
+                                                        </span>
+
+                                                    <?php endif ?>
+
+                                                </div>
+                                                <div class="row g-2 pt-4">
+                                                    <?php if (!empty($value['Project_file'])) : ?>
+                                                        <div class="col-6">
+                                                            <div class="d-flex align-items-center">
+                                                                <i class="bx bx-paperclip"></i>
+                                                                <span class="ms-2"><a href="<?php if ($value['Project_file'][0] != '') : ?>
+                                                    <?= site_url($value['Project_file'][0]) ?> <?php else : ?><?= $value['project_file_link'][0] ?><?php endif ?>" class="file_link" target="_blank">View File</a></span>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif ?>
+                                                    <div class="col-6">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class='bx bx-time-five'></i>
+                                                            <span class="ms-2"><?= $value['Delivery_Date'] ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <?php if (!empty($value['project_type'])) : ?>
+                                                        <div class="col-6">
+                                                            <div class="d-flex align-items-center">
+                                                                <i class='bx bx-clipboard'></i>
+                                                                <span class="ms-2"><?= $value['project_type'] ?></span>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif ?>
+                                                    <?php if (current_userRole()->name != 'Employee') : ?>
+                                                        <div class="col-6">
+                                                            <div class="d-flex align-items-center">
+                                                                <i class='bx bx-purchase-tag'></i>
+                                                                <span class="ms-2"><?php if ($value['Lump_Sump_Charges'] == 0) {
+                                                                                        echo "Not Qouted";
+                                                                                    } else {
+                                                                                        echo "$" . $value['Lump_Sump_Charges'];
+                                                                                    }
+                                                                                    ?></span>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif ?>
+                                                    <div class="col-6">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class='bx bx-loader-alt'></i>
+                                                            <span class="ms-2 <?php if ($value['status'] == 0 && $value['Lump_Sump_Charges'] == 0) {
+                                                                                    echo "text-lightgreen";
+                                                                                } else if ($value['status'] == 0 && date("Y-m-d") > $value['Delivery_Date']) {
+                                                                                    echo "text-danger-bg";
+                                                                                } else if ($value['status'] == 0) {
+                                                                                    echo "text-lightgreen";
+                                                                                } else {
+                                                                                    echo "text-success-bg";
+                                                                                }
+                                                                                ?> ">
+                                                                <?php
+                                                                if ($value['projectStatus'] == 0 && $value['Lump_Sump_Charges'] == 0) {
+                                                                    echo "In-review";
+                                                                } else if ($value['projectStatus'] == 0 && date("Y-m-d") > $value['Delivery_Date']) {
+                                                                    echo "Late";
+                                                                } else if ($value['projectStatus'] == 0 && $count == 0) {
+                                                                    echo "Not Assign";
+                                                                } else if ($value['projectStatus'] == 0  && $value['deliver_file'] != '') {
+                                                                    echo "Delivered";
+                                                                } else if ($value['projectStatus'] == 0  && $count > 0) {
+                                                                    echo "In-progress";
+                                                                } else if ($value['projectStatus'] == 1) {
+                                                                    echo "Completed";
+                                                                } ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <?php if (current_userRole()->name != 'Employee') : ?>
+                                                        <div class="col-6">
+                                                            <div class="d-flex align-items-center">
+
+
+                                                                <?php if (current_userRole()->name == 'Admin') : ?>
+                                                                    <i class='bx bxs-badge-dollar'></i>
+                                                                    <span class="ms-2">
+                                                                        <a href="<?= site_url("Quotation/projectqoutation/" . $value['Id'] . "") ?>" class="file_link">View Qoutation</a>
+                                                                    </span>
+                                                                <?php endif ?>
+                                                                <?php if (current_userRole()->name == 'Client') : ?>
+                                                                    <?php if ($value['Lump_Sump_Charges'] != 0) : ?>
+                                                                        <i class='bx bxs-badge-dollar'></i>
+                                                                        <span class="ms-2">
+                                                                            <a href="<?= site_url("Quotation/projectqoutation/" . $value['Id'] . "") ?>" class="file_link">View Qoutation</a>
+                                                                        </span>
+                                                                    <?php endif ?>
+                                                                <?php endif ?>
+
+                                                            </div>
+                                                        </div>
+                                                    <?php endif ?>
+
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+                <?php endif ?>
+                <!-- end Awating Qoutation Acceptance content -->
             </div>
         </div>
     </div>

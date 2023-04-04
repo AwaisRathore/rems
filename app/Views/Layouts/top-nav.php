@@ -11,7 +11,7 @@
             <li class="nav-item me-3">
                 <a href="<?= site_url('Notification/index') ?>" class="nav-link">
                     <div class="btn-sm btn-primary position-relative">
-                        <i class='bx bxs-bell'></i> Notification <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger  " id="notification">
+                        <i class='bx bxs-bell'></i> Notification <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification " id="notification">
 
 
                         </span>
@@ -21,18 +21,20 @@
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        <img src="<?= site_url(current_user()->profile_image) ?>" alt class="w-px-40 h-auto rounded-circle" />
+                    <div class="avatar-online" style="width : 40px; height : 40px; overflow : hidden;border-radius : 50%">
+                        <img style="width : 100%; " src="<?= site_url(current_user()->profile_image) ?>" alt="">
                     </div>
+
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?= site_url("Profile/") ?>">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <div class="avatar avatar-online">
-                                        <img src="<?= site_url(current_user()->profile_image) ?>" alt class="w-px-40 h-auto rounded-circle" />
+                                    <div class="avatar-online" style="width : 40px; height : 40px; overflow : hidden;border-radius : 50%">
+                                        <img style="width : 100%; " src="<?= site_url(current_user()->profile_image) ?>" alt="">
                                     </div>
+
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block"><?= current_user()->email ?></span>
@@ -44,11 +46,18 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     <li>
+                        <a class="dropdown-item" href="<?= site_url("Profile/") ?>">
+                            <i class="bx bx-user me-2"></i>
+                            <span class="align-middle">Profile</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="dropdown-item" href="<?= site_url("Login/changePassword") ?>">
                             <i class="bx bx-lock me-2"></i>
                             <span class="align-middle">Change Password</span>
                         </a>
                     </li>
+
                     <li>
                         <a class="dropdown-item" href="<?= site_url("Login/logout") ?>">
                             <i class="bx bx-power-off me-2"></i>

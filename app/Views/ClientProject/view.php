@@ -13,6 +13,16 @@
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 
+<?php if (session()->has('errors')) : ?>
+    <div class="alert alert-danger" role="alert">
+        <b>Error:</b> <?= session('errors') ?>
+    </div>
+<?php endif ?>
+<?php if (session()->has('success')) : ?>
+    <div class="alert alert-danger" role="alert">
+        <b>Error:</b> <?= session('success') ?>
+    </div>
+<?php endif ?>
 
 <div class="row my-3">
     <div class="">
@@ -178,8 +188,15 @@
                         <?php foreach ($assignusers as $Assignuser) : ?>
 
                             <li class="list-group-item d-flex justify-content-between">
-                                <b>
-                                    <img src="<?= site_url($Assignuser['profile_image']) ?>" alt="" style="width : 35px; border-radius : 50%; margin-right : 10px"> <?= $Assignuser['username'] ?> </b>
+                                <b class="d-flex align-items-center">
+                                    <div style="width : 40px; height : 40px; overflow : hidden;border-radius : 50%;margin-right : 5px;">
+                                        <img style="width : 100%; " src="<?= site_url($Assignuser['profile_image']) ?>" alt="">
+                                    </div>
+                                    <div>
+                                        <?= $Assignuser['username'] ?>
+                                    </div>
+
+                                </b>
                                 <div class="align-middle mt-1">
 
                                     <?php if ($Assignuser['status'] == 0 && $Assignuser['assignReview'] == NULL) : ?>
@@ -220,6 +237,7 @@
                                     </a>
                                 <?php endif ?>
                             <?php endforeach ?>
+
 
                         </div>
 
@@ -324,19 +342,18 @@
 
 
         <?php if (current_userRole()->name == 'Employee') : ?>
-            <?php foreach ($assignusers as $Assignuser) : ?>
-                <?php if ($Assignuser['user_id'] == current_user()->id) : ?>
-                    <?php if ($Assignuser['CanViewFile']) : ?>
-
-                        <div class="card text-dark">
-                            <div class="card-head ">
-                                <h5 class="px-4 pt-3">Attached Files</h5>
-
-                            </div>
-                            <div class="card-body " style="padding: 0px;">
-                                <?php if (!empty($project[0]['Project_file'])) : ?>
-                                    <?php if ($project[0]['Project_file'][0] != '') : ?>
-                                        <ul class="list-group list-group-unbordered p-3">
+            <div class="card text-dark">
+                <div class="card-head ">
+                    <h5 class="px-4 pt-3">Attached Files</h5>
+                </div>
+                <div class="card-body " style="padding: 0px;">
+                    <ul class="list-group list-group-unbordered p-3">
+                        <?php $i = 1; ?>
+                        <?php foreach ($assignusers as $Assignuser) : ?>
+                            <?php if ($Assignuser['user_id'] == current_user()->id) : ?>
+                                <?php if ($Assignuser['CanViewFile']) : ?>
+                                    <?php if (!empty($project[0]['Project_file'])) : ?>
+                                        <?php if ($project[0]['Project_file'][0] != '') : ?>
                                             <?php $i = 1;
                                             foreach ($project[0]['Project_file'] as $projectfile) : ?>
                                                 <li class="list-group-item custom-border-padding d-flex justify-content-between">
@@ -344,18 +361,26 @@
                                                 </li>
                                             <?php $i++;
                                             endforeach ?>
-
-
-
-                                        </ul>
+                                        <?php endif ?>
                                     <?php endif ?>
-                                <?php endif ?>
-                            </div>
-                        </div>
 
-                    <?php endif ?>
-                <?php endif ?>
-            <?php endforeach ?>
+                                <?php endif ?>
+
+                            <?php endif ?>
+                        <?php endforeach ?>
+                        <?php if (!empty($project[0]['admin_uploaded_file'])) : ?>
+                            <?php
+                            foreach ($project[0]['admin_uploaded_file'] as $adminprojectfile) : ?>
+                                <li class="list-group-item custom-border-padding d-flex justify-content-between">
+                                    <b>File <?= $i; ?></b> <a class="file_link" href="<?= site_url($adminprojectfile) ?>" target="_blank" download>Download</a>
+                                </li>
+                            <?php $i++;
+                            endforeach ?>
+                        <?php endif ?>
+                    </ul>
+                </div>
+            </div>
+
 
         <?php else : ?>
 
@@ -381,10 +406,12 @@
 
                 </div>
                 <div class="card-body " style="padding: 0px;">
-                    <?php if (!empty($project[0]['Project_file'])) : ?>
-                        <?php if ($project[0]['Project_file'][0] != '') : ?>
-                            <ul class="list-group list-group-unbordered p-3">
-                                <?php $i = 1;
+
+                    <ul class="list-group list-group-unbordered p-3">
+                        <?php $i = 1; ?>
+                        <?php if (!empty($project[0]['Project_file'])) : ?>
+                            <?php if ($project[0]['Project_file'][0] != '') : ?>
+                                <?php
                                 foreach ($project[0]['Project_file'] as $projectfile) : ?>
                                     <li class="list-group-item custom-border-padding d-flex justify-content-between">
                                         <b>File <?= $i; ?></b> <a class="file_link" href="<?= site_url($projectfile) ?>" target="_blank" download>Download</a>
@@ -392,11 +419,28 @@
                                 <?php $i++;
                                 endforeach ?>
 
-
-
-                            </ul>
+                            <?php endif ?>
                         <?php endif ?>
-                    <?php endif ?>
+
+                        <?php if (current_userRole()->name == 'Admin') : ?>
+
+                            <?php if (!empty($project[0]['admin_uploaded_file'])) : ?>
+                                <?php if ($project[0]['admin_uploaded_file'][0] != '') : ?>
+                                    <?php
+                                    foreach ($project[0]['admin_uploaded_file'] as $adminprojectfile) : ?>
+                                        <li class="list-group-item custom-border-padding d-flex justify-content-between">
+                                            <b>File <?= $i; ?></b> <a class="file_link" href="<?= site_url($adminprojectfile) ?>" target="_blank" download>Download</a>
+                                        </li>
+                                    <?php $i++;
+                                    endforeach ?>
+                                <?php endif ?>
+                            <?php endif ?>
+                        <?php endif ?>
+
+
+
+                    </ul>
+
                 </div>
             </div>
 
@@ -404,19 +448,20 @@
 
 
         <?php if (current_userRole()->name == 'Employee') : ?>
-            <?php foreach ($assignusers as $Assignuser) : ?>
-                <?php if ($Assignuser['user_id'] == current_user()->id) : ?>
-                    <?php if ($Assignuser['CanViewFileUrl']) : ?>
+            <div class="card text-dark mt-4">
+                <div class="card-head ">
+                    <h5 class="px-4 pt-3">Files Links</h5>
+                </div>
+                <div class="card-body " style="padding: 0px;">
+                    <ul class="list-group list-group-unbordered p-3">
+                        <?php $i = 1; ?>
+                        <?php foreach ($assignusers as $Assignuser) : ?>
+                            <?php if ($Assignuser['user_id'] == current_user()->id) : ?>
+                                <?php if ($Assignuser['CanViewFileUrl']) : ?>
+                                    <?php if (!empty($project[0]['project_file_link'])) : ?>
+                                        <?php if ($project[0]['project_file_link'][0] != '') : ?>
 
-                        <div class="card text-dark mt-4">
-                            <div class="card-head ">
-                                <h5 class="px-4 pt-3">Files Links</h5>
-                            </div>
-                            <div class="card-body " style="padding: 0px;">
-                                <?php if (!empty($project[0]['project_file_link'])) : ?>
-                                    <?php if ($project[0]['project_file_link'][0] != '') : ?>
-                                        <ul class="list-group list-group-unbordered p-3">
-                                            <?php $i = 1;
+                                            <?php
                                             foreach ($project[0]['project_file_link'] as $projectfilelink) : ?>
                                                 <li class="list-group-item custom-border-padding d-flex justify-content-between">
                                                     <b>Link <?= $i; ?></b> <a class="file_link" href="<?= $projectfilelink ?>" target="_blank">Browse</a>
@@ -424,18 +469,30 @@
                                             <?php $i++;
                                             endforeach ?>
 
-
-
-                                        </ul>
+                                        <?php endif ?>
                                     <?php endif ?>
+
+
                                 <?php endif ?>
-                            </div>
-                        </div>
 
-                    <?php endif ?>
+                            <?php endif ?>
+                        <?php endforeach ?>
+                        <?php if (!empty($project[0]['admin_file_link'])) : ?>
+                            <?php if ($project[0]['admin_file_link'][0] != '') : ?>
 
-                <?php endif ?>
-            <?php endforeach ?>
+                                <?php
+                                foreach ($project[0]['admin_file_link'] as $projectfilelink) : ?>
+                                    <li class="list-group-item custom-border-padding d-flex justify-content-between">
+                                        <b>Link <?= $i; ?></b> <a class="file_link" href="<?= $projectfilelink ?>" target="_blank">Browse</a>
+                                    </li>
+                                <?php $i++;
+                                endforeach ?>
+
+                            <?php endif ?>
+                        <?php endif ?>
+                    </ul>
+                </div>
+            </div>
         <?php else : ?>
             <div class="card text-dark mt-4">
                 <div class="card-head ">
@@ -443,11 +500,12 @@
 
                 </div>
                 <div class="card-body " style="padding: 0px;">
+                    <ul class="list-group list-group-unbordered p-3">
+                        <?php $i = 1; ?>
+                        <?php if (!empty($project[0]['project_file_link'])) : ?>
+                            <?php if ($project[0]['project_file_link'][0] != '') : ?>
 
-                    <?php if (!empty($project[0]['project_file_link'])) : ?>
-                        <?php if ($project[0]['project_file_link'][0] != '') : ?>
-                            <ul class="list-group list-group-unbordered p-3">
-                                <?php $i = 1;
+                                <?php
                                 foreach ($project[0]['project_file_link'] as $projectfilelink) : ?>
                                     <li class="list-group-item custom-border-padding d-flex justify-content-between">
                                         <b>Link <?= $i; ?></b> <a class="file_link" href="<?= $projectfilelink ?>" target="_blank">Browse</a>
@@ -455,11 +513,25 @@
                                 <?php $i++;
                                 endforeach ?>
 
-
-
-                            </ul>
+                            <?php endif ?>
                         <?php endif ?>
-                    <?php endif ?>
+                        <?php if (current_userRole()->name == 'Admin') : ?>
+                            <?php if (!empty($project[0]['admin_file_link'])) : ?>
+                                <?php if ($project[0]['admin_file_link'][0] != '') : ?>
+
+                                    <?php
+                                    foreach ($project[0]['admin_file_link'] as $projectfilelink) : ?>
+                                        <li class="list-group-item custom-border-padding d-flex justify-content-between">
+                                            <b>Link <?= $i; ?></b> <a class="file_link" href="<?= $projectfilelink ?>" target="_blank">Browse</a>
+                                        </li>
+                                    <?php $i++;
+                                    endforeach ?>
+
+                                <?php endif ?>
+                            <?php endif ?>
+                        <?php endif ?>
+
+                    </ul>
                 </div>
             </div>
 
@@ -498,9 +570,9 @@
                             endif ?>
                         <?php endforeach ?>
                         <?php if ($filecount > 0) : ?>
-                            <a href="" id="" class="nav-link download_zip assign_project">
-                                <div class="btn-sm btn-primary position-relative">
-                                    Download files Zip
+                            <a href="" id="download_zip" class="nav-link download_zip assign_project">
+                                <div class="btn-sm d-flex justify-content-between btn-primary position-relative">
+                                    <div id="loader" class="hidden"></div> <span>Download files Zip</span>  
                                 </div>
                             </a>
                         <?php endif ?>
@@ -533,11 +605,17 @@
             </div>
         <?php endif ?>
 
-        <?php if (current_userRole()->name == 'Client') : ?>
+        <?php if (current_userRole()->name == 'Client' || current_userRole()->name == 'Admin') : ?>
             <?php if ($project[0]['deliver_file'] != '') : ?>
                 <div class="card text-dark mt-4">
                     <div class="card-head d-flex justify-content-between">
-                        <h5 class="px-4 pt-3">Deliver File</h5>
+                        <h5 class="px-4 pt-3">
+                            <?php if (current_userRole()->name == 'Admin') : ?>
+                                Files Delivered to Client
+                            <?php else : ?>
+                                Delivered File
+                            <?php endif ?>
+                        </h5>
 
 
                     </div>
@@ -576,6 +654,17 @@
             </div>
             <div class="card-body text-dark" style="padding: 0px;">
 
+                <?php
+                $assign_user = array();
+                foreach ($assignusers as $Assignuser) {
+
+                    if ($Assignuser['status'] == 1) {
+                        array_push($assign_user, $Assignuser['user_id']);
+                    }
+                }
+                // dd($assign_user);
+                ?>
+
                 <ul class="list-group list-group-unbordered p-3">
                     <li class="list-group-item d-flex justify-content-between">
                         <div class="col-lg-12">
@@ -595,6 +684,7 @@
                                     </div>
                                     <input type="hidden" name="project_name" value="<?= $project[0]['Project_Name'] ?>">
                                     <input type="hidden" name="clientname" value="<?= $project[0]['clientId'] ?>">
+                                    <input type="hidden" name="assignuser" value="<?= htmlspecialchars(serialize($assign_user)) ?>">
 
                                     <div class="row">
                                         <div class="col-12 text-end my-3">
@@ -615,8 +705,8 @@
                                     <div class="mt-4 bg-white p-3">
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex">
-                                                <div>
-                                                    <img src="<?= site_url($comment['profile_image']) ?>" alt="" style="width : 40px; border-radius : 50%;">
+                                                <div style="width : 40px; height : 40px; overflow : hidden;border-radius : 50%">
+                                                    <img src="<?= site_url($comment['profile_image']) ?>" alt="" style="width : 40px;">
                                                 </div>
                                                 <div style="margin-left : 15px">
                                                     <h6 class="text-black" style="margin-bottom : 3px !important;"><b><?= $comment['username'] ?></b> <small class="ml-2 text-dark" style="margin-left: 4px; padding : 0 10px; border-left : 1px solid black"><span><?= $comment['created_at'] ?></span> </small> <?php if ($comment['RFI'] == 1) : ?> <small class="ml-2 text-dark " style="margin-left: 4px; padding : 0 10px; border-left : 1px solid black"><span class="btn bg-red btn-sm text-white">RFI</span> </small><?php endif ?></h6>
@@ -677,6 +767,7 @@
 
                                                 <input type="hidden" name="project_name" value="<?= $project[0]['Project_Name'] ?>">
                                                 <input type="hidden" name="clientname" value="<?= $project[0]['clientId'] ?>">
+                                                <input type="hidden" name="assignuser" value="<?= htmlspecialchars(serialize($assign_user)) ?>">
                                                 <div class="row">
                                                     <div class="col-12 text-end my-2">
                                                         <button type="submit" class="btn btn-primary">Reply <i class='bx bx-send'></i></button>
@@ -690,8 +781,8 @@
                                                 <div class="mt-3 bg-white" style="margin-left : 25px;">
                                                     <div class="d-flex justify-content-between">
                                                         <div class="d-flex">
-                                                            <div>
-                                                                <img src="<?= site_url($child['profile_image']) ?>" alt="" style="width : 35px; border-radius : 50%;">
+                                                            <div style="width : 35px; height : 35px; overflow : hidden;border-radius : 50%">
+                                                                <img src="<?= site_url($child['profile_image']) ?>" alt="" style="width : 35px;">
                                                             </div>
                                                             <div style="margin-left : 15px">
                                                                 <h6 class="text-black" style="margin-bottom : 3px !important;"><b><?= $child['username'] ?></b> <small class="ml-2 text-dark" style="margin-left: 4px; padding : 0 10px; border-left : 1px solid black"><span><?= $child['created_at'] ?></span> </small> <?php if ($child['RFI'] == 1) : ?> <small class="ml-2 text-dark" style="margin-left: 4px; padding : 0 10px; border-left : 1px solid black"><span class="btn btn-primary btn-sm">RFI</span> </small><?php endif ?></h6>
@@ -730,7 +821,6 @@
                                                         <a href="" class="comment_reply btn ">Reply</a>
                                                     </div>
                                                     <div class="comment-form">
-
                                                         <form action="<?= site_url('ClientProject/replyComment/' . $project[0]['Id'] . '/' . $child['id'] . '') ?>" id="commentreply_form" method="post">
 
                                                             <div class="col-lg-12 my-2">
@@ -743,6 +833,7 @@
                                                             </div>
                                                             <input type="hidden" name="project_name" value="<?= $project[0]['Project_Name'] ?>">
                                                             <input type="hidden" name="clientname" value="<?= $project[0]['clientId'] ?>">
+                                                            <input type="hidden" name="assignuser" value="<?= htmlspecialchars(serialize($assign_user)) ?>">
                                                             <div class="row">
                                                                 <div class="col-12 text-end my-2">
                                                                     <button type="submit" class="btn btn-primary">Reply <i class='bx bx-send'></i></button>
@@ -756,8 +847,8 @@
                                                             <div class="mt-3 bg-white" style="margin-left : 25px;">
                                                                 <div class="d-flex justify-content-between">
                                                                     <div class="d-flex">
-                                                                        <div>
-                                                                            <img src="<?= site_url($subchild['profile_image']) ?>" alt="" style="width : 30px; border-radius : 50%;">
+                                                                        <div style="width : 30px; height : 30px; overflow : hidden;border-radius : 50%">
+                                                                            <img src="<?= site_url($subchild['profile_image']) ?>" alt="" style="width : 30px;">
                                                                         </div>
                                                                         <div style="margin-left : 15px">
                                                                             <h6 class="text-black" style="margin-bottom : 3px !important;"><b><?= $subchild['username'] ?></b> <small class="ml-2 text-dark" style="margin-left: 4px; padding : 0 10px; border-left : 1px solid black"><span><?= $subchild['created_at'] ?></span> </small> <?php if ($subchild['RFI'] == 1) : ?> <small class="ml-2 text-dark" style="margin-left: 4px; padding : 0 10px; border-left : 1px solid black"><span class="btn btn-primary btn-sm">RFI</span> </small><?php endif ?></h6>
@@ -864,6 +955,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
 <div class="modal fade" id="deliverProject" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -909,18 +1001,18 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Add File</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="deliver-project" method="post" action="<?= site_url('ClientProject/Addfiles/' . $project[0]['Id'] . '') ?>" enctype="multipart/form-data">
+            <form id="addfiles" method="post" action="<?= site_url('ClientProject/Addfiles/' . $project[0]['Id'] . '') ?>" enctype="multipart/form-data">
                 <div class="modal-body">
 
                     <div class="col-lg-12 my-2">
                         <div class="form-floating">
-                            <input type="file" class="form-control lump-sum-check" id="project_file" name="project_file[]" placeholder="" multiple>
-                            <label for="project_file_1">Project Plan File</label>
+                            <input type="file" class="form-control lump-sum-check" id="project_file" name="project_file[]" placeholder="" multiple <?php if (empty($project[0]['Project_file'])) : ?>required<?php endif ?>>
+                            <label for="project_file">Project Plan File</label>
                         </div>
-                        <?php if (!empty($project[0]['Project_file'])) : ?>
+                        <?php if (!empty($project[0]['admin_uploaded_file'])) : ?>
                             <div class="d-flex">
                                 <?php $f = 1;
-                                foreach ($project[0]['Project_file'] as $pf_value) : ?>
+                                foreach ($project[0]['admin_uploaded_file'] as $pf_value) : ?>
                                     <?php if (!empty($pf_value)) : ?>
                                         <div class="ml-3 mt-3 bg-primary p-1 rounded">
 
@@ -937,7 +1029,7 @@
                     </div>
                     <div class="col-lg-12 my-2">
                         <div class="form-floating">
-                            <input type="text" class="form-control lump-sum-check" id="project_file_link" <?php if (!empty($project[0]['project_file_link'])) : ?> <?php $projectfileLinks = join(",", $project[0]['project_file_link']) ?> value="<?= $projectfileLinks ?>" ; <?php endif ?> name="project_file_link" placeholder="" required>
+                            <input type="text" class="form-control lump-sum-check" id="project_file_link" <?php if (!empty($project[0]['project_file_link'])) : ?> <?php $projectfileLinks = join(",", $project[0]['project_file_link']) ?> value="<?= $projectfileLinks ?>" ; <?php endif ?> name="project_file_link" placeholder="">
                             <label for="project_file_link">Project Plan File Link(Multiple with , separated)</label>
                         </div>
                     </div>
@@ -947,7 +1039,7 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="submit" name="deliver-project" id="deliver-project" class="btn btn-primary">SUBMIT</button>
+                    <button type="submit" name="addfile" id="addfile" class="btn btn-primary">SUBMIT</button>
                 </div>
             </form>
         </div>
@@ -1158,6 +1250,18 @@
 
         // 
 
+
+        $.validator.addMethod('totalfilesize', function(value, element, param) {
+            var totalSize = 0;
+            var files = element.files;
+
+            for (var i = 0; i < files.length; i++) {
+                totalSize += files[i].size;
+            }
+
+            return this.optional(element) || (totalSize <= param * 1024 * 1024);
+        }, 'Total file size must be less than {0} MB');
+
         $("#progressProject").validate({
             rules: {
                 end_time: {
@@ -1167,7 +1271,8 @@
                 'progress_file[]': {
                     required: function(element) {
                         return $('#range').val() == 100;
-                    }
+                    },
+                    totalfilesize: 500 // set the maximum total file size in MB,
                 }
             },
             messages: {
@@ -1180,6 +1285,32 @@
                 }
             }
         });
+
+        <?php if (empty($project[0]['Project_file'])) : ?>
+            $("#addfiles").validate({
+                rules: {
+
+                    'project_file[]': {
+                        required: function() {
+                            return $("#project_file_link").val() === "";
+                        },
+                        totalfilesize: 500 // set the maximum total file size in MB,
+                    },
+                    project_file_link: {
+                        required: function() {
+                            return $("#project_file").val() === "";
+                        },
+
+                    },
+
+                },
+                messages: {
+
+                    'project_file[]': "Please provide a file or a file link.",
+                    'project_file_link': "Please provide a file or a file link.",
+                }
+            });
+        <?php endif ?>
 
 
         $(document).on('click', '.assign_project', function() {
@@ -1195,7 +1326,6 @@
                 success: function(response) {
                     $('#assign-project').html('');
                     $.each(response.allusers, function(key, value) {
-                        console.log(value['id']);
                         $('#assign-project').append('<option value="' + value['id'] + '">' + value['username'] + ' (' + value['name'] + ')</option>');
                     });
                 }
@@ -1281,16 +1411,13 @@
         });
 
 
-
-
-
-
-
-
-
         // When the "Download file Zip" button is clicked
         $(".download_zip").click(function(e) {
             e.preventDefault();
+
+            const loader = document.getElementById("loader");
+            loader.classList.remove("hidden");
+
             // Create a new instance of JSZip
             const zip = new JSZip();
 
@@ -1329,9 +1456,20 @@
                     document.body.appendChild(tempLink);
                     tempLink.click();
                     document.body.removeChild(tempLink);
+
+                     // Hide the loader when the download is complete
+                     loader.classList.add("hidden");
+
                 });
             });
         });
+
+
+
+        
+
+
+
 
 
         $(document).on('click', '.remove_file', function() {
