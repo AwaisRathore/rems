@@ -11,12 +11,17 @@ class Login extends BaseController
     }
     public function index()
     {
+
+        if (!empty(session()->get('isLoggedIn'))) {
+            return redirect()->to('/Home');
+        }
         if ($this->request->getMethod() == 'post') {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
             if ($this->auth->login($email, $password)) {
                 $user = $this->auth->getCurrentUser();
                 session()->set('user_data', $user);
+
                 return redirect()->to("/Home");
             } else {
                 return redirect()->back()->withInput()->with('warning', 'Invalid Email or Password');
@@ -40,8 +45,24 @@ class Login extends BaseController
                 $result = $userModel->setLinkExpiration($email, $token);
                 if ($result) {
 
+                    $emailVariables = array();
+
+                    $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
+                    $emailVariables['headicon'] = site_url('public/assets/img/icon/lock.png');
+                    $emailVariables['passwordResetLink'] = site_url('Login/resetPassword/' . $token);
+                    
+                    $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
+                    $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
+                    $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
+                    $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
+                    
                     $to = $email;
-                    $message = "Click on the link to reset password <br>" . site_url('Login/resetPassword/' . $token . '') . "";
+                    $message = file_get_contents(site_url('Login/resetEmailTemplate'));
+                    foreach ($emailVariables as $key => $value) {
+                        $message = str_replace('{{ ' . $key . ' }}', $value, $message);
+                    }
+
+
                     $mailService = \Config\Services::email();
                     $mailService->setTo($to);
                     $mailService->setSubject('Password Reset');
@@ -109,6 +130,10 @@ class Login extends BaseController
         return view('Login/reset_password');
     }
 
+    public function resetEmailTemplate()
+    {
+        return view('Email/resetEmailTemplate.html');
+    }
 
     public function changePassword()
     {

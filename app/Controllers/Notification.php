@@ -43,4 +43,21 @@ class Notification extends BaseController
         
         return json_encode($unread_notifications);
     }
+    public function get_notification() {
+        $notificationModel = new \App\Models\NotificationModel();
+        if(current_userRole()->name == 'Admin'){
+            $data = [
+                'notification'=> $notificationModel->getAdminNotification()
+            ];
+        }
+           
+        if(current_userRole()->name == 'Client' || current_userRole()->name == 'Employee'){
+            $user_id = session()->get('user_id');
+            $data = [
+                'notification'=> $notificationModel->getUserNotification($user_id)
+            ];
+        }
+        
+        return json_encode($data);
+    }
 }

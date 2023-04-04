@@ -52,7 +52,7 @@
 
                         <div class="col-lg-6 my-2">
                             <div class="form-floating">
-                                <input type="text" class="form-control lump-sum-check" id="project_file_link_1" value="<?= $project['project_file_link'] ?>" name="project_file_link_1" placeholder="" required>
+                                <input type="text" class="form-control lump-sum-check" id="project_file_link_1" value="<?= $project['project_file_link'] ?>" name="project_file_link_1" placeholder="">
                                 <label for="project_file_link_1">Project Plan File Link(Multiple with , separated)</label>
                             </div>
                         </div>
@@ -138,24 +138,26 @@
             }
         });
 
-        $("#submit-form").validate({
-            rules: {
-                'project_file_1[]': {
-                    required: function() {
-                        return $("#project_file_link_1").val() === "";
-                    }
+        <?php if($project['Project_file'] && $project['project_file_link'] ): ?>
+            $("#submit-form").validate({
+                rules: {
+                    'project_file_1[]': {
+                        required: function() {
+                            return $("#project_file_link_1").val() === "";
+                        }
+                    },
+                    project_file_link_1: {
+                        required: function() {
+                            return $("#project_file_1").val() === "";
+                        }
+                    },
                 },
-                project_file_link_1: {
-                    required: function() {
-                        return $("#project_file_1").val() === "";
-                    }
-                },
-            },
-            messages: {
-                'project_file_1[]': "Please provide a file or a file link.",
-                project_file_link_1: "Please provide a file or a file link.",
-            }
-        });
+                messages: {
+                    'project_file_1[]': "Please provide a file or a file link.",
+                    project_file_link_1: "Please provide a file or a file link.",
+                }
+            });
+        <?php endif ?>
 
 
 

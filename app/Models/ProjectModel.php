@@ -18,11 +18,16 @@ class ProjectModel extends Model
     }
     public function getProjectsByClientId($Id)
     {
-        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id GROUP by p.Id order by p.Id desc";
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id GROUP by p.Id order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
-            $r['Project_file'] = explode(',', $r['Project_file']);
-            $r['project_file_link']  = explode(',', $r['project_file_link']);
+
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
         }
         return $result;
     }
@@ -53,13 +58,13 @@ class ProjectModel extends Model
     public function getAllClientProjects()
     {
 
-        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id GROUP by p.Id order by p.Id desc";
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id GROUP by p.Id order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
-            if($r['Project_file'] != null){
+            if ($r['Project_file'] != null) {
                 $r['Project_file'] = explode(',', $r['Project_file']);
             }
-            if($r['project_file_link'] != null){
+            if ($r['project_file_link'] != null) {
                 $r['project_file_link']  = explode(',', $r['project_file_link']);
             }
         }
@@ -67,29 +72,34 @@ class ProjectModel extends Model
     }
     public function getAllClientProjectsbyID($id)
     {
-        $query = "SELECT q.Client_Id,c.Name,c.user_id as clientId,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file  ,p.status as projectStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.Id = $id GROUP by p.Id order by p.Id desc";
+        $query = "SELECT q.Client_Id,c.Name,c.user_id as clientId,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.admin_uploaded_file,p.admin_file_link,p.project_file_link,p.notes,p.project_type,p.deliver_file  ,p.status as projectStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.Id = $id GROUP by p.Id order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
-            if($r['Project_file'] != null){
+            if ($r['Project_file'] != null) {
                 $r['Project_file'] = explode(',', $r['Project_file']);
             }
-            if($r['project_file_link'] != null){
+            if ($r['admin_uploaded_file'] != null) {
+                $r['admin_uploaded_file'] = explode(',', $r['admin_uploaded_file']);
+            }
+            if ($r['project_file_link'] != null) {
                 $r['project_file_link']  = explode(',', $r['project_file_link']);
             }
-            if($r['deliver_file'] != 0){
+            if ($r['admin_file_link'] != null) {
+                $r['admin_file_link']  = explode(',', $r['admin_file_link']);
+            }
+            if ($r['deliver_file'] != 0) {
                 $r['deliver_file']  = explode(',', $r['deliver_file']);
             }
-            
         }
         $notificatinModel = new \App\Models\NotificationModel();
 
         $user_id = null;
-        if(current_userRole()->name =='Admin'){
+        if (current_userRole()->name == 'Admin') {
             $user_id = null;
-        }else{
+        } else {
             $user_id = current_user()->id;
         }
-        
+
 
         $notificatinModel->updatedprojectstatus($id, $user_id);
         return $result;
@@ -211,7 +221,7 @@ class ProjectModel extends Model
         foreach ($data['users'] as $users) {
             $query = "INSERT INTO `assignproject`(`user_id`, `project_id`,`CanViewFile`,`CanViewFileUrl`) VALUES ('$users','$projectid','$CanViewFile','$CanViewFileUrl')";
             $this->db->query($query);
-            $message = 'New project is assigned to you by '.$assignerName.'';
+            $message = 'New project is assigned to you by ' . $assignerName . '';
             $notificationModel->addprojectNotification($users, $projectid, $message);
         }
     }
@@ -284,13 +294,13 @@ class ProjectModel extends Model
 
     public function getProjectsByEmployeesId($id)
     {
-        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id GROUP by p.Id order by p.Id desc";
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id GROUP by p.Id order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
-            if($r['Project_file'] != null){
+            if ($r['Project_file'] != null) {
                 $r['Project_file'] = explode(',', $r['Project_file']);
             }
-            if($r['project_file_link'] != null){
+            if ($r['project_file_link'] != null) {
                 $r['project_file_link']  = explode(',', $r['project_file_link']);
             }
         }
@@ -298,13 +308,13 @@ class ProjectModel extends Model
     }
     public function getallProgressProjectofEmployees($id)
     {
-        $query = "SELECT q.Client_Id, p.*,c.Name FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 0 order by p.Id desc";
+        $query = "SELECT q.Client_Id, p.*,c.Name,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 0 order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
-            if($r['Project_file'] != null){
+            if ($r['Project_file'] != null) {
                 $r['Project_file'] = explode(',', $r['Project_file']);
             }
-            if($r['project_file_link'] != null){
+            if ($r['project_file_link'] != null) {
                 $r['project_file_link']  = explode(',', $r['project_file_link']);
             }
         }
@@ -312,13 +322,13 @@ class ProjectModel extends Model
     }
     public function getallCompletedProjectofEmployees($id)
     {
-        $query = "SELECT q.Client_Id, p.*,c.Name FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 1 order by p.Id desc";
+        $query = "SELECT q.Client_Id, p.*,c.Name,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 1 order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
-            if($r['Project_file'] != null){
+            if ($r['Project_file'] != null) {
                 $r['Project_file'] = explode(',', $r['Project_file']);
             }
-            if($r['project_file_link'] != null){
+            if ($r['project_file_link'] != null) {
                 $r['project_file_link']  = explode(',', $r['project_file_link']);
             }
         }
@@ -331,8 +341,8 @@ class ProjectModel extends Model
         $this->db->query($query);
         $notificatinModel = new \App\Models\NotificationModel();
         $employeeName = current_user()->username;
-        $message = "".$employeeName." has rejected the Project";
-        $notificatinModel->addprojectNotificationwithoutUserId($id,$message);
+        $message = "" . $employeeName . " has rejected the Project";
+        $notificatinModel->addprojectNotificationwithoutUserId($id, $message);
         return true;
     }
     public function acceptProject($id, $userid)
@@ -341,8 +351,8 @@ class ProjectModel extends Model
         $this->db->query($query);
         $notificatinModel = new \App\Models\NotificationModel();
         $employeeName = current_user()->username;
-        $message = "".$employeeName." has accepted the Project";
-        $notificatinModel->addprojectNotificationwithoutUserId($id,$message);
+        $message = "" . $employeeName . " has accepted the Project";
+        $notificatinModel->addprojectNotificationwithoutUserId($id, $message);
         return true;
     }
 
@@ -405,16 +415,19 @@ class ProjectModel extends Model
         }
     }
 
-    public function addfiles($id , $data){
+    public function addfiles($id, $data)
+    {
         $project_file = $data['projectfile'];
-        $project_file = join(',',$project_file);
+        if (!empty($project_file)) {
+            $project_file = join(',', $project_file);
+        }
+
         $project_file_link = $data['projectfilelink'];
-        $query = "UPDATE `projects` SET `Project_file`='$project_file',`project_file_link`='$project_file_link' WHERE Id = $id";
-        if($this->db->query($query)){
+        $query = "UPDATE `projects` SET `admin_uploaded_file`='$project_file',`admin_file_link`='$project_file_link' WHERE Id = $id";
+        if ($this->db->query($query)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-
 }

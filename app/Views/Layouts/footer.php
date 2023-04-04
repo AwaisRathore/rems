@@ -44,8 +44,9 @@
             dataType: "json",
             success: function(response) {
                 // Update the UI with the new list of unread notifications
-                $("#notification").text(response);
-                if (parseInt(response)  > parseInt(no)) {
+                $(".notification").text(response);
+                // console.log(response,no);
+                if (parseInt(response) > parseInt(no)) {
                     audio.play();
                 }
             },

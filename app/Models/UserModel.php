@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
     protected $table = 'users';
-    protected $allowedFields = ['id','username', 'profile_image', 'password', 'email', 'role_id'];
+    protected $allowedFields = ['username', 'profile_image', 'password', 'email', 'role_id'];
     protected $returnType    = \App\Entities\User::class;
     protected $beforeInsert = ['hashPassword'];
 
@@ -39,6 +39,14 @@ class UserModel extends Model
     {
         $user = $this->where('email', $email)->first();
         return $user;
+    }
+
+
+    public function getUseremailformUserid($id){
+        $query = "SELECT u.email FROM `users` u where u.id = $id";
+        $result =  $this->db->query($query)->getResultArray();
+        $email = $result[0]['email'];
+        return $email;
     }
 
     public function addUser($data)
@@ -77,12 +85,19 @@ class UserModel extends Model
         $result =  $this->db->query($query)->getResultArray();
         return $result;
     }
-    // query to select the user that are assign on project
-    // SELECT u.*,r.name FROM `users` u JOIN roles r on r.id = u.role_id JOIN assignproject a on u.id = a.user_id WHERE r.name != 'Client' and a.project_id = 48;
     public function updatePassword($id, $password)
     {
         // dd($password,$id);
         $sql = "UPDATE users SET `password` = '{$password}' WHERE Id = $id";
+        $result =  $this->db->query($sql);
+        return $result;
+    }
+
+    public function updateProfile($data){
+        $username = $data['username'];
+        $profile_image = $data['profile_image'];
+        $id = $data['id'];
+        $sql = "UPDATE `users` SET `username`='$username', `profile_image`='$profile_image' WHERE id = $id";
         $result =  $this->db->query($sql);
         return $result;
     }

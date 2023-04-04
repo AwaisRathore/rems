@@ -27,7 +27,11 @@
                         <tr>
                             <td><?= $value['id'] ?></td>
                             <td><?= $value['username'] ?></td>
-                            <td><img src="<?= site_url($value['profile_image']) ?>" style="width :40px; border-radius: 50%;" alt=""></td>
+                            <td>
+                                <div style="width : 40px; height : 40px; overflow : hidden;border-radius : 50%">
+                                <img src="<?= site_url($value['profile_image']) ?>" style="width :40px;" alt="">
+                                </div>
+</td>
                             <td><?= $value['email'] ?></td>
                             <td><?= $value['name'] ?></td>
                             <!-- <td></td> -->

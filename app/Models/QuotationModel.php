@@ -17,13 +17,13 @@ class QuotationModel extends Model
     }
     public function getNOofQuotationperday()
     {
-        $query = "SELECT DATE(created_at) AS day, COUNT(Id) AS num_quotations FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) GROUP BY day ORDER by Id ASC;";
+        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,created_at FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) GROUP BY year, month ORDER BY year ASC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getNOofAcceptedQuotationperday()
     {
-        $query = "SELECT DATE(created_at) AS day, COUNT(Id) AS num_quotations FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) and status = 1 GROUP BY day ORDER by Id ASC;";
+        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,created_at FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) and status = 1 GROUP BY year, month ORDER BY year ASC;";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }

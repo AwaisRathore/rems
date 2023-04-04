@@ -35,12 +35,18 @@
                                     }
                                     ?>">
                             <td><?= $i ?></td>
-                            
-                                <td> <a href="<?php if ($value['qoutation_id'] == ' ' || $value['qoutation_id'] != null) : ?><?= site_url('Quotation/view/' . $value['qoutation_id'] . '') ?> <?php endif ?>
-                                    <?php if ($value['project_id'] == ' ' || $value['project_id'] != null) : ?><?= site_url('ClientProject/view/' . $value['project_id'] . '') ?> <?php endif ?>" class="nav-link" style="padding: 0px !important"><?= $value['message'] ?></a></td>
-                                <td><a href="<?php if ($value['qoutation_id'] == ' ' || $value['qoutation_id'] != null) : ?><?= site_url('Quotation/view/' . $value['qoutation_id'] . '') ?> <?php endif ?>
+
+                            <td class="d-flex"> <a href="<?php if ($value['qoutation_id'] == ' ' || $value['qoutation_id'] != null) : ?><?= site_url('Quotation/view/' . $value['qoutation_id'] . '') ?> <?php endif ?>
+                                    <?php if ($value['project_id'] == ' ' || $value['project_id'] != null) : ?><?= site_url('ClientProject/view/' . $value['project_id'] . '') ?> <?php endif ?>" class="nav-link" style="padding: 0px !important"><?= $value['message'] ?></a>
+                                <?php if($value['status'] == 0): ?>
+                                <div class="blink">
+                                    <span class="badge badge-sm bg-danger">New</span>
+                                </div>
+                                <?php endif ?>
+                            </td>
+                            <td><a href="<?php if ($value['qoutation_id'] == ' ' || $value['qoutation_id'] != null) : ?><?= site_url('Quotation/view/' . $value['qoutation_id'] . '') ?> <?php endif ?>
                                     <?php if ($value['project_id'] == ' ' || $value['project_id'] != null) : ?><?= site_url('ClientProject/view/' . $value['project_id'] . '') ?> <?php endif ?>" class="nav-link" style="padding: 0px !important"><?= $value['created_at'] ?></a></td>
-                           
+
                         </tr>
 
 

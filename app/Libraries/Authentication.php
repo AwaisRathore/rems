@@ -22,6 +22,7 @@ class Authentication
         $session->set('user_id', $user->id);
         
         $session->set('role_id', $user->role_id);
+        $session->set('isLoggedIn',$user->id);
         return true;
     }
 
