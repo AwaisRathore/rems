@@ -110,7 +110,9 @@
                 </table>
                 <table class="table table-border-bottom-0 w-100">
                     <tr>
-                        <td colspan="2" class="fw-bold py-4">Note: 50 % of the quote is to be paid upfront before starting the project</td>
+                        <td colspan="2" class="py-4"><p class="fw-bold">Note: 50 % of the quote is to be paid upfront before starting the project. </p>
+                       <p><i> All payments made to Remote Estimation LLC are Tax write-offs. Please contact us for tax id or W-9 form.<i></p>
+                    </td>
                     </tr>
                     <tr>
                         <td class="d-flex flex-column text-center py-5">
