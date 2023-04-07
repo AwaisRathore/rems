@@ -37,7 +37,7 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <!-- All project Content Start -->
+                <!-- All Qoutation Content Start -->
                 <div class="tab-pane fade show active" id="all-quotation" role="tabpanel">
                     <div class="table-responsive text-nowrap">
                         <div class="card-datatable table-responsive pt-0">
@@ -62,15 +62,24 @@
                                             <td><?= $value['Client_Name'] ?></td>
                                             <td><?= $value['Client_EmailAddress'] ?></td>
                                             <td>
-                                                <?php
-                                                if ($value['status'] == 0 && $value['review'] == NULL) {
-                                                    echo '<span class="text-primary">In-review</span>';
-                                                } else if ($value['status'] == 0) {
-                                                    echo '<span class="text-danger">Rejected</span>';
-                                                } else if ($value['status'] == 1) {
-                                                    echo '<span class="text-success">Accepted<span>';
-                                                }
-                                                ?>
+                                                <span><?php
+                                                        if ($value['status'] == 0 && $value['review'] == NULL) {
+                                                            echo '<span class="text-primary">In-review</span>';
+                                                        } else if ($value['status'] == 0) {
+                                                            echo '<span class="text-danger">Rejected</span>';
+                                                        } else if ($value['status'] == 1) {
+                                                            echo '<span class="text-success">Accepted<span>';
+                                                        }
+                                                        ?></span> <br>
+                                                <span>
+                                                    <?php if ($value['Lump_Sump_Charges'] == 0 && ($value['status'] == 0 && $value['review'] == NULL)) : ?>
+                                                        Admin
+                                                    <?php endif ?>
+                                                    <?php if ($value['Lump_Sump_Charges'] != 0 && ($value['status'] == 0 && $value['review'] == NULL)) : ?>
+                                                        Client
+                                                    <?php endif ?>
+                                                </span>
+
                                             </td>
                                             <td><?= $value['review'] ?></td>
                                             <td>
@@ -88,6 +97,9 @@
                                                         <?php else : ?>
                                                             <a class="dropdown-item generateInvoiceButton" href="" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> Generate Invoice</a>
                                                         <?php endif ?>
+                                                        <?php if (current_userRole()->name == "Admin") : ?>
+                                                            <!-- <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changeStatus" href=""><i class="bx bx-edit-alt me-1"></i>Change Status</a> -->
+                                                        <?php endif ?>
                                                         <?php if (current_userRole()->CanDeleteQuotation) : ?>
                                                             <a class="dropdown-item deleteButton" id="<?= $value['Id'] ?>" href=""><i class="bx bx-trash me-1"></i> Delete</a>
                                                         <?php endif ?>
@@ -102,8 +114,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- All project Content End -->
-                <!-- In progress project Content Start -->
+                <!-- All Qoutaion Content End -->
+                <!-- qouted qoutaion Content Start -->
                 <div class="tab-pane fade" id="qouted-qoutation" role="tabpanel">
                     <div class="table-responsive text-nowrap">
                         <div class="card-datatable table-responsive pt-0">
@@ -128,15 +140,24 @@
                                             <td><?= $value['Client_Name'] ?></td>
                                             <td><?= $value['Client_EmailAddress'] ?></td>
                                             <td>
-                                                <?php
-                                                if ($value['status'] == 0 && $value['review'] == NULL) {
-                                                    echo '<span class="text-primary">In-review</span>';
-                                                } else if ($value['status'] == 0) {
-                                                    echo '<span class="text-danger">Rejected</span>';
-                                                } else if ($value['status'] == 1) {
-                                                    echo '<span class="text-success">Accepted<span>';
-                                                }
-                                                ?>
+                                                <span><?php
+                                                        if ($value['status'] == 0 && $value['review'] == NULL) {
+                                                            echo '<span class="text-primary">In-review</span>';
+                                                        } else if ($value['status'] == 0) {
+                                                            echo '<span class="text-danger">Rejected</span>';
+                                                        } else if ($value['status'] == 1) {
+                                                            echo '<span class="text-success">Accepted<span>';
+                                                        }
+                                                        ?></span> <br>
+                                                <span>
+                                                    <?php if ($value['Lump_Sump_Charges'] == 0 && ($value['status'] == 0 && $value['review'] == NULL)) : ?>
+                                                        Admin
+                                                    <?php endif ?>
+                                                    <?php if ($value['Lump_Sump_Charges'] != 0 && ($value['status'] == 0 && $value['review'] == NULL)) : ?>
+                                                        Client
+                                                    <?php endif ?>
+                                                </span>
+
                                             </td>
                                             <td><?= $value['review'] ?></td>
                                             <td>
@@ -168,8 +189,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- In progress project Content End -->
-                <!-- Completed project Content Start-->
+                <!-- qouted qoutation Content End -->
+                <!-- Not Qouted Qoutation Start-->
                 <div class="tab-pane fade" id="not-qouted" role="tabpanel">
                     <div class="table-responsive text-nowrap">
                         <div class="card-datatable table-responsive pt-0">
@@ -194,15 +215,24 @@
                                             <td><?= $value['Client_Name'] ?></td>
                                             <td><?= $value['Client_EmailAddress'] ?></td>
                                             <td>
-                                                <?php
-                                                if ($value['status'] == 0 && $value['review'] == NULL) {
-                                                    echo '<span class="text-primary">In-review</span>';
-                                                } else if ($value['status'] == 0) {
-                                                    echo '<span class="text-danger">Rejected</span>';
-                                                } else if ($value['status'] == 1) {
-                                                    echo '<span class="text-success">Accepted<span>';
-                                                }
-                                                ?>
+                                                <span><?php
+                                                        if ($value['status'] == 0 && $value['review'] == NULL) {
+                                                            echo '<span class="text-primary">In-review</span>';
+                                                        } else if ($value['status'] == 0) {
+                                                            echo '<span class="text-danger">Rejected</span>';
+                                                        } else if ($value['status'] == 1) {
+                                                            echo '<span class="text-success">Accepted<span>';
+                                                        }
+                                                        ?></span> <br>
+                                                <span>
+                                                    <?php if ($value['Lump_Sump_Charges'] == 0 && ($value['status'] == 0 && $value['review'] == NULL)) : ?>
+                                                        Admin
+                                                    <?php endif ?>
+                                                    <?php if ($value['Lump_Sump_Charges'] != 0 && ($value['status'] == 0 && $value['review'] == NULL)) : ?>
+                                                        Client
+                                                    <?php endif ?>
+                                                </span>
+
                                             </td>
                                             <td><?= $value['review'] ?></td>
                                             <td>
@@ -236,11 +266,61 @@
                         </div>
                     </div>
                 </div>
-                <!-- Completed Content End -->
+                <!-- not qouted qoutation Content End -->
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="changeStatus" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Reason for Rejection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="submit-form-review" method="post" action="">
+                <div class="modal-body">
+
+                    <div class="row g-2">
+                        <div class="form-group ">
+                            <label for="project-file-link">Reason</label>
+                            <textarea name="review" id="review" style="height: 100px" class="form-control" placeholder="Reason for Rejection" required></textarea>
+
+                        </div>
+
+
+                        <div  class="form-check col-lg-6">
+                            <input class="form-check-input" type="radio" name="changestatus" id="accept" checked>
+                            <label class="form-check-label" for="accept">
+                                Accept
+                            </label>
+                        </div>
+                        <div class="form-check col-lg-6">
+                            <input class="form-check-input" type="radio" name="changestatus" id="reject" >
+                            <label class="form-check-label" for="reject">
+                                Reject
+                            </label>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" name="assign-project" id="assign-project" class="btn btn-primary">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <?= $this->endSection() ?>
 <?= $this->section('Script') ?>

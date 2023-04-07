@@ -40,7 +40,7 @@ class Home extends BaseController
                 'allQoutationcountthismonth'=> $quotationModel->getNOofQuotationperday(),
                 'allacceptedQoutationcountthismonth'=> $quotationModel->getNOofAcceptedQuotationperday(),
                 'ProjectScopes' => $ProjectScopeModel->getProjectScopesforproject(),
-                'clientproject' => $projectModel->getAllClientProjects(),
+                'clientproject' => $projectModel->getAllClientProjectsbydeliverydate(),
                 'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
                 'assignproject' => $projectModel->getassignProject()
             ];

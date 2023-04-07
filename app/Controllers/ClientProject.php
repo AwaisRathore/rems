@@ -133,49 +133,53 @@ class ClientProject extends BaseController
             'CanViewFile' => $this->request->getPost('CanViewFile'),
             'CanViewFileUrl' => $this->request->getPost('CanViewFileUrl'),
         ];
+        $project_id = $this->request->getPost('projectid');
         // dd($data);
         $projectModel->assignProject($data);
 
-        $success_count = 0;
-        $error_count = 0;
-        foreach ($users as $user_id) {
-            $email = $userModel->getUseremailformUserid($user_id);
 
-            $emailVariables = array();
+        // email for project assignment
 
-            $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
-            $emailVariables['headicon'] = site_url('public/assets/img/icon/project.png');
-            $emailVariables['site_url'] = site_url();
+        // $success_count = 0;
+        // $error_count = 0;
+        // foreach ($users as $user_id) {
+        //     $email = $userModel->getUseremailformUserid($user_id);
 
-            $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
-            $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
-            $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
-            $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
+        //     $emailVariables = array();
 
-            $to = $email;
-            $message = file_get_contents(site_url('ClientProject/assignEmailTemplate'));
-            foreach ($emailVariables as $key => $value) {
-                $message = str_replace('{{ ' . $key . ' }}', $value, $message);
-            }
+        //     $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
+        //     $emailVariables['headicon'] = site_url('public/assets/img/icon/project.png');
+        //     $emailVariables['site_url'] = site_url('ClientProject/view/'.$project_id);
 
-            // $message = "Click on the link to reset password <br>" . site_url('Login/resetPassword/' . $token . '') . "";
-            $mailService = \Config\Services::email();
-            $mailService->setTo($to);
-            $mailService->setSubject('Assign for Project');
-            $mailService->setMessage($message);
-            if ($mailService->send()) {
-                $success_count++;
-            } else {
-                $error_count++;
-            }
+        //     $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
+        //     $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
+        //     $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
+        //     $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
 
-        }
+        //     $to = $email;
+        //     $message = file_get_contents(site_url('ClientProject/assignEmailTemplate'));
+        //     foreach ($emailVariables as $key => $value) {
+        //         $message = str_replace('{{ ' . $key . ' }}', $value, $message);
+        //     }
 
-        if ($success_count > 0) {
-            return redirect()->back()->with('success', ' Email Send Successfully to the Assign Users.');
-        } else {
-            return redirect()->back()->with('errors', 'Email Not Send Something went wrong. ');
-        }
+        //     // $message = "Click on the link to reset password <br>" . site_url('Login/resetPassword/' . $token . '') . "";
+        //     $mailService = \Config\Services::email();
+        //     $mailService->setTo($to);
+        //     $mailService->setSubject('Assign for Project');
+        //     $mailService->setMessage($message);
+        //     if ($mailService->send()) {
+        //         $success_count++;
+        //     } else {
+        //         $error_count++;
+        //     }
+
+        // }
+
+        // if ($success_count > 0) {
+        //     return redirect()->back()->with('success', ' Email Send Successfully to the Assign Users.');
+        // } else {
+        //     return redirect()->back()->with('errors', 'Email Not Send Something went wrong. ');
+        // }
 
 
 
@@ -387,7 +391,7 @@ class ClientProject extends BaseController
         $assignuser = $this->request->getPost("assignuser");
         $assignuser = unserialize($assignuser);
         if ($commentModel->insert($data)) {
-            $message = "{$username} is add reply on {$projectname}";
+            $message = "{$username} replied to the comment from {$projectname}";
             $notificationModel->addprojectNotificationwithoutUserId($projectid, $message);
             $notificationModel->addprojectNotification($clientId, $projectid, $message);
             if (!empty($assignuser)) {

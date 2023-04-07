@@ -420,6 +420,16 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin: auto;
     margin-right: 5px;
 }
+#loader_1 {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+    margin-right: 5px;
+}
 
 /* Hide the loader by default */
 .hidden {

@@ -70,6 +70,21 @@ class ProjectModel extends Model
         }
         return $result;
     }
+    public function getAllClientProjectsbydeliverydate()
+    {
+
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id GROUP by p.Id order by p.Delivery_Date asc";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
     public function getAllClientProjectsbyID($id)
     {
         $query = "SELECT q.Client_Id,c.Name,c.user_id as clientId,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.admin_uploaded_file,p.admin_file_link,p.project_file_link,p.notes,p.project_type,p.deliver_file  ,p.status as projectStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.Id = $id GROUP by p.Id order by p.Id desc";
@@ -177,7 +192,9 @@ class ProjectModel extends Model
             $project_file_link = $value["project_file_link"];
             $project_type = $value["project-type"];
             $notes = $value["notes"];
-            $project_file = join(',', $project_file);
+            if(!empty($project_file)){
+                $project_file = join(',', $project_file);
+            }
             $query = "UPDATE `projects` SET `Project_Name`='$project_name',`Delivery_Date`='$delivery_date',`Project_file`='$project_file',`project_file_link`='$project_file_link',`notes`='$notes',`project_type`='$project_type' WHERE Id = $id";
             $this->db->query($query);
             array_push($Project_Ids, $this->db->insertID());

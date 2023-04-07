@@ -11,7 +11,8 @@ class QuotationModel extends Model
 
     public function getAllQuotationWithClient()
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id ORDER BY q.Id DESC";
+        // $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress,p.Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id = q.Id GROUP by p.Quotation_Id ORDER BY q.Id DESC;";
         $Quotations = $this->db->query($query)->getResultArray();
         $invoices = $this->getInvoicesWithQuotations();
         foreach ($Quotations as &$quotation) {
@@ -38,13 +39,13 @@ class QuotationModel extends Model
     }
     public function getAllQuotationWithClientId($ClientId)
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id where q.Client_Id = $ClientId ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress,p.Lump_Sump_Charges  FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id  where q.Client_Id = $ClientId ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getAllNotQoutedQuotation()
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges =0 GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address ,p.Lump_Sump_Charges  as Client_EmailAddress,p.Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges = 0 GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         $invoices = $this->getInvoicesWithQuotations();
         foreach ($Quotations as &$quotation) {
@@ -59,13 +60,13 @@ class QuotationModel extends Model
     }
     public function getAllNotQoutedQuotationbyclientId($ClientId)
     {   
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges =0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress ,p.Lump_Sump_Charges  FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges =0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getAllQoutedQuotation()
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress,p.Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         $invoices = $this->getInvoicesWithQuotations();
         foreach ($Quotations as &$quotation) {
@@ -86,7 +87,7 @@ class QuotationModel extends Model
     }
     public function getAllQoutedQuotationbyclientId($ClientId)
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress ,p.Lump_Sump_Charges  FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
