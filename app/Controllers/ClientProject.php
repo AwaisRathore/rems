@@ -41,7 +41,7 @@ class ClientProject extends BaseController
                 'clientproject' => $projectModel->getProjectsByClientIdwithLimit($clientId,$limit,$offset),
                 
                 'clientinprogressproject' => $projectModel->getinprogressProjectsByClientIdwithLimit($clientId,$limit, $offset),
-                'completedproject' => $projectModel->getcompletetdProjectsByEmployeesIdwithlimit($clientId , $limit, $offset),
+                'completedproject' => $projectModel->getcompletedProjectsByClientIdwithLimit($clientId , $limit, $offset),
                 'notquotedproject' => $projectModel->getNotQoutedProjectsByClientIdwithLimit($clientId , $limit, $offset),
                 'notacceptedquotationproject' => $projectModel->getnotacceptedQoutationProjectsByClientIdwithLimit($clientId , $limit, $offset),
                 'assignproject' => $projectModel->getassignProject(),
@@ -102,7 +102,7 @@ class ClientProject extends BaseController
                 $projects = $projectModel->getinprogressProjectsByClientIdwithLimit($clientId,$limit, $offset);
             }
             if($project == 'completeproject'){
-                $projects = $projectModel->getcompletetdProjectsByEmployeesIdwithlimit($clientId , $limit, $offset);
+                $projects = $projectModel->getcompletedProjectsByClientIdwithLimit($clientId , $limit, $offset);
             }
             if($project == 'notquotedproject'){
                 $projects = $projectModel->getNotQoutedProjectsByClientIdwithLimit($clientId , $limit, $offset);
