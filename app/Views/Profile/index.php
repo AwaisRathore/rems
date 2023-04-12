@@ -39,7 +39,7 @@
                             <div class="col-lg-6 my-2">
                                 <div class="form-floating">
                                     <input type="text" class="form-control <?php if (session()->has('errors') &&  isset(session('errors')['username'])) : ?>
-                                <?= "is-invalid" ?><?php endif ?>" required id="username" name="username" value="<?= old('username',$user->username); ?>" placeholder="John Doe">
+                                <?= "is-invalid" ?><?php endif ?>" required id="username" name="username" value="<?= old('username', $user->username); ?>" placeholder="John Doe">
                                     <label for="username">Username</label>
                                 </div>
                                 <?php if (session()->has('errors') &&  isset(session('errors')['username'])) : ?>
@@ -51,7 +51,7 @@
                             <div class="col-lg-6 my-2">
                                 <div class="form-floating">
                                     <input type="text" class="form-control <?php if (session()->has('errors') &&  isset(session('errors')['username'])) : ?>
-                                <?= "is-invalid" ?><?php endif ?>" disabled required id="email" name="email" value="<?= old('email',$user->email); ?>" placeholder="John Doe">
+                                <?= "is-invalid" ?><?php endif ?>" disabled required id="email" name="email" value="<?= old('email', $user->email); ?>" placeholder="John Doe">
                                     <label for="username">Email</label>
                                 </div>
                                 <?php if (session()->has('errors') &&  isset(session('errors')['username'])) : ?>
@@ -60,6 +60,14 @@
                                     </div>
                                 <?php endif ?>
                             </div>
+                            <?php if(current_userRole()->name == 'Employee'): ?>
+                            <div class="col-lg-12 my-2">
+                                <div class="form-floating">
+                                    <textarea name="description" id="description" style="height: 100px" class="form-control" placeholder="Describe About you"><?= $user->description ?></textarea>
+                                    <label for="description">Description</label>
+                                </div>
+                            </div>
+                            <?php endif ?>
                         </div>
 
                         <div class="row">

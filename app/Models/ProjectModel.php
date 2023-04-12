@@ -18,7 +18,97 @@ class ProjectModel extends Model
     }
     public function getProjectsByClientId($Id)
     {
-        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id GROUP by p.Id order by p.Id desc";
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id GROUP by p.Id order by p.Id desc";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getProjectsByClientIdwithLimit($Id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id and q.status != 0 GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getinprogressProjectsByClientIdwithLimit($Id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id and q.status != 0 and p.status = 0 AND p.Lump_Sump_Charges != 0 AND a.user_id is NOT NULL GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getcompletedProjectsByClientIdwithLimit($Id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id and q.status != 0 and p.status = 1 AND p.Lump_Sump_Charges != 0 GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getNotQoutedProjectsByClientIdwithLimit($Id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id and p.Lump_Sump_Charges = 0 GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getnotacceptedQoutationProjectsByClientIdwithLimit($Id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id and p.Lump_Sump_Charges != 0 and q.status = 0 GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function filterProjectsByClientId($Id,$projectName)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id WHERE q.Client_Id=$Id and p.Project_Name like '%$projectName%' GROUP by p.Id order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
 
@@ -55,10 +145,10 @@ class ProjectModel extends Model
         $result = $this->db->query($query)->getResultArray();
         return $result;
     }
-    public function getAllClientProjects()
-    {
 
-        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id GROUP by p.Id order by p.Id desc";
+    public function getAllClientProjectswithLimit($limit, $offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus,q.status as quotationStatus,p.Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where q.status != 0 GROUP by p.Id ORDER BY p.Id DESC LIMIT $limit OFFSET $offset";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
             if ($r['Project_file'] != null) {
@@ -70,10 +160,103 @@ class ProjectModel extends Model
         }
         return $result;
     }
+    public function getAllClientInprogressProjectswithLimit($limit, $offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus,q.status as quotationStatus,p.Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where q.status != 0 and p.status = 0 AND p.Lump_Sump_Charges != 0 AND a.user_id is NOT NULL  GROUP by p.Id ORDER BY p.Id DESC LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getAllClientCompleteProjectswithLimit($limit, $offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus,q.status as quotationStatus,p.Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.status = 1 GROUP by p.Id ORDER BY p.Id DESC LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getAllClientnotquotedProjectswithLimit($limit, $offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus,q.status as quotationStatus,p.Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.Lump_Sump_Charges != 0 and q.status = 0 GROUP by p.Id ORDER BY p.Id DESC LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getAllClientProjectsnotacceptedquotewithLimit($limit, $offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus,q.status as quotationStatus,p.Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.Lump_Sump_Charges != 0 and q.status = 0 GROUP by p.Id ORDER BY p.Id DESC LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+
+    public function filterClientProjects($projectName)
+    {
+        $query = "SELECT q.Client_Id, c.Name, a.*, p.Id, p.Project_Name, p.Quotation_Id, p.Lump_Sump_Charges, p.Project_file, p.project_file_link, p.notes, p.project_type, p.deliver_file, p.status AS projectStatus, q.status AS quotationStatus, q.status AS quotationStatus, p.Delivery_Date 
+        FROM `quotations` q 
+        JOIN projects p ON p.Quotation_Id = q.Id 
+        JOIN clients c ON c.Id = q.Client_Id 
+        LEFT JOIN assignproject a ON a.project_id = p.Id 
+        WHERE p.Project_Name LIKE '%$projectName%' 
+        GROUP BY p.Id 
+        ORDER BY p.Id DESC";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getAllClientProjects()
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id GROUP by p.Id ORDER BY p.Id DESC";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+
     public function getAllClientProjectsbydeliverydate()
     {
 
-        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id GROUP by p.Id order by p.Delivery_Date asc";
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id GROUP by p.Id order by p.Delivery_Date asc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
             if ($r['Project_file'] != null) {
@@ -87,7 +270,7 @@ class ProjectModel extends Model
     }
     public function getAllClientProjectsbyID($id)
     {
-        $query = "SELECT q.Client_Id,c.Name,c.user_id as clientId,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.admin_uploaded_file,p.admin_file_link,p.project_file_link,p.notes,p.project_type,p.deliver_file  ,p.status as projectStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.Id = $id GROUP by p.Id order by p.Id desc";
+        $query = "SELECT q.Client_Id,c.Name,c.user_id as clientId,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.admin_uploaded_file,p.admin_file_link,p.project_file_link,p.notes,p.project_type,p.deliver_file  ,p.status as projectStatus,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where p.Id = $id GROUP by p.Id order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
             if ($r['Project_file'] != null) {
@@ -192,7 +375,7 @@ class ProjectModel extends Model
             $project_file_link = $value["project_file_link"];
             $project_type = $value["project-type"];
             $notes = $value["notes"];
-            if(!empty($project_file)){
+            if (!empty($project_file)) {
                 $project_file = join(',', $project_file);
             }
             $query = "UPDATE `projects` SET `Project_Name`='$project_name',`Delivery_Date`='$delivery_date',`Project_file`='$project_file',`project_file_link`='$project_file_link',`notes`='$notes',`project_type`='$project_type' WHERE Id = $id";
@@ -230,13 +413,14 @@ class ProjectModel extends Model
         $projectid = $data['projectid'];
         $CanViewFile = $data['CanViewFile'];
         $CanViewFileUrl = $data['CanViewFileUrl'];
+        $delivery_date = $data['delivery_date'];
         $query = "SELECT * FROM `assignproject` a WHERE a.project_id = $projectid";
         $result = $this->db->query($query)->getResultArray();
         $notificationModel = new \App\Models\NotificationModel();
         $assignerName = current_user()->username;
         // dd($data);
         foreach ($data['users'] as $users) {
-            $query = "INSERT INTO `assignproject`(`user_id`, `project_id`,`CanViewFile`,`CanViewFileUrl`) VALUES ('$users','$projectid','$CanViewFile','$CanViewFileUrl')";
+            $query = "INSERT INTO `assignproject`(`user_id`, `project_id`,`CanViewFile`,`CanViewFileUrl`,`del_date`) VALUES ('$users','$projectid','$CanViewFile','$CanViewFileUrl','$delivery_date')";
             $this->db->query($query);
             $message = 'New project is assigned to you by ' . $assignerName . '';
             $notificationModel->addprojectNotification($users, $projectid, $message);
@@ -311,7 +495,63 @@ class ProjectModel extends Model
 
     public function getProjectsByEmployeesId($id)
     {
-        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Delivery_Date,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id GROUP by p.Id order by p.Id desc";
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus, a.del_date as Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id GROUP by p.Id order by p.Id desc ";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getProjectsByEmployeesIdwithlimit($id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus , a.del_date as Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and q.status != 0 GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getinprogressProjectsByEmployeesIdwithlimit($id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus , a.del_date as Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and q.status != 0 and p.status = 0 AND p.Lump_Sump_Charges != 0 AND a.user_id is NOT NULL GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function getcompletetdProjectsByEmployeesIdwithlimit($id,$limit,$offset)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus , a.del_date as Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and q.status != 0 and p.status = 1 GROUP by p.Id order by p.Id desc LIMIT $limit OFFSET $offset";
+        $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if ($r['Project_file'] != null) {
+                $r['Project_file'] = explode(',', $r['Project_file']);
+            }
+            if ($r['project_file_link'] != null) {
+                $r['project_file_link']  = explode(',', $r['project_file_link']);
+            }
+        }
+        return $result;
+    }
+    public function filterProjectsByEmployeesId($id,$projectName)
+    {
+        $query = "SELECT q.Client_Id,c.Name,a.*,p.Id,p.Project_Name,p.Quotation_Id,p.Lump_Sump_Charges,p.Project_file,p.project_file_link,p.notes,p.project_type,p.deliver_file,p.status as projectStatus,q.status as quotationStatus , a.del_date as Delivery_Date FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id LEFT JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and p.Project_Name LIKE '%$projectName%' GROUP by p.Id order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
             if ($r['Project_file'] != null) {
@@ -325,7 +565,7 @@ class ProjectModel extends Model
     }
     public function getallProgressProjectofEmployees($id)
     {
-        $query = "SELECT q.Client_Id, p.*,c.Name,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 0 order by p.Id desc";
+        $query = "SELECT q.Client_Id, p.*,c.Name,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 0 order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
             if ($r['Project_file'] != null) {
@@ -339,7 +579,7 @@ class ProjectModel extends Model
     }
     public function getallCompletedProjectofEmployees($id)
     {
-        $query = "SELECT q.Client_Id, p.*,c.Name,q.status as qoutationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 1 order by p.Id desc";
+        $query = "SELECT q.Client_Id, p.*,c.Name,q.status as quotationStatus FROM `quotations` q JOIN projects p on p.Quotation_Id = q.Id JOIN clients c on c.Id = q.Client_Id JOIN assignproject a on a.project_id = p.Id where a.user_id = $id and a.status = 1 and p.status = 1 order by p.Id desc";
         $result = $this->db->query($query)->getResultArray();
         foreach ($result as &$r) {
             if ($r['Project_file'] != null) {

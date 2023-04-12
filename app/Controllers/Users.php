@@ -77,7 +77,7 @@ class Users extends BaseController
 
 
             // email for register user
-            
+
             // if ($success_user) {
                 
             //     $password = $this->request->getPost('password');
@@ -173,4 +173,22 @@ class Users extends BaseController
         }
         return view("Users/edit", ["users" => $data, "role" => $roles]);
     }
+
+
+    public function editemployeeAdditionalInfo($id)
+    {
+        if($this->request->getMethod() == 'post'){
+            $data = [
+                'salary' => $this->request->getPost('salary'),
+                'join_date' => $this->request->getPost('join_date'),
+                'description' => $this->request->getPost('description')
+            ];
+
+            if($this->userModel->updateEmployeeAdditionalInfo($id , $data)){
+                return redirect()->to("Users/index");
+            }
+
+        }
+    }
+
 }

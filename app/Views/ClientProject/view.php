@@ -30,7 +30,7 @@
 
             <?php foreach ($assignusers as $Assignuser) : ?>
                 <?php if (current_user()->id == $Assignuser['user_id']) : ?>
-
+                    <?php $delivery_date = $Assignuser['del_date']; ?>
                     <?php if ($Assignuser['status'] == 0 && $Assignuser['assignReview'] == NULL) : ?>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <div class="d-flex justify-content-between">
@@ -148,7 +148,13 @@
                         <b>Scopes</b> <a class="" style="margin-left : 15px; text-align : right;"><?php foreach ($projectscope as $value) : ?><?= $value['Type_Names'] . " <br>" ?><?php endforeach ?></a>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <b>Delivery Date</b> <a class="pull-right"><?= $project[0]['Delivery_Date'] ?></a>
+                        <b>Delivery Date</b> <a class="pull-right">
+                            <?php if(current_userRole()->name == 'Employee'): ?>
+                              <?= $delivery_date ?>
+                            <?php else: ?>
+                            <?= $project[0]['Delivery_Date'] ?>
+                            <?php endif ?>
+                        </a>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <b>Project Type</b> <a class="pull-right"><?= $project[0]['project_type'] ?></a>
@@ -265,7 +271,7 @@
                                                 <?php
                                                 $start_time = new DateTime($value['start_time']);
                                                 $end_time = new DateTime($value['end_time']);
-
+                                                
                                                 // Calculate the difference between the two datetime values
                                                 $time_spend = $end_time->diff($start_time);
 
@@ -287,8 +293,8 @@
                                                 </td>
                                                 <td><?= $time_spend_str  ?></td>
                                                 <td><?= $value['created_at'] ?></td>
-                                                <td><?php if ($value['file'] != '') : ?>
-                                                        <a href="<?= site_url($value['file']) ?>" target="_blank">View File</a> <?php endif ?>
+                                                <td><?php  if ($value['file'] != '') : ?>
+                                                        <a href="<?= site_url($value['file'][0]) ?>" target="_blank">View File</a> <?php endif ?>
                                                 </td>
                                                 <td><?= $value['description'] ?></td>
                                             </tr>
@@ -303,8 +309,8 @@
 
                                                 // Calculate the difference between the two datetime values
                                                 $time_spend = $end_time->diff($start_time);
-
-                                                // dd($time_spend->h);
+                                                // dd($value['file']);
+                                                
                                                 // Check if the total number of hours is greater than or equal to 24
                                                 if ($time_spend->d >= 1) {
                                                     // Format the interval as days, hours, and minutes
@@ -323,7 +329,7 @@
                                                 <td><?= $time_spend_str  ?></td>
                                                 <td><?= $value['created_at'] ?></td>
                                                 <td><?php if ($value['file'] != '') : ?>
-                                                        <a href="<?= site_url($value['file']) ?>" target="_blank">View File</a> <?php endif ?>
+                                                        <a href="<?= site_url($value['file'][0]) ?>" target="_blank">View File</a> <?php endif ?>
                                                 </td>
                                                 <td><?= $value['description'] ?></td>
                                             </tr>
@@ -1080,6 +1086,12 @@
                             <select class="select2 form-select" id="assign-project" name="assign-user[]" required multiple>
 
                             </select>
+                        </div>
+                        <div class="col-lg-12 mb-1">
+                            <div class="form-floating">
+                                <input type="date" min="<?= date('Y-m-d') ?>" class="form-control" id="delivery_date" name="delivery_date" required>
+                                <label for="delivery_date">Delivery Date</label>
+                            </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-check my-2">

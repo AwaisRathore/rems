@@ -15,6 +15,12 @@ class ProgressModel extends Model
     {
         $query = "SELECT p.*,u.username FROM `projectprogress` p JOIN users u on u.id = p.user_id WHERE p.project_id = $id order by p.id desc";
         $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if($r['file'] != null){
+                $r['file'] = explode(',', $r['file']);
+            }
+           
+        }
         return $result;
     }
 
@@ -30,12 +36,18 @@ class ProgressModel extends Model
         $query = "SELECT MAX(p.progress) as max_progress FROM `projectprogress` p WHERE p.project_id = $id and p.user_id = $user_id";
         $result = $this->db->query($query)->getRowArray();
         $max_progress = $result['max_progress'];
+        
         return $max_progress;
     }
     public function readallbyprjectId($id,$user_id)
     {
         $query = "SELECT p.*,u.username FROM `projectprogress` p JOIN users u on u.id = p.user_id WHERE p.project_id = $id and p.user_id = $user_id order by p.id desc";
         $result = $this->db->query($query)->getResultArray();
+        foreach ($result as &$r) {
+            if($r['file'] != null){
+                $r['file'] = explode(',', $r['file']);
+            }   
+        }
         return $result;
     }
 

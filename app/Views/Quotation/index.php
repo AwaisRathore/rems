@@ -97,8 +97,10 @@
                                                         <?php else : ?>
                                                             <a class="dropdown-item generateInvoiceButton" href="" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> Generate Invoice</a>
                                                         <?php endif ?>
-                                                        <?php if (current_userRole()->name == "Admin") : ?>
-                                                            <!-- <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changeStatus" href=""><i class="bx bx-edit-alt me-1"></i>Change Status</a> -->
+                                                        <?php if ($value['status'] != 1) : ?>
+                                                            <?php if (current_userRole()->name == "Admin") : ?>
+                                                                <a class="dropdown-item changeQoutationStatus" id="<?= $value['Id'] ?>" data-bs-toggle="modal" data-bs-target="#changeStatus" href=""><i class="bx bx-edit-alt me-1"></i>Change Status</a>
+                                                            <?php endif ?>
                                                         <?php endif ?>
                                                         <?php if (current_userRole()->CanDeleteQuotation) : ?>
                                                             <a class="dropdown-item deleteButton" id="<?= $value['Id'] ?>" href=""><i class="bx bx-trash me-1"></i> Delete</a>
@@ -170,8 +172,13 @@
                                                         <?php if (current_userRole()->CanEditQuotation) : ?>
                                                             <a class="dropdown-item" href="<?= site_url("Quotation/edit/" . $value['Id'] . "") ?>"><i class="bx bx-edit-alt me-1"></i>Edit Quotation</a>
                                                         <?php endif ?>
+                                                        <?php if ($value['status'] != 1) : ?>
+                                                            <?php if (current_userRole()->name == "Admin") : ?>
+                                                                <a class="dropdown-item changeQoutationStatus" id="<?= $value['Id'] ?>" data-bs-toggle="modal" data-bs-target="#changeStatus" href=""><i class="bx bx-edit-alt me-1"></i>Change Status</a>
+                                                            <?php endif ?>
+                                                        <?php endif ?>
                                                         <?php if (isset($value['invoice'])) : ?>
-                                                            <a class="dropdown-item" href="<?= site_url('invoices/view/') . $value['invoice'] ?>" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> View Invoice</a>
+                                                            <a class="dropdown-item " href="<?= site_url('invoices/view/') . $value['invoice'] ?>" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> View Invoice</a>
                                                         <?php else : ?>
                                                             <a class="dropdown-item generateInvoiceButton" href="" data-id="<?= $value['Id'] ?>"><i class='bx bx-receipt'></i> Generate Invoice</a>
                                                         <?php endif ?>
@@ -280,35 +287,28 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Reason for Rejection</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="submit-form-review" method="post" action="">
+            <form id="submit-form-change-status" method="post" action="<?= site_url('Quotation/changeStatus') ?>">
                 <div class="modal-body">
-
                     <div class="row g-2">
-                        <div class="form-group ">
-                            <label for="project-file-link">Reason</label>
-                            <textarea name="review" id="review" style="height: 100px" class="form-control" placeholder="Reason for Rejection" required></textarea>
-
-                        </div>
-
-
-                        <div  class="form-check col-lg-6">
-                            <input class="form-check-input" type="radio" name="changestatus" id="accept" checked>
+                        <div class="form-check col-lg-6">
+                            <input class="form-check-input" type="radio" name="changestatus" id="accept" value="1" checked>
                             <label class="form-check-label" for="accept">
                                 Accept
                             </label>
                         </div>
                         <div class="form-check col-lg-6">
-                            <input class="form-check-input" type="radio" name="changestatus" id="reject" >
+                            <input class="form-check-input" type="radio" name="changestatus" id="reject" value="0">
                             <label class="form-check-label" for="reject">
                                 Reject
                             </label>
                         </div>
+                        <div class="form-group">
+                            <label for="project-file-link">Reason</label>
+                            <textarea name="review" id="review" style="height: 100px" class="form-control review-validation" placeholder="Reason for Rejection"></textarea>
+                        </div>
 
+                        <input type="hidden" id="qoutationId" name="qoutationId" value="">
                     </div>
-
-
-
-
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -334,6 +334,9 @@
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
 <script>
     $(document).ready(function() {
         $(".datatables-basic").DataTable();
@@ -349,6 +352,21 @@
             $("li.menu-item").removeClass("active");
             $(".menu-inner>li.menu-item:nth-of-type(4)").addClass("active");
         <?php endif ?>
+
+
+        jQuery.validator.setDefaults({
+            errorClass: "error",
+            errorElement: "span",
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('invalid').removeClass(validClass);
+                $(element).next("span").addClass(errorClass);
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).addClass(validClass).removeClass('invalid');
+                $(element).next("span").addClass(errorClass);
+            }
+        });
+
         // delete project function
         $(document).on('click', '.deleteButton', function(e) {
             e.preventDefault();
@@ -402,6 +420,33 @@
                 }
             });
         });
+
+
+        $(document).on('click', '.changeQoutationStatus', function() {
+            let projectid = $(this).attr('id');
+            console.log(projectid);
+            $('#qoutationId').val(projectid);
+        });
+        $.validator.addMethod("reviewRequired", function(value, element) {
+            return $('input[name="changestatus"]:checked').val() == "0" && value.trim().length === 0 ? false : true;
+        }, "Please enter a review for rejection when rejecting the project.");
+
+        // Initialize jQuery validate plugin
+        $("#submit-form-change-status").validate({
+            rules: {
+                review: {
+                    reviewRequired: true
+                }
+            },
+            messages: {
+                review: {
+                    reviewRequired: "Please enter a review for rejection when rejecting the project."
+                }
+            }
+        });
+
+
+
     })
 </script>
 

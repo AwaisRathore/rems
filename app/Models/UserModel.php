@@ -96,8 +96,10 @@ class UserModel extends Model
     public function updateProfile($data){
         $username = $data['username'];
         $profile_image = $data['profile_image'];
+        $description = $data['description'];
         $id = $data['id'];
-        $sql = "UPDATE `users` SET `username`='$username', `profile_image`='$profile_image' WHERE id = $id";
+        // dd($description);
+        $sql = "UPDATE `users` SET `username`='$username', `profile_image`='$profile_image',`description` = '$description' WHERE id = $id";
         $result =  $this->db->query($sql);
         return $result;
     }
@@ -131,5 +133,16 @@ class UserModel extends Model
             return false;
         }
     }
+
+    public function updateEmployeeAdditionalInfo($id , $data)
+    {
+        $salary = $data['salary'];
+        $join_date = $data['join_date'];
+        $description = $data['description'];
+        $query = "UPDATE `users` SET `salary`='$salary',`join_date`='$join_date',`description`='$description' WHERE id = $id";
+        $this->db->query($query);
+        return true;
+    }
+
 
 }

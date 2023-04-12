@@ -37,6 +37,7 @@ class Profile extends BaseController
             $data = [
                 'username' => $this->request->getPost('username'),
                 'id' => $this->request->getPost('id'),
+                'description' => $this->request->getPost('description'),
                 'profile_image' => $image_full_name
             ];
             if ($this->userModel->updateProfile($data)) {

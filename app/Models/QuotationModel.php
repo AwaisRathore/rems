@@ -45,7 +45,7 @@ class QuotationModel extends Model
     }
     public function getAllNotQoutedQuotation()
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address ,p.Lump_Sump_Charges  as Client_EmailAddress,p.Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges = 0 GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address  as Client_EmailAddress,p.Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges = 0 GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         $invoices = $this->getInvoicesWithQuotations();
         foreach ($Quotations as &$quotation) {
@@ -106,7 +106,7 @@ class QuotationModel extends Model
     public function addNewQuotation($Project_Data, $ClientId, $Discount)
     {
         //Add Quotation
-        $query = "INSERT INTO `quotations`(`Client_Id`,`Discount`,`status`) VALUES ('$ClientId','$Discount','1')";
+        $query = "INSERT INTO `quotations`(`Client_Id`,`Discount`) VALUES ('$ClientId','$Discount')";
         $this->db->query($query);
         $QuotationId = $this->db->insertID();
         //Add Project
@@ -269,4 +269,23 @@ class QuotationModel extends Model
         $sql = "SELECT q.Quotation_Id, i.Invoice_Id FROM `invoices` i JOIN `quotations` q on q.Id = i.QuotationId;";
         return $this->db->query($sql)->getResultObject();
     }
+
+    public function changeStatus($data)
+    {
+        $qoutationid = $data['QuotationId'];
+        $status = $data['status'];
+        $reason = $data['reason'];
+        if($status == 1){
+            $query = "UPDATE `quotations` SET `status`='1',`review`= '$reason' where Id = $qoutationid";
+            $this->db->query($query);
+            return true;
+        }else{
+            $query = "UPDATE `quotations` SET `review`= '$reason' where Id = $qoutationid";
+            $this->db->query($query);
+            return true;
+        }
+
+        
+    }
+
 }
