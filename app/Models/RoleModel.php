@@ -11,7 +11,8 @@ class RoleModel extends Model
     protected $allowedFields = ['name','CanViewQuotation','CanAddQuotation','CanEditQuotation','CanDeleteQuotation','CanViewClient',
     'CanAddClient','CanEditClient','CanDeleteClient','CanViewClientType','CanAddClientType','CanEditClientType','CanDeleteClientType',
     'CanViewProjectScope','CanAddProjectScope','CanEditProjectScope','CanDeleteProjectScope','CanViewUser','CanAddUser','CanEditUser','CanDeleteUser',
-    'CanViewRole','CanAddRole','CanEditRole','CanDeleteRole','CanViewClientProject','CanAddClientProject','CanEditClientProject','CanDeleteClientProject','CanAssignProject','CanViewInvoice','CanAddInvoice','CanEditInvoice','CanDeleteInvoice'];
+    'CanViewRole','CanAddRole','CanEditRole','CanDeleteRole','CanViewClientProject','CanAddClientProject','CanEditClientProject','CanDeleteClientProject','CanAssignProject','CanViewInvoice','CanAddInvoice','CanEditInvoice','CanDeleteInvoice'
+    ,'CanViewEmployeeType','CanAddEmployeeType','CanEditEmployeeType','CanDeleteEmployeeType'];
     protected $validationRules    = [
         'name' => 'required|is_unique[roles.Name,id,{id}]',
     ];

@@ -28,6 +28,8 @@ class ClientProject extends BaseController
         $ClientsData = $clientModel->getAllClients();
 
 
+        $limit = 12; // Limit the number of projects to be displayed initially
+        $offset = 0; // Starting offset value
 
         $user_id = session()->get('user_id');
         $role_id = session()->get('role_id');
@@ -36,28 +38,194 @@ class ClientProject extends BaseController
             $clientId = $curentloginclient[0]['Id'];
             $data = [
                 'ProjectScopes' => $ProjectScopeModel->getProjectScopesforproject(),
-                'clientproject' => $projectModel->getProjectsByClientId($clientId),
+                'clientproject' => $projectModel->getProjectsByClientIdwithLimit($clientId,$limit,$offset),
+                
+                'clientinprogressproject' => $projectModel->getinprogressProjectsByClientIdwithLimit($clientId,$limit, $offset),
+                'completedproject' => $projectModel->getcompletedProjectsByClientIdwithLimit($clientId , $limit, $offset),
+                'notquotedproject' => $projectModel->getNotQoutedProjectsByClientIdwithLimit($clientId , $limit, $offset),
+                'notacceptedquotationproject' => $projectModel->getnotacceptedQoutationProjectsByClientIdwithLimit($clientId , $limit, $offset),
                 'assignproject' => $projectModel->getassignProject(),
                 'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
             ];
         } else if ($role_id == 2) {
             $data = [
                 'ProjectScopes' => $ProjectScopeModel->getProjectScopesforproject(),
-                'clientproject' => $projectModel->getProjectsByEmployeesId($user_id),
+                'clientproject' => $projectModel->getProjectsByEmployeesIdwithlimit($user_id,$limit,$offset),
+                'clientinprogressproject' => $projectModel->getinprogressProjectsByEmployeesIdwithlimit($user_id,$limit, $offset),
+                'completedproject' => $projectModel->getcompletetdProjectsByEmployeesIdwithlimit($user_id , $limit, $offset),
                 'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
                 'assignproject' => $projectModel->getassignProject()
             ];
         } else {
             $data = [
                 'ProjectScopes' => $ProjectScopeModel->getProjectScopesforproject(),
-                'clientproject' => $projectModel->getAllClientProjects(),
+                'clientproject' => $projectModel->getAllClientProjectswithLimit($limit, $offset),
+                'clientinprogressproject' => $projectModel->getAllClientInprogressProjectswithLimit($limit, $offset),
+                'completedproject' => $projectModel->getAllClientCompleteProjectswithLimit($limit, $offset),
+                'notquotedproject' => $projectModel->getAllClientnotquotedProjectswithLimit($limit, $offset),
+                'notacceptedquotationproject' => $projectModel->getAllClientProjectsnotacceptedquotewithLimit($limit, $offset),
                 'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
-                'assignproject' => $projectModel->getassignProject()
+                'assignproject' => $projectModel->getassignProject(),
+                'limit' => $limit,
+                'offset' => $offset
             ];
         }
         // dd($data);
         return view("ClientProject/index", $data);
     }
+
+
+    public function loadMoreProjects()
+    {
+        $offset = $this->request->getVar('offset');
+        $limit = $this->request->getVar('limit');
+        $project = $this->request->getVar('whichprojects');
+
+        $clientModel = new \App\Models\ClientModel();
+        $projectModel = new \App\Models\ProjectModel();
+        $ProgressModel = new \App\Models\ProgressModel();
+        $ProjectScopeModel = new \App\Models\ProjectScopeModel();
+        
+        $ProjectScopes = $ProjectScopeModel->getProjectScopesforproject();
+        $assignproject = $projectModel->getassignProject();
+        
+        $user_id = session()->get('user_id');
+        $role_id = session()->get('role_id');
+        if($role_id == 5){
+            $curentloginclient = $clientModel->getClientbyUserId($user_id);
+            $clientId = $curentloginclient[0]['Id'];
+            
+            if($project == 'allproject'){
+                $projects = $projectModel->getProjectsByClientIdwithLimit($clientId,$limit,$offset);
+            }
+            if($project == 'inprogressproject'){
+                $projects = $projectModel->getinprogressProjectsByClientIdwithLimit($clientId,$limit, $offset);
+            }
+            if($project == 'completeproject'){
+                $projects = $projectModel->getcompletedProjectsByClientIdwithLimit($clientId , $limit, $offset);
+            }
+            if($project == 'notquotedproject'){
+                $projects = $projectModel->getNotQoutedProjectsByClientIdwithLimit($clientId , $limit, $offset);
+            }
+            if($project == 'notacceptedquotationproject'){
+                $projects = $projectModel->getnotacceptedQoutationProjectsByClientIdwithLimit($clientId , $limit, $offset);
+            }
+            $response = [
+                'ProjectScopes' => $ProjectScopes,
+                'assignproject' => $assignproject,
+                'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
+                'projects' => $projects,
+                'offset' => $offset + $limit,
+                'hasMore' => !empty($projects),
+                
+            ];
+        }else if($role_id == 2){
+            
+            if($project == 'allproject'){
+                $projects = $projectModel->getProjectsByEmployeesIdwithlimit($user_id,$limit,$offset);
+            }
+            if($project == 'inprogressproject'){
+                $projects = $projectModel->getinprogressProjectsByEmployeesIdwithlimit($user_id,$limit, $offset);
+            }
+            if($project == 'completeproject'){
+                $projects = $projectModel->getcompletetdProjectsByEmployeesIdwithlimit($user_id , $limit, $offset);
+            }
+            $response = [
+                'ProjectScopes' => $ProjectScopes,
+                'assignproject' => $assignproject,
+                'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
+                'projects' => $projects,
+                'offset' => $offset + $limit,
+                'hasMore' => !empty($projects),
+                
+            ];
+        }else{
+            if($project == 'allproject'){
+                $projects = $projectModel->getAllClientProjectswithLimit($limit, $offset);
+            }
+            if($project == 'inprogressproject'){
+                $projects = $projectModel->getAllClientInprogressProjectswithLimit($limit, $offset);
+            }
+            if($project == 'completeproject'){
+                $projects = $projectModel->getAllClientCompleteProjectswithLimit($limit, $offset);
+            }
+            if($project == 'notquotedproject'){
+                $projects = $projectModel->getAllClientnotquotedProjectswithLimit($limit, $offset);
+            }
+            if($project == 'notacceptedquotationproject'){
+                $projects = $projectModel->getAllClientProjectsnotacceptedquotewithLimit($limit, $offset);
+            }
+            
+            $response = [
+                'ProjectScopes' => $ProjectScopes,
+                'assignproject' => $assignproject,
+                'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
+                'projects' => $projects,
+                'offset' => $offset + $limit,
+                'hasMore' => !empty($projects),
+                
+            ];
+        }
+        
+
+        return $this->response->setJSON($response);
+    }
+
+    public function searchProjects()
+    {
+        $projectName = $this->request->getVar('projectName');
+        $clientModel = new \App\Models\ClientModel();
+        $projectModel = new \App\Models\ProjectModel();
+        $ProgressModel = new \App\Models\ProgressModel();
+        $ProjectScopeModel = new \App\Models\ProjectScopeModel();
+        
+        $ProjectScopes = $ProjectScopeModel->getProjectScopesforproject();
+        $assignproject = $projectModel->getassignProject();
+        
+        $user_id = session()->get('user_id');
+        $role_id = session()->get('role_id');
+        if($role_id == 5){
+            $curentloginclient = $clientModel->getClientbyUserId($user_id);
+            $clientId = $curentloginclient[0]['Id'];
+            $projects = $projectModel->filterProjectsByClientId($clientId,$projectName);
+            $response = [
+                'ProjectScopes' => $ProjectScopes,
+                'assignproject' => $assignproject,
+                'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
+                'projects' => $projects,
+                'hasMore' => !empty($projects),
+                'hasGenerated' => true,
+                
+            ];
+        }else if($role_id == 2){
+            
+            $projects = $projectModel->filterProjectsByEmployeesId($user_id,$projectName);
+            $response = [
+                'ProjectScopes' => $ProjectScopes,
+                'assignproject' => $assignproject,
+                'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
+                'projects' => $projects,
+                'hasMore' => !empty($projects),
+                'hasGenerated' => true,
+                
+            ];
+        }else{
+            $projects = $projectModel->filterClientProjects($projectName);
+            $response = [
+                'ProjectScopes' => $ProjectScopes,
+                'assignproject' => $assignproject,
+                'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
+                'projects' => $projects,
+                'hasMore' => !empty($projects),
+                'hasGenerated' => true,
+            ];
+        }
+        
+
+        return $this->response->setJSON($response);
+    }
+
+
     public function new()
     {
         if (!$this->auth->getUserRole()->CanAddClientProject) {
@@ -132,50 +300,55 @@ class ClientProject extends BaseController
             'users' => $this->request->getPost('assign-user'),
             'CanViewFile' => $this->request->getPost('CanViewFile'),
             'CanViewFileUrl' => $this->request->getPost('CanViewFileUrl'),
+            'delivery_date' => $this->request->getPost('delivery_date'),
         ];
+        $project_id = $this->request->getPost('projectid');
         // dd($data);
         $projectModel->assignProject($data);
 
-        $success_count = 0;
-        $error_count = 0;
-        foreach ($users as $user_id) {
-            $email = $userModel->getUseremailformUserid($user_id);
 
-            $emailVariables = array();
+        // email for project assignment
 
-            $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
-            $emailVariables['headicon'] = site_url('public/assets/img/icon/project.png');
-            $emailVariables['site_url'] = site_url();
+        // $success_count = 0;
+        // $error_count = 0;
+        // foreach ($users as $user_id) {
+        //     $email = $userModel->getUseremailformUserid($user_id);
 
-            $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
-            $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
-            $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
-            $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
+        //     $emailVariables = array();
 
-            $to = $email;
-            $message = file_get_contents(site_url('ClientProject/assignEmailTemplate'));
-            foreach ($emailVariables as $key => $value) {
-                $message = str_replace('{{ ' . $key . ' }}', $value, $message);
-            }
+        //     $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
+        //     $emailVariables['headicon'] = site_url('public/assets/img/icon/project.png');
+        //     $emailVariables['site_url'] = site_url('ClientProject/view/'.$project_id);
 
-            // $message = "Click on the link to reset password <br>" . site_url('Login/resetPassword/' . $token . '') . "";
-            $mailService = \Config\Services::email();
-            $mailService->setTo($to);
-            $mailService->setSubject('Assign for Project');
-            $mailService->setMessage($message);
-            if ($mailService->send()) {
-                $success_count++;
-            } else {
-                $error_count++;
-            }
+        //     $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
+        //     $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
+        //     $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
+        //     $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
 
-        }
+        //     $to = $email;
+        //     $message = file_get_contents(site_url('ClientProject/assignEmailTemplate'));
+        //     foreach ($emailVariables as $key => $value) {
+        //         $message = str_replace('{{ ' . $key . ' }}', $value, $message);
+        //     }
 
-        if ($success_count > 0) {
-            return redirect()->back()->with('success', ' Email Send Successfully to the Assign Users.');
-        } else {
-            return redirect()->back()->with('errors', 'Email Not Send Something went wrong. ');
-        }
+        //     // $message = "Click on the link to reset password <br>" . site_url('Login/resetPassword/' . $token . '') . "";
+        //     $mailService = \Config\Services::email();
+        //     $mailService->setTo($to);
+        //     $mailService->setSubject('Assign for Project');
+        //     $mailService->setMessage($message);
+        //     if ($mailService->send()) {
+        //         $success_count++;
+        //     } else {
+        //         $error_count++;
+        //     }
+
+        // }
+
+        // if ($success_count > 0) {
+        //     return redirect()->back()->with('success', ' Email Send Successfully to the Assign Users.');
+        // } else {
+        //     return redirect()->back()->with('errors', 'Email Not Send Something went wrong. ');
+        // }
 
 
 
@@ -183,7 +356,8 @@ class ClientProject extends BaseController
     }
 
 
-    public function assignEmailTemplate(){
+    public function assignEmailTemplate()
+    {
         return view('Email/assignEmailTemplate.html');
     }
 
@@ -387,7 +561,7 @@ class ClientProject extends BaseController
         $assignuser = $this->request->getPost("assignuser");
         $assignuser = unserialize($assignuser);
         if ($commentModel->insert($data)) {
-            $message = "{$username} is add reply on {$projectname}";
+            $message = "{$username} replied to the comment from {$projectname}";
             $notificationModel->addprojectNotificationwithoutUserId($projectid, $message);
             $notificationModel->addprojectNotification($clientId, $projectid, $message);
             if (!empty($assignuser)) {

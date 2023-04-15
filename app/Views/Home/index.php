@@ -537,7 +537,52 @@
 
 </div>
 
+<?php if(current_userRole()->name == 'Admin'): ?>
+<!-- <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card mt-4">
+            <div class="bg-light d-flex justify-content-between">
+                <h5 class="px-4 pt-3"><i class='bx px-2 bx-time'></i>Employees</h5>
+            </div>
+            <div class="card-body border-top text-dark">
 
+                <div class="slider">
+                    <div class="swiper">
+
+                        <div class="slide-employee" style="padding: 25px 40px;">
+                            <div class="card-wrapper swiper-wrapper">
+
+                                <?php foreach($employees as $value): ?>
+                                <div class="swiper-slide mr-2">
+                                    <a href="#">
+                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
+                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
+                                                <img src="<?= site_url($value['profile_image']) ?>" class="w-100" alt="">
+                                            </div>
+                                            <div class="text-center">
+                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;"><?= $value['username'] ?></h5>
+                                                <span style="font-size : 14px; color: #666464;">Developer</span>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                                <?php endforeach ?>
+  
+
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<?php endif ?>
 
 <?= $this->endSection() ?>
 <?= $this->section('Script') ?>
@@ -745,7 +790,7 @@
     });
     $("#submit-form-assign-project").validate();
 
-    
+
     $(document).on('click', '.avatar', function() {
         let projectid = $(this).attr('id');
 

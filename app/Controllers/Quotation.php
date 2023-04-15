@@ -221,4 +221,22 @@ class Quotation extends BaseController
             // return json_encode($data);
         }
     }
+
+    public function changeStatus()
+    {
+        $quotationModel = new \App\Models\QuotationModel();
+        if ($this->request->getMethod() == "post") {
+            $data = [
+                "status" => $this->request->getPost('changestatus'),
+                "reason" => $this->request->getPost('review'),
+                "QuotationId" => $this->request->getPost('qoutationId'),
+            ];
+            // dd($data);
+            if($quotationModel->changeStatus($data)){
+                return redirect()->to("Quotation/index");
+            }
+            
+        }
+    }
+
 }

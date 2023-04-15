@@ -30,7 +30,7 @@
 
             <?php foreach ($assignusers as $Assignuser) : ?>
                 <?php if (current_user()->id == $Assignuser['user_id']) : ?>
-
+                    <?php $delivery_date = $Assignuser['del_date']; ?>
                     <?php if ($Assignuser['status'] == 0 && $Assignuser['assignReview'] == NULL) : ?>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <div class="d-flex justify-content-between">
@@ -148,7 +148,13 @@
                         <b>Scopes</b> <a class="" style="margin-left : 15px; text-align : right;"><?php foreach ($projectscope as $value) : ?><?= $value['Type_Names'] . " <br>" ?><?php endforeach ?></a>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <b>Delivery Date</b> <a class="pull-right"><?= $project[0]['Delivery_Date'] ?></a>
+                        <b>Delivery Date</b> <a class="pull-right">
+                            <?php if(current_userRole()->name == 'Employee'): ?>
+                              <?= $delivery_date ?>
+                            <?php else: ?>
+                            <?= $project[0]['Delivery_Date'] ?>
+                            <?php endif ?>
+                        </a>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <b>Project Type</b> <a class="pull-right"><?= $project[0]['project_type'] ?></a>
@@ -265,7 +271,7 @@
                                                 <?php
                                                 $start_time = new DateTime($value['start_time']);
                                                 $end_time = new DateTime($value['end_time']);
-
+                                                
                                                 // Calculate the difference between the two datetime values
                                                 $time_spend = $end_time->diff($start_time);
 
@@ -287,8 +293,8 @@
                                                 </td>
                                                 <td><?= $time_spend_str  ?></td>
                                                 <td><?= $value['created_at'] ?></td>
-                                                <td><?php if ($value['file'] != '') : ?>
-                                                        <a href="<?= site_url($value['file']) ?>" target="_blank">View File</a> <?php endif ?>
+                                                <td><?php  if ($value['file'] != '') : ?>
+                                                        <a href="<?= site_url($value['file'][0]) ?>" target="_blank">View File</a> <?php endif ?>
                                                 </td>
                                                 <td><?= $value['description'] ?></td>
                                             </tr>
@@ -303,8 +309,8 @@
 
                                                 // Calculate the difference between the two datetime values
                                                 $time_spend = $end_time->diff($start_time);
-
-                                                // dd($time_spend->h);
+                                                // dd($value['file']);
+                                                
                                                 // Check if the total number of hours is greater than or equal to 24
                                                 if ($time_spend->d >= 1) {
                                                     // Format the interval as days, hours, and minutes
@@ -323,7 +329,7 @@
                                                 <td><?= $time_spend_str  ?></td>
                                                 <td><?= $value['created_at'] ?></td>
                                                 <td><?php if ($value['file'] != '') : ?>
-                                                        <a href="<?= site_url($value['file']) ?>" target="_blank">View File</a> <?php endif ?>
+                                                        <a href="<?= site_url($value['file'][0]) ?>" target="_blank">View File</a> <?php endif ?>
                                                 </td>
                                                 <td><?= $value['description'] ?></td>
                                             </tr>
@@ -572,7 +578,7 @@
                         <?php if ($filecount > 0) : ?>
                             <a href="" id="download_zip" class="nav-link download_zip assign_project">
                                 <div class="btn-sm d-flex justify-content-between btn-primary position-relative">
-                                    <div id="loader" class="hidden"></div> <span>Download files Zip</span>  
+                                    <div id="loader" class="hidden"></div> <span>Download files Zip</span>
                                 </div>
                             </a>
                         <?php endif ?>
@@ -587,7 +593,7 @@
                             <?php if ($progressfiles['file'] != '') : ?>
                                 <?php foreach ($progressfiles['file'] as $file) : ?>
                                     <li class="list-group-item custom-border-padding d-flex justify-content-between">
-                                        <b>File <?= $i ?></b>
+                                        <b>File Delivery <?= $i ?></b>
 
                                         <div><?= $progressfiles['username'] ?></div> <a class="file_link progressfile" href="<?= site_url($file) ?>" target="_blank" download>Download</a>
 
@@ -615,8 +621,25 @@
                             <?php else : ?>
                                 Delivered File
                             <?php endif ?>
+
                         </h5>
 
+                        <div class="pt-1">
+                            <?php $filecount = 0;
+                            foreach ($project[0]['deliver_file'] as $deliverfiles) : ?>
+                                <?php if ($deliverfiles != '') : ?>
+
+                                <?php $filecount++;
+                                endif ?>
+                            <?php endforeach ?>
+                            <?php if ($filecount > 0) : ?>
+                                <a href="" id="client_download_zip" class="nav-link client_download_zip assign_project">
+                                    <div class="btn-sm d-flex justify-content-between btn-primary position-relative">
+                                        <div id="loader_1" class="hidden"></div> <span>Download files Zip</span>
+                                    </div>
+                                </a>
+                            <?php endif ?>
+                        </div>
 
                     </div>
                     <div class="card-body " style="padding: 0px;">
@@ -627,7 +650,7 @@
                             foreach ($project[0]['deliver_file'] as $d_file) : ?>
                                 <li class="list-group-item custom-border-padding d-flex justify-content-between">
                                     <b>Deliver File <?= $i ?></b>
-                                    <a class="file_link progressfile" href="<?= site_url($d_file) ?>" target="_blank" download>Download</a>
+                                    <a class="file_link deliver_file" href="<?= site_url($d_file) ?>" target="_blank" download>Download</a>
                                 </li>
                             <?php $i++;
                             endforeach ?>
@@ -1064,6 +1087,12 @@
 
                             </select>
                         </div>
+                        <div class="col-lg-12 mb-1">
+                            <div class="form-floating">
+                                <input type="date" min="<?= date('Y-m-d') ?>" class="form-control" id="delivery_date" name="delivery_date" required>
+                                <label for="delivery_date">Delivery Date</label>
+                            </div>
+                        </div>
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-check my-2">
                                 <input class="form-check-input" type="checkbox" name="CanViewFile" value="1" id="CanViewFile">
@@ -1276,7 +1305,7 @@
                 },
                 'progress_file[]': {
                     required: 'File required When progress is 100%',
-                    totalfilesize : 'Total file size must be less than 500 MB',
+                    totalfilesize: 'Total file size must be less than 500 MB',
                 }
             }
         });
@@ -1303,7 +1332,7 @@
 
                     'project_file[]': "Please provide a file or a file link.",
                     'project_file_link': "Please provide a file or a file link.",
-                    totalfilesize : 'Total file size must be less than 500 MB',
+                    totalfilesize: 'Total file size must be less than 500 MB',
                 }
             });
         <?php endif ?>
@@ -1453,8 +1482,62 @@
                     tempLink.click();
                     document.body.removeChild(tempLink);
 
-                     // Hide the loader when the download is complete
-                     loader.classList.add("hidden");
+                    // Hide the loader when the download is complete
+                    loader.classList.add("hidden");
+
+                });
+            });
+        });
+
+
+        // When the "Download file Zip" button is clicked
+        $(".client_download_zip").click(function(e) {
+            e.preventDefault();
+
+            const loader = document.getElementById("loader_1");
+            loader.classList.remove("hidden");
+
+            // Create a new instance of JSZip
+            const zip = new JSZip();
+
+            // Create an array of Promises that fetch the file content and add it to the zip file
+            const promises = $(".deliver_file").map(function() {
+                const fileUrl = $(this).attr("href");
+                const fileName = fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
+
+                return new Promise((resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', fileUrl, true);
+                    xhr.responseType = 'blob';
+                    xhr.onload = () => {
+                        if (xhr.status === 200) {
+                            const blob = xhr.response;
+                            zip.file(fileName, blob);
+                            resolve();
+                        } else {
+                            reject(xhr.statusText);
+                        }
+                    };
+                    xhr.onerror = () => reject('Network error');
+                    xhr.send();
+                });
+            }).get();
+
+            // Wait for all the Promises to resolve before generating the zip file
+            Promise.all(promises).then(() => {
+                // Generate the zip file and initiate the download
+                zip.generateAsync({
+                    type: "blob"
+                }).then(function(content) {
+                    const tempLink = document.createElement('a');
+                    tempLink.download = '<?= $project[0]['Project_Name'] ?>.zip';
+                    tempLink.href = URL.createObjectURL(content);
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+
+                    // Hide the loader when the download is complete
+                    loader.classList.add("hidden");
 
                 });
             });
@@ -1462,7 +1545,7 @@
 
 
 
-        
+
 
 
 

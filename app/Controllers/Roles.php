@@ -139,5 +139,11 @@ class Roles extends BaseController
         $dbObj->CanEditClientProject  = $requestObj->CanEditClientProject;
         $dbObj->CanDeleteClientProject  = $requestObj->CanDeleteClientProject;
         $dbObj->CanAssignProject  = $requestObj->CanAssignProject;
+
+        $dbObj->CanViewEmployeeType = $requestObj->CanViewEmployeeType;
+        $dbObj->CanAddEmployeeType = $requestObj->CanAddEmployeeType;
+        $dbObj->CanEditEmployeeType  = $requestObj->CanEditEmployeeType;
+        $dbObj->CanDeleteEmployeeType  = $requestObj->CanDeleteEmployeeType;
+
     }
 }

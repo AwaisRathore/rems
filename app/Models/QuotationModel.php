@@ -11,7 +11,8 @@ class QuotationModel extends Model
 
     public function getAllQuotationWithClient()
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id ORDER BY q.Id DESC";
+        // $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,any_value(q.created_at),c.Name as Client_Name, c.Email_Address as Client_EmailAddress,any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id = q.Id GROUP by p.Quotation_Id ORDER BY q.Id DESC;";
         $Quotations = $this->db->query($query)->getResultArray();
         $invoices = $this->getInvoicesWithQuotations();
         foreach ($Quotations as &$quotation) {
@@ -26,25 +27,25 @@ class QuotationModel extends Model
     }
     public function getNOofQuotationperday()
     {
-        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,created_at FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) GROUP BY year, month ORDER BY year ASC";
+        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,any_value(created_at) FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) GROUP BY year, month ORDER BY year ASC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getNOofAcceptedQuotationperday()
     {
-        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,created_at FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) and status = 1 GROUP BY year, month ORDER BY year ASC;";
+        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,any_value(created_at) FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) and status = 1 GROUP BY year, month ORDER BY year ASC;";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getAllQuotationWithClientId($ClientId)
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id where q.Client_Id = $ClientId ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress,any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id  where q.Client_Id = $ClientId ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getAllNotQoutedQuotation()
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges =0 GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address  as Client_EmailAddress,any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges = 0 GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         $invoices = $this->getInvoicesWithQuotations();
         foreach ($Quotations as &$quotation) {
@@ -59,13 +60,13 @@ class QuotationModel extends Model
     }
     public function getAllNotQoutedQuotationbyclientId($ClientId)
     {   
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges =0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress ,any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges =0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getAllQoutedQuotation()
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress,any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         $invoices = $this->getInvoicesWithQuotations();
         foreach ($Quotations as &$quotation) {
@@ -86,7 +87,7 @@ class QuotationModel extends Model
     }
     public function getAllQoutedQuotationbyclientId($ClientId)
     {
-        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
+        $query = "SELECT q.*,c.Name as Client_Name, c.Email_Address as Client_EmailAddress ,any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges FROM `quotations` q join `clients` c on q.Client_Id = c.Id JOIN projects p on p.Quotation_Id= q.Id WHERE p.Lump_Sump_Charges !=0 and q.Client_Id = $ClientId GROUP by q.Id ORDER BY q.Id DESC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
@@ -105,7 +106,7 @@ class QuotationModel extends Model
     public function addNewQuotation($Project_Data, $ClientId, $Discount)
     {
         //Add Quotation
-        $query = "INSERT INTO `quotations`(`Client_Id`,`Discount`,`status`) VALUES ('$ClientId','$Discount','1')";
+        $query = "INSERT INTO `quotations`(`Client_Id`,`Discount`) VALUES ('$ClientId','$Discount')";
         $this->db->query($query);
         $QuotationId = $this->db->insertID();
         //Add Project
@@ -268,4 +269,23 @@ class QuotationModel extends Model
         $sql = "SELECT q.Quotation_Id, i.Invoice_Id FROM `invoices` i JOIN `quotations` q on q.Id = i.QuotationId;";
         return $this->db->query($sql)->getResultObject();
     }
+
+    public function changeStatus($data)
+    {
+        $qoutationid = $data['QuotationId'];
+        $status = $data['status'];
+        $reason = $data['reason'];
+        if($status == 1){
+            $query = "UPDATE `quotations` SET `status`='1',`review`= '$reason' where Id = $qoutationid";
+            $this->db->query($query);
+            return true;
+        }else{
+            $query = "UPDATE `quotations` SET `review`= '$reason' where Id = $qoutationid";
+            $this->db->query($query);
+            return true;
+        }
+
+        
+    }
+
 }

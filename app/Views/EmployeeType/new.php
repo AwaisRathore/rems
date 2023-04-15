@@ -1,15 +1,15 @@
 <?= $this->extend('Layouts/default') ?>
-<?= $this->section('title') ?> Remote Estimation | New Project Scope Type<?= $this->endSection() ?>
+<?= $this->section('title') ?> Remote Estimation | New Employee Type<?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="card">
-    <h5 class="card-header">Add New Project Scope Type</h5>
+    <h5 class="card-header">Add New Employee Type</h5>
     <div class="card-body">
-        <form action="<?= site_url('ProjectScopeType/add') ?>" id="submit-form" method="post">
+        <form action="" id="submit-form" method="post">
             <div class="row">
-                <div class="col-lg-6 my-2">
+                <div class="col-lg-12 my-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" required id="projectscopetype" name="projectscopetype" placeholder="Piping,Casting,Hatches">
-                        <label for="projectscopetype">Project Scope</label>
+                        <input type="text" class="form-control" required id="employeetype" name="employeetype" placeholder="Designation">
+                        <label for="employeetype">Type Name</label>
                     </div>
                 </div>
                 <div class="col-12 my-3 text-center">
@@ -28,8 +28,8 @@
         // Sidebar active show
         $("li.menu-item").removeClass("active");
         $(".menu-inner>li.menu-item:nth-of-type(6)").addClass("open active");
-        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(3)").addClass("open active");
-        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(3)>.menu-sub>li.menu-item:nth-of-type(2)").addClass("active");
+        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(2)").addClass("open active");
+        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(2)>.menu-sub>li.menu-item:nth-of-type(2)").addClass("active");
         // Set default jQuery validator settings
         jQuery.validator.setDefaults({
             errorClass: "error",
@@ -44,6 +44,6 @@
             }
         });
         $("#submit-form").validate();
-    })
+    });
 </script>
 <?= $this->endSection() ?>

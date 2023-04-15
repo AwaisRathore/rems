@@ -281,6 +281,36 @@
 
                     </div>
                 </div>
+                <div class="col-12 mt-3 mb-1 fw-bold">
+                    Employee Type Permissions
+                </div>
+                <hr>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="form-check my-2">
+                        <input class="form-check-input" type="checkbox" name="CanViewEmployeeType" value="1" id="CanViewEmployeeType" <?php if ($role->CanViewEmployeeType) : ?> <?= 'checked' ?><?php endif ?>>
+                        <label class="form-check-label" for="CanViewEmployeeType"> Can View Employee Type</label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="form-check my-2">
+                        <input class="form-check-input" name="CanAddEmployeeType" type="checkbox" value="1" id="CanAddEmployeeType" <?php if ($role->CanAddEmployeeType) : ?> <?= 'checked' ?><?php endif ?>>
+                        <label class="form-check-label" for="CanAddEmployeeType"> Can Add Invoice</label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="form-check my-2">
+                        <input class="form-check-input" type="checkbox" name="CanEditEmployeeType" value="1" id="CanEditEmployeeType" <?php if ($role->CanEditEmployeeType) : ?> <?= 'checked' ?><?php endif ?>>
+                        <label class="form-check-label" for="CanEditEmployeeType">Can Edit Employee Type</label>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <div class="form-check my-2">
+                        <input class="form-check-input" type="checkbox" name="CanDeleteEmployeeType" value="1" id="CanDeleteEmployeeType" <?php if ($role->CanDeleteEmployeeType) : ?> <?= 'checked' ?><?php endif ?>>
+                        <label class="form-check-label" for="CanDeleteEmployeeType"> Can Delete Invoice</label>
+
+                    </div>
+                </div>
                 
                 <div class="col-12 my-3 text-center">
                     <input type="submit" class="btn btn-primary" value="SUBMIT" name="submit">

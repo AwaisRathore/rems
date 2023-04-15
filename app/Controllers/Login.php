@@ -45,11 +45,14 @@ class Login extends BaseController
                 $result = $userModel->setLinkExpiration($email, $token);
                 if ($result) {
 
+                   
                     $emailVariables = array();
 
                     $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
                     $emailVariables['headicon'] = site_url('public/assets/img/icon/lock.png');
+                    $emailVariables['iconlink'] = site_url("public/assets/vendor/fonts/boxicons.css");
                     $emailVariables['passwordResetLink'] = site_url('Login/resetPassword/' . $token);
+                    $emailVariables['username'] = $user->username;
                     
                     $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
                     $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');

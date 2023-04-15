@@ -70,8 +70,8 @@
         // Sidebar active show
         $("li.menu-item").removeClass("active");
         $(".menu-inner>li.menu-item:nth-of-type(6)").addClass("open active");
-        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(4)").addClass("open active");
-        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(4)>.menu-sub>li.menu-item:nth-of-type(1)").addClass("active");
+        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(5)").addClass("open active");
+        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(5)>.menu-sub>li.menu-item:nth-of-type(1)").addClass("active");
         // Data Table 
         $(".datatables-basic").DataTable();
 
