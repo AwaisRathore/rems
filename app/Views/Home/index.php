@@ -538,7 +538,7 @@
 </div>
 
 <?php if(current_userRole()->name == 'Admin'): ?>
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card mt-4">
             <div class="bg-light d-flex justify-content-between">
@@ -569,114 +569,7 @@
                                     
                                 </div>
                                 <?php endforeach ?>
-                                <div class="swiper-slide mr-2">
-                                    <a href="#">
-                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
-                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
-                                                <img src="<?= site_url('public/assets/img/users/1677951604_75a1e9c02de162018a4b.jpg') ?>" class="w-100" alt="">
-                                            </div>
-                                            <div class="text-center">
-                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;">Hammad Awan</h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                <div class="swiper-slide mr-2">
-                                    <a href="#">
-                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
-                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
-                                                <img src="<?= site_url('public/assets/img/users/1677951604_75a1e9c02de162018a4b.jpg') ?>" class="w-100" alt="">
-                                            </div>
-                                            <div class="text-center">
-                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;">Hammad Awan</h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                <div class="swiper-slide mr-2">
-                                    <a href="#">
-                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
-                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
-                                                <img src="<?= site_url('public/assets/img/users/1677951604_75a1e9c02de162018a4b.jpg') ?>" class="w-100" alt="">
-                                            </div>
-                                            <div class="text-center">
-                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;">Hammad Awan</h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                <div class="swiper-slide mr-2">
-                                    <a href="#">
-                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
-                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
-                                                <img src="<?= site_url('public/assets/img/users/1677951604_75a1e9c02de162018a4b.jpg') ?>" class="w-100" alt="">
-                                            </div>
-                                            <div class="text-center">
-                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;">Hammad Awan</h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                <div class="swiper-slide mr-2">
-                                    <a href="#">
-                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
-                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
-                                                <img src="<?= site_url('public/assets/img/users/1677951604_75a1e9c02de162018a4b.jpg') ?>" class="w-100" alt="">
-                                            </div>
-                                            <div class="text-center">
-                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;">Hammad Awan</h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                <div class="swiper-slide mr-2">
-                                    <a href="#">
-                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
-                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
-                                                <img src="<?= site_url('public/assets/img/users/1677951604_75a1e9c02de162018a4b.jpg') ?>" class="w-100" alt="">
-                                            </div>
-                                            <div class="text-center">
-                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;">Hammad Awan</h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                <div class="swiper-slide mr-2">
-                                    <a href="#">
-                                        <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
-                                            <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
-                                                <img src="<?= site_url('public/assets/img/users/1677951604_75a1e9c02de162018a4b.jpg') ?>" class="w-100" alt="">
-                                            </div>
-                                            <div class="text-center">
-                                                <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;">Hammad Awan</h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                
-                                
-
+  
 
                             </div>
                         </div>
@@ -688,7 +581,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <?php endif ?>
 
 <?= $this->endSection() ?>
