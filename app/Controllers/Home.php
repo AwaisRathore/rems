@@ -42,7 +42,8 @@ class Home extends BaseController
                 'ProjectScopes' => $ProjectScopeModel->getProjectScopesforproject(),
                 'clientproject' => $projectModel->getAllClientProjectsbydeliverydate(),
                 'totalprojectprogress' => $ProgressModel->totalprojectprogress(),
-                'assignproject' => $projectModel->getassignProject()
+                'assignproject' => $projectModel->getassignProject(),
+                'employees' => $UserModel->getEmployees(),
             ];
             
         }

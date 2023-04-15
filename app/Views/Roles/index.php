@@ -54,6 +54,10 @@
                         <th>CanAddInvoice</th>
                         <th>CanEditInvoice</th>
                         <th>CanDeleteInvoice</th>
+                        <th>CanViewEmployeeType</th>
+                        <th>CanAddEmployeeType</th>
+                        <th>CanEditEmployeeType</th>
+                        <th>CanDeleteEmployeeType</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -95,6 +99,10 @@
                             <?= dispalyPermissionsIcons($value->CanAddInvoice) ?>
                             <?= dispalyPermissionsIcons($value->CanEditInvoice) ?>
                             <?= dispalyPermissionsIcons($value->CanDeleteInvoice) ?>
+                            <?= dispalyPermissionsIcons($value->CanViewEmployeeType) ?>
+                            <?= dispalyPermissionsIcons($value->CanAddEmployeeType) ?>
+                            <?= dispalyPermissionsIcons($value->CanEditEmployeeType) ?>
+                            <?= dispalyPermissionsIcons($value->CanDeleteEmployeeType) ?>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -130,8 +138,8 @@
         // Sidebar active show
         $("li.menu-item").removeClass("active");
         $(".menu-inner>li.menu-item:nth-of-type(6)").addClass("open active");
-        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(3)").addClass("open active");
-        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(3)>.menu-sub>li.menu-item:nth-of-type(1)").addClass("active");
+        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(4)").addClass("open active");
+        $(".menu-inner>li.menu-item:nth-of-type(6)>.menu-sub>li.menu-item:nth-of-type(4)>.menu-sub>li.menu-item:nth-of-type(1)").addClass("active");
         // Data Table 
         $(".datatables-basic").DataTable();
 

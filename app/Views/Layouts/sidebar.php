@@ -183,6 +183,26 @@
                             </ul>
                         </li>
                     <?php endif ?>
+                    <?php if (current_userRole()->CanViewEmployeeType || current_userRole()->CanAddEmployeeType || current_userRole()->CanEditEmployeeType || current_userRole()->CanDeleteEmployeeType) : ?>
+                        <li class="menu-item">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="menu-icon tf-icons bx bxs-category"></i>
+                                <div>Manage Employee Type</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item">
+                                    <a href="<?= site_url("EmployeeType/index") ?>" class="menu-link">
+                                        <div>View All</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="<?= site_url("EmployeeType/new") ?>" class="menu-link">
+                                        <div>Add New</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php endif ?>
 
                     <?php if (current_userRole()->CanViewProjectScope || current_userRole()->CanAddProjectScope || current_userRole()->CanEditProjectScope || current_userRole()->CanDeleteProjectScope) : ?>
                         <li class="menu-item">

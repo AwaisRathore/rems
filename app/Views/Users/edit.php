@@ -195,6 +195,17 @@
                                         </div>
                                     <?php endif ?>
                                 </div>
+                                <div class="col-lg-6 my-2">
+                                    <div class="">
+                                        <select name="EmployeeType" id="" class="form-select">
+                                            <option value="" selected disabled>Select Employee Type</option>
+                                            <?php foreach($employeetype as $value): ?>
+                                                <option value="<?= $value['id'] ?>" <?php if($value['id']== $users->employeetype_id){echo 'selected';} ?>><?= $value['type'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                   
+                                </div>
 
                                 <div class="col-lg-12 my-2">
                                     <div class="form-floating">

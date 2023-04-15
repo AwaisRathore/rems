@@ -139,10 +139,17 @@ class UserModel extends Model
         $salary = $data['salary'];
         $join_date = $data['join_date'];
         $description = $data['description'];
-        $query = "UPDATE `users` SET `salary`='$salary',`join_date`='$join_date',`description`='$description' WHERE id = $id";
+        $employeetype_id = $data['EmployeeType'];
+        $query = "UPDATE `users` SET `salary`='$salary',`join_date`='$join_date',`description`='$description',`employeetype_id` = '$employeetype_id' WHERE id = $id";
         $this->db->query($query);
         return true;
     }
 
+    public function getEmployees()
+    {
+        $query = "SELECT u.id,u.username,u.profile_image,u.salary,u.description,u.join_date,e.type FROM `users` u JOIN employeetype e on e.id = u.employeetype_id";
+        $result = $this->db->query($query)->getResultArray();
+        return $result;
+    }
 
 }

@@ -725,16 +725,7 @@
                                                 <div class="col-6">
                                                     <div class="d-flex align-items-center">
                                                         <i class='bx bx-loader-alt'></i>
-                                                        <span class="ms-2 <?php if ($value['projectStatus'] == 0 && $value['Lump_Sump_Charges'] == 0) {
-                                                                                echo "text-lightgreen";
-                                                                            } else if ($value['projectStatus'] == 0 && date("Y-m-d") > $value['Delivery_Date']) {
-                                                                                echo "text-danger-bg";
-                                                                            } else if ($value['projectStatus'] == 0 && $value['status'] == 1) {
-                                                                                echo "text-lightgreen";
-                                                                            } else {
-                                                                                echo "text-success-bg";
-                                                                            }
-                                                                            ?> ">
+                                                        <span class="ms-2 ">
                                                             <?php
                                                             if ($value['projectStatus'] == 0 && $value['Lump_Sump_Charges'] == 0) {
                                                                 echo "In-review";
@@ -979,16 +970,7 @@
                                                     <div class="col-6">
                                                         <div class="d-flex align-items-center">
                                                             <i class='bx bx-loader-alt'></i>
-                                                            <span class="ms-2 <?php if ($value['status'] == 0 && $value['Lump_Sump_Charges'] == 0) {
-                                                                                    echo "text-lightgreen";
-                                                                                } else if ($value['status'] == 0 && date("Y-m-d") > $value['Delivery_Date']) {
-                                                                                    echo "text-danger-bg";
-                                                                                } else if ($value['status'] == 0) {
-                                                                                    echo "text-lightgreen";
-                                                                                } else {
-                                                                                    echo "text-success-bg";
-                                                                                }
-                                                                                ?> ">
+                                                            <span class="ms-2">
                                                                 <?php
                                                                 if ($value['projectStatus'] == 0 && $value['Lump_Sump_Charges'] == 0) {
                                                                     echo "In-review";
@@ -1192,16 +1174,7 @@
                                                     <div class="col-6">
                                                         <div class="d-flex align-items-center">
                                                             <i class='bx bx-loader-alt'></i>
-                                                            <span class="ms-2 <?php if ($value['status'] == 0 && $value['Lump_Sump_Charges'] == 0) {
-                                                                                    echo "text-lightgreen";
-                                                                                } else if ($value['status'] == 0 && date("Y-m-d") > $value['Delivery_Date']) {
-                                                                                    echo "text-danger-bg";
-                                                                                } else if ($value['status'] == 0) {
-                                                                                    echo "text-lightgreen";
-                                                                                } else {
-                                                                                    echo "text-success-bg";
-                                                                                }
-                                                                                ?> ">
+                                                            <span class="ms-2">
                                                                 <?php
                                                                 if ($value['projectStatus'] == 0 && $value['Lump_Sump_Charges'] == 0) {
                                                                     echo "In-review";
