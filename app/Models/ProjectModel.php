@@ -220,7 +220,7 @@ class ProjectModel extends Model
 
     public function filterClientProjects($projectName)
     {
-        $query = "SELECT q.Client_Id, c.Name, a.*, p.Id, p.Project_Name, p.Quotation_Id, any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges, p.Project_file, p.project_file_link, p.notes, p.project_type, p.deliver_file, p.status AS projectStatus, q.status AS quotationStatus, q.status AS quotationStatus, p.Delivery_Date 
+        $query = "SELECT any_value(a.id),any_value(a.user_id) as user_id,q.Client_Id, c.Name, p.Id, p.Project_Name, p.Quotation_Id, any_value(p.Lump_Sump_Charges) as Lump_Sump_Charges, p.Project_file, p.project_file_link, p.notes, p.project_type, p.deliver_file, p.status AS projectStatus, q.status AS quotationStatus, q.status AS quotationStatus, p.Delivery_Date 
         FROM `quotations` q 
         JOIN projects p ON p.Quotation_Id = q.Id 
         JOIN clients c ON c.Id = q.Client_Id 
