@@ -250,7 +250,9 @@
 .bg-red {
     background-color: #bf0a30;
 }
-
+.text-red{
+    color: #bf0a30;
+}
 
 
 
@@ -447,3 +449,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     }
 }
 
+.employee-detail-list ul li{
+    padding: 2px 0 !important;
+}

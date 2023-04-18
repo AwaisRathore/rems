@@ -14,7 +14,7 @@
                 <div class="col-lg-12 my-2">
                     <div class="form-floating">
                         <input type="text" class="form-control <?php if (session()->has('errors') &&  isset(session('errors')['name'])) : ?>
-                                <?= "is-invalid" ?><?php endif ?>" value="<?= $role->name ?>" required id="rolename" name="rolename" placeholder="John Doe">
+                                <?= "is-invalid" ?><?php endif ?>" value="<?= htmlspecialchars($role->name) ?>" required id="rolename" name="rolename" placeholder="John Doe">
                         <label for="rolename">Role Name</label>
                     </div>
                     <input type="hidden" value="<?= $role->id ?>" name="id">
@@ -294,7 +294,7 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="form-check my-2">
                         <input class="form-check-input" name="CanAddEmployeeType" type="checkbox" value="1" id="CanAddEmployeeType" <?php if ($role->CanAddEmployeeType) : ?> <?= 'checked' ?><?php endif ?>>
-                        <label class="form-check-label" for="CanAddEmployeeType"> Can Add Invoice</label>
+                        <label class="form-check-label" for="CanAddEmployeeType"> Can Add Employee Type</label>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
@@ -307,7 +307,7 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="form-check my-2">
                         <input class="form-check-input" type="checkbox" name="CanDeleteEmployeeType" value="1" id="CanDeleteEmployeeType" <?php if ($role->CanDeleteEmployeeType) : ?> <?= 'checked' ?><?php endif ?>>
-                        <label class="form-check-label" for="CanDeleteEmployeeType"> Can Delete Invoice</label>
+                        <label class="form-check-label" for="CanDeleteEmployeeType"> Can Delete Employee Type</label>
 
                     </div>
                 </div>

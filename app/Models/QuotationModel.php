@@ -27,13 +27,13 @@ class QuotationModel extends Model
     }
     public function getNOofQuotationperday()
     {
-        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,any_value(created_at) FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) GROUP BY year, month ORDER BY year ASC";
+        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,any_value(created_at) as created_at FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) GROUP BY year, month ORDER BY year ASC";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
     public function getNOofAcceptedQuotationperday()
     {
-        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,any_value(created_at) FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) and status = 1 GROUP BY year, month ORDER BY year ASC;";
+        $query = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(Id) AS num_quotations,any_value(created_at) as created_at FROM quotations WHERE created_at >= DATE_SUB(CURRENT_DATE(), INTERVAL 11 MONTH) and status = 1 GROUP BY year, month ORDER BY year ASC;";
         $Quotations = $this->db->query($query)->getResultArray();
         return $Quotations;
     }
@@ -112,7 +112,7 @@ class QuotationModel extends Model
         //Add Project
         $Project_Ids = array();
         foreach ($Project_Data as $value) {
-            $project_name = $value["project-name"];
+            $project_name = addslashes($value["project-name"]);
             $delivery_date = $value["delivery-date"];
             $lump_sump = $value["lump-sump"];
             $query = "INSERT INTO `projects`(`Project_Name`, `Delivery_Date`, `Quotation_Id`, `Lump_Sump_Charges`) VALUES ('$project_name','$delivery_date',' $QuotationId','$lump_sump')";
@@ -154,7 +154,7 @@ class QuotationModel extends Model
         $Project_Ids = array();
         $projects_name = array();
         foreach ($Project_Data as $value) {
-            $project_name = $value["project-name"];
+            $project_name = addslashes($value["project-name"]);
             $project_id = $value["project-id"];
             $delivery_date = $value["delivery-date"];
             $lump_sump = $value["lump-sump"];
@@ -230,7 +230,7 @@ class QuotationModel extends Model
 
     public function reviewqoutation($data, $id)
     {
-        $review = $data['review'];
+        $review = addslashes($data['review']);
         $query = "UPDATE `quotations` SET `review`='$review' where Id = $id";
         $this->db->query($query);
         $QuotationId = $id;
@@ -239,7 +239,7 @@ class QuotationModel extends Model
         $clientid =  $ClientId[0]['Client_Id'];
         $sql = "SELECT c.user_id,c.Name FROM `clients` c WHERE c.Id = $clientid";
         $UserId = $this->db->query($sql)->getResultArray();
-        $clientName =  $UserId[0]['Name'];
+        $clientName =  addslashes($UserId[0]['Name']);
         $notificatinModel = new \App\Models\NotificationModel();
         $message = "oops! " . $clientName . " Reject the Quotation.";
         $notificatinModel->addqoutationNotificationwithoutuserid($QuotationId, $message);
@@ -254,7 +254,7 @@ class QuotationModel extends Model
         $clientid =  $ClientId[0]['Client_Id'];
         $sql = "SELECT c.user_id,c.Name FROM `clients` c WHERE c.Id = $clientid";
         $UserId = $this->db->query($sql)->getResultArray();
-        $clientName =  $UserId[0]['Name'];
+        $clientName =  addslashes($UserId[0]['Name']);
         $notificatinModel = new \App\Models\NotificationModel();
         $message = "Congratulation! " . $clientName . " accept the Qoutation";
         $notificatinModel->addqoutationNotificationwithoutuserid($QuotationId, $message);
@@ -272,15 +272,17 @@ class QuotationModel extends Model
 
     public function changeStatus($data)
     {
+        // dd($data);
         $qoutationid = $data['QuotationId'];
         $status = $data['status'];
-        $reason = $data['reason'];
+        $reason = addslashes($data['reason']);
+        // dd($reason);
         if($status == 1){
-            $query = "UPDATE `quotations` SET `status`='1',`review`= '$reason' where Id = $qoutationid";
+            $query = "UPDATE `quotations` SET `status`='1',`review`= '{$reason}' where Id = $qoutationid";
             $this->db->query($query);
             return true;
         }else{
-            $query = "UPDATE `quotations` SET `review`= '$reason' where Id = $qoutationid";
+            $query = "UPDATE `quotations` SET `review`= '{$reason}' where Id = $qoutationid";
             $this->db->query($query);
             return true;
         }

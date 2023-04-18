@@ -317,11 +317,11 @@ class ClientProject extends BaseController
         //     $emailVariables = array();
 
         //     $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
-        //     $emailVariables['headicon'] = site_url('public/assets/img/icon/project.png');
+        //     $emailVariables['headicon'] = site_url('public/assets/img/icons/project.png');
         //     $emailVariables['site_url'] = site_url('ClientProject/view/'.$project_id);
 
-        //     $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
-        //     $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
+        //     $emailVariables['facebookImage'] = site_url('public/assets/img/icons/fb.png');
+        //     $emailVariables['linkedinImage'] = site_url('public/assets/img/icons/linkedin.png');
         //     $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
         //     $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
 

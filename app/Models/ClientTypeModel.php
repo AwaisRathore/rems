@@ -24,14 +24,23 @@ class ClientTypeModel extends Model
 
     public function insertType($Type)
     {
-        $query = "INSERT INTO `clienttype`(`Type`) VALUES ('$Type')";
+        if(!empty($Type)){
+            $Type = addslashes($Type);
+        }
+        
+        $query = "INSERT INTO `clienttype` (`Type`) VALUES ('$Type')";
         $this->db->query($query);
 
     }
-    public function updateClientById($ClientType,$Id)
+    public function updateClientType($ClientType,$Id)
     {
+        if(!empty($ClientType)){
+            $ClientType = addslashes($ClientType);
+        }
+        
         $query ="UPDATE `clienttype` SET `Type`='$ClientType' WHERE Id=".$Id;
         $this->db->query($query);
+        return true;
     }
     public function deleteClient($Id)
     {

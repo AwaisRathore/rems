@@ -51,7 +51,7 @@ class UserModel extends Model
 
     public function addUser($data)
     {
-        $name = $data['username'];
+        $name = addslashes($data['username']);
         $email = $data['email'];
         $this->db->transStart();
         $userId = $this->insert($data, true);
@@ -96,7 +96,12 @@ class UserModel extends Model
     public function updateProfile($data){
         $username = $data['username'];
         $profile_image = $data['profile_image'];
+        // dd($data);
         $description = $data['description'];
+        if(!empty($description)){
+            $description = addslashes($description);
+        }
+        
         $id = $data['id'];
         // dd($description);
         $sql = "UPDATE `users` SET `username`='$username', `profile_image`='$profile_image',`description` = '$description' WHERE id = $id";
@@ -138,7 +143,7 @@ class UserModel extends Model
     {
         $salary = $data['salary'];
         $join_date = $data['join_date'];
-        $description = $data['description'];
+        $description = addslashes($data['description']);
         $employeetype_id = $data['EmployeeType'];
         $query = "UPDATE `users` SET `salary`='$salary',`join_date`='$join_date',`description`='$description',`employeetype_id` = '$employeetype_id' WHERE id = $id";
         $this->db->query($query);
@@ -147,7 +152,13 @@ class UserModel extends Model
 
     public function getEmployees()
     {
-        $query = "SELECT u.id,u.username,u.profile_image,u.salary,u.description,u.join_date,e.type FROM `users` u JOIN employeetype e on e.id = u.employeetype_id";
+        $query = "SELECT u.id,u.username,u.profile_image,u.salary,u.description,u.join_date,e.type FROM `users` u Left JOIN employeetype e on e.id = u.employeetype_id where u.role_id = 2";
+        $result = $this->db->query($query)->getResultArray();
+        return $result;
+    }
+    public function getEmployeebyid($id)
+    {
+        $query = "SELECT u.*,e.type FROM `users` u Left JOIN employeetype e on e.id = u.employeetype_id where u.id = $id";
         $result = $this->db->query($query)->getResultArray();
         return $result;
     }

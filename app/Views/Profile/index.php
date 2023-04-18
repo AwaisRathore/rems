@@ -64,7 +64,7 @@
                             <div class="col-lg-12 my-2">
                                 <div class="form-floating">
                                     <textarea name="description" id="description" style="height: 100px" class="form-control" placeholder="Describe About you"><?= $user->description ?></textarea>
-                                    <label for="description">Description</label>
+                                   
                                 </div>
                             </div>
                             <?php endif ?>
@@ -99,6 +99,9 @@
 <!-- Validation Script -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+
 <script>
     $(document).ready(function() {
         $(".datatables-basic").DataTable();
@@ -135,6 +138,13 @@
                 }
             }
         });
+
+        ClassicEditor
+		.create( document.querySelector( '#description' ) )
+		.catch( error => {
+			console.error( error );
+		} );
+
     });
 </script>
 <?= $this->endSection() ?>

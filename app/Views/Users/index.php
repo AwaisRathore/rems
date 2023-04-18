@@ -31,7 +31,7 @@
                                 <div style="width : 40px; height : 40px; overflow : hidden;border-radius : 50%">
                                 <img src="<?= site_url($value['profile_image']) ?>" style="width :40px;" alt="">
                                 </div>
-</td>
+                            </td>
                             <td><?= $value['email'] ?></td>
                             <td><?= $value['name'] ?></td>
                             <!-- <td></td> -->
@@ -41,7 +41,7 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= site_url("users/edit/" . $value['id'] . "") ?>"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="<?= site_url("users/edit/". $value['id']."") ?>"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                         <a class="dropdown-item deleteButton" id="<?= $value['id'] ?>" href=""><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>
                                 </div>

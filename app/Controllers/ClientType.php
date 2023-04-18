@@ -54,7 +54,7 @@ class ClientType extends BaseController
         }
         $ClientType = $this->request->getPost("clienttype");
         $clientTypeModel = new \App\Models\ClientTypeModel();
-        $clientTypeModel->update($ClientType,$Id);
+        $clientTypeModel->updateClientType($ClientType,$Id);
         return redirect()->to("ClientType/index");
     }
     public function delete($Id)

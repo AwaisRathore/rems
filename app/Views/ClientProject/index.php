@@ -21,7 +21,7 @@
                         <button type="button" id="search-project" class="btn btn-primary d-flex align-items-center"><i class='bx bx-search-alt-2' style="margin-right : 5px"></i> Search</button>
 
                     </div>
-                    <div class="px-2">
+                    <div class="">
                         <button type="button" id="reset-project" class="btn btn-danger" style="display: none;">
                             <div class="d-flex align-items-center"><i class='bx bx-reset' style="margin-right : 5px"></i> Reset</div>
                         </button>
@@ -1270,8 +1270,8 @@
                     <div class="row g-2">
                         <div class="col-lg-12 mb-1">
                             <label for="assign-project" class="form-label">Assign Project</label>
-                            <select class="select2 form-select" id="assign-project" name="assign-user[]" required multiple>
-
+                            <select class="select2 form-select" id="assign-project" name="assign-user[]" aria-placeholder="select value" required multiple>
+                                <option></option>
                             </select>
                         </div>
                         <div class="col-lg-12 mb-1">
@@ -1747,7 +1747,8 @@
     });
     // $(".select2").select2();
     $('.select2').select2({
-        dropdownParent: $('#basicModal')
+        placeholder: "Select Value",
+        allowClear: true
     });
 
     function loadmoreprojects(whichprojects,offset) {

@@ -8,13 +8,13 @@
             <div class="row">
                 <div class="col-lg-6 my-2">
                     <div class="form-floating">
-                        <input type="text" value="<?= $Client['Name'] ?>" class="form-control" required id="clientName" name="clientName" placeholder="John Doe">
+                        <input type="text" value="<?= htmlspecialchars($Client['Name']) ?>" class="form-control" required id="clientName" name="clientName" placeholder="John Doe">
                         <label for="clientName">Name</label>
                     </div>
                 </div>
                 <div class="col-lg-6 my-2">
                     <div class="form-floating">
-                        <input type="email" class="form-control" value="<?= $Client['Email_Address'] ?>" required id="clientEmailAddress" name="clientEmailAddress" placeholder="example@gmail.com">
+                        <input type="email" class="form-control" value="<?= htmlspecialchars($Client['Email_Address'])  ?>" required id="clientEmailAddress" name="clientEmailAddress" placeholder="example@gmail.com">
 
                         <label for="clientEmailAddress">Email Address</label>
                     </div>

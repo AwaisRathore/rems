@@ -35,11 +35,13 @@ class NotificationModel extends Model
     }
     public function addqoutationNotification($qoutationid,$message,$user_id)
     {
+        addslashes($message);
         $query = "INSERT INTO `notification`( `message`,`user_id`, `qoutation_id`) VALUES ('$message','$user_id','$qoutationid')";
         $this->db->query($query);
     }
     public function addqoutationNotificationwithoutuserid($qoutationid,$message)
     {
+        addslashes($message);
         $query = "INSERT INTO `notification`( `message`, `qoutation_id`) VALUES ('$message','$qoutationid')";
         $this->db->query($query);
     }
@@ -66,10 +68,15 @@ class NotificationModel extends Model
     }
 
     public function addprojectNotification($userid,$projectid, $message){
+
+        $message = addslashes($message);
         $query = "INSERT INTO `notification`( `message`, `user_id`, `project_id`) VALUES ('$message','$userid','$projectid')";
         $this->db->query($query);
     }
     public function addprojectNotificationwithoutUserId($projectid, $message){
+
+        $message = addslashes($message);
+
         $query = "INSERT INTO `notification`( `message`,  `project_id`) VALUES ('$message','$projectid')";
         $this->db->query($query);
     }

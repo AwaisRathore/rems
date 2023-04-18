@@ -4,11 +4,11 @@
 <div class="card">
     <h5 class="card-header">Edit Client Type</h5>
     <div class="card-body">
-        <form action="<?= site_url("Client/update/" . $ClientType['Id']) ?>" id="submit-form" method="post">
+        <form action="<?= site_url("ClientType/update/" . $ClientType['Id']) ?>" id="submit-form" method="post">
             <div class="row">
                 <div class="col-lg-6 my-2">
                     <div class="form-floating">
-                        <input type="text" value="<?= $ClientType['Type'] ?>" class="form-control" required id="clienttype" name="clienttype" placeholder="General Contractor">
+                        <input type="text" value="<?= htmlspecialchars($ClientType['Type']) ?>" class="form-control" required id="clienttype" name="clienttype" placeholder="General Contractor">
                         <label for="clienttype">Type Name</label>
                     </div>
                 </div>

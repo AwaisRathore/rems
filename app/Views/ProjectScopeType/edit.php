@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-6 my-2">
                     <div class="form-floating">
-                        <input type="text" value="<?= $ProjectScopeType['Type_Names'] ?>" class="form-control" required id="projectscopetype" name="projectscopetype" placeholder="Piping,Casting,Hatches">
+                        <input type="text" value="<?= htmlspecialchars($ProjectScopeType['Type_Names']) ?>" class="form-control" required id="projectscopetype" name="projectscopetype" placeholder="Piping,Casting,Hatches">
                         <label for="projectscopetype">Type Name</label>
                     </div>
                 </div>

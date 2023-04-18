@@ -33,7 +33,7 @@
 
                                 <div class="col-lg-6 my-2">
                                     <div class="form-floating">
-                                        <input type="text" value="<?= $projects['Project_Name'] ?>" class="form-control" id="project-name-<?= $i ?>" name="project-name-<?= $i ?>" required placeholder="Remote Estimation">
+                                        <input type="text" value="<?= htmlspecialchars($projects['Project_Name']) ?>" class="form-control" id="project-name-<?= $i ?>" name="project-name-<?= $i ?>" required placeholder="Remote Estimation">
                                         <label for="project-name-1">Project Name</label>
                                     </div>
                                 </div>

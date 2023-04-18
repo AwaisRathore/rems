@@ -147,6 +147,8 @@ class Users extends BaseController
         $roles = $this->roleModel->findAll();
         $employeetype = $this->employeeTypeModel->findAll();
         $data = $this->userModel->find($id);
+        $returnUrl = previous_url();
+        // dd($returnUrl);
         if ($this->request->getMethod() == 'post') {
             helper(['form', 'url']);
 
@@ -168,14 +170,14 @@ class Users extends BaseController
                 'role_id' => $this->request->getPost('role'),
                 'profile_image' => $image_full_name
             ];
-
+             $returnUrl = $this->request->getPost('returnUrl');
             if ($this->userModel->update($id, $data)) {
-                return redirect()->to("Users/index");
+                return redirect()->to($returnUrl);
             } else {
                 return redirect()->back()->with('errors', $this->userModel->errors())->with('warning', "Please fix the errors");
             }
         }
-        return view("Users/edit", ["users" => $data, "role" => $roles,'employeetype'=> $employeetype]);
+        return view("Users/edit", ["users" => $data, "role" => $roles,'employeetype'=> $employeetype,'returnUrl'=> $returnUrl]);
     }
 
 
@@ -189,8 +191,9 @@ class Users extends BaseController
                 'EmployeeType' => $this->request->getPost('EmployeeType'),
             ];
 
+            $returnUrl = $this->request->getPost('returnUrl');
             if($this->userModel->updateEmployeeAdditionalInfo($id , $data)){
-                return redirect()->to("Users/index");
+                return redirect()->to($returnUrl);
             }
 
         }

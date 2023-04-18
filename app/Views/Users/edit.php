@@ -104,7 +104,7 @@
                             <div class="col-lg-6 my-2">
                                 <div class="form-floating">
                                     <input type="text" class="form-control <?php if (session()->has('errors') &&  isset(session('errors')['username'])) : ?>
-                                <?= "is-invalid" ?><?php endif ?>" value="<?= $users->username ?>" required id="username" name="username" placeholder="John Doe">
+                                <?= "is-invalid" ?><?php endif ?>" value="<?= htmlspecialchars($users->username) ?>" required id="username" name="username" placeholder="John Doe">
                                     <label for="username">Name</label>
                                 </div>
                                 <?php if (session()->has('errors') &&  isset(session('errors')['username'])) : ?>
@@ -116,7 +116,7 @@
                             <div class="col-lg-6 my-2">
                                 <div class="form-floating">
                                     <input type="email" class="form-control <?php if (session()->has('errors') &&  isset(session('errors')['email'])) : ?>
-                                <?= "is-invalid" ?><?php endif ?>" value="<?= $users->email ?>" required id="userEmailAddress" name="email" placeholder="example@gmail.com">
+                                <?= "is-invalid" ?><?php endif ?>" value="<?= htmlspecialchars($users->email) ?>" required id="userEmailAddress" name="email" placeholder="example@gmail.com">
                                     <label for="userEmailAddress">Email Address</label>
                                 </div>
                                 <?php if (session()->has('errors') &&  isset(session('errors')['email'])) : ?>
@@ -155,6 +155,8 @@
                                     </div>
                                 <?php endif ?>
                             </div>
+
+                            <input type="hidden" name= 'returnUrl' value="<?= $returnUrl ?>">
 
                             <div class="col-12 my-3 text-center">
                                 <input type="submit" class="btn btn-primary" value="SUBMIT" name="submit">
@@ -208,13 +210,13 @@
                                 </div>
 
                                 <div class="col-lg-12 my-2">
-                                    <div class="form-floating">
-                                        <textarea name="description" class="form-control" id="description" cols="30" rows="10"><?= $users->description ?></textarea>
-                                        <label for="description">Description</label>
+                                    <div class="">
+                                        <textarea name="description" class="form-control" id="description" cols="30" rows="10" style="height : 100px;"><?= $users->description ?></textarea>
+                                       
                                     </div>
-                                    
-                                </div>
 
+                                </div>
+                                <input type="hidden" name= 'returnUrl' value="<?= $returnUrl ?>">
                                 <div class="col-12 my-3 text-center">
                                     <input type="submit" class="btn btn-primary" value="SUBMIT" name="submit">
                                 </div>
@@ -232,6 +234,7 @@
 <?= $this->section('Script') ?>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
 <script>
     $(document).ready(function() {
         // Sidebar active show
@@ -266,6 +269,13 @@
                 }
             }
         });
+
+        ClassicEditor
+		.create( document.querySelector( '#description' ) )
+		.catch( error => {
+			console.error( error );
+		} );
+
     });
 </script>
 <?= $this->endSection() ?>

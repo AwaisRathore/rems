@@ -25,11 +25,13 @@ class ProjectScopeTypeModel extends Model
     {
         $types = explode(",",$data);
         foreach ($types as $type) {
+            $type = addslashes($type);
             $this->db->query("INSERT INTO `projectscopetypes`(`Type_Names`) VALUES ('$type')");
         }
     }
     public function updateProjectScopeTypeById($ProjectType,$Id)
     {
+        $ProjectType = addslashes($ProjectType);
         $query ="UPDATE `projectscopetypes` SET `Type_Names`='$ProjectType' WHERE Id=".$Id;
         $this->db->query($query);
     }

@@ -47,15 +47,15 @@ class Login extends BaseController
 
                    
                     $emailVariables = array();
-
+                    
                     $emailVariables['logoImage'] = site_url('public/assets/img/optimizedtransparent_logo.png');
-                    $emailVariables['headicon'] = site_url('public/assets/img/icon/lock.png');
+                    $emailVariables['headicon'] = site_url('public/assets/img/icons/lock.png');
                     $emailVariables['iconlink'] = site_url("public/assets/vendor/fonts/boxicons.css");
                     $emailVariables['passwordResetLink'] = site_url('Login/resetPassword/' . $token);
                     $emailVariables['username'] = $user->username;
                     
-                    $emailVariables['facebookImage'] = site_url('public/assets/img/icon/fb.png');
-                    $emailVariables['linkedinImage'] = site_url('public/assets/img/linkedin.png');
+                    $emailVariables['facebookImage'] = site_url('public/assets/img/icons/fb.png');
+                    $emailVariables['linkedinImage'] = site_url('public/assets/img/icons/linkedin.png');
                     $emailVariables['facebooklink'] = 'https://www.facebook.com/remote.estimation/';
                     $emailVariables['linkedinlink'] = 'https://www.linkedin.com/company/remoteestimationllc/';
                     

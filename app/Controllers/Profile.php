@@ -5,16 +5,19 @@ namespace App\Controllers;
 use App\Models\RoleModel;
 use App\Models\UserModel;
 use App\Models\ClientModel;
+use App\Models\ProjectModel;
 
 class Profile extends BaseController
 {
     private $userModel = null;
     private $roleModel = null;
+    private $projectModel = null;
     private $auth = null;
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->roleModel = new RoleModel();
+        $this->projectModel = new ProjectModel();
         $this->auth = service("auth");
     }
     public function index()
@@ -54,5 +57,17 @@ class Profile extends BaseController
         );
     }
     
+
+    public function employeeDetail($employeeId)
+    {
+        $data = [
+            'employee' => $this->userModel->getEmployeebyid($employeeId),
+            'ProjectCount'=>count($this->projectModel->getProjectsByEmployeesId($employeeId)),
+            "inprogressProjectCount"=>count($this->projectModel->getallProgressProjectofEmployees($employeeId)),
+            'completeProjectCount'=>count($this->projectModel->getallCompletedProjectofEmployees($employeeId)),
+            'LateProjectCount'=>count($this->projectModel->getallLateProjectofEmployees($employeeId)),
+        ];
+        return view('Profile/employeeDetail',$data);
+    }
 
 }

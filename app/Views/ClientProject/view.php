@@ -1476,7 +1476,7 @@
                     type: "blob"
                 }).then(function(content) {
                     const tempLink = document.createElement('a');
-                    tempLink.download = '<?= $project[0]['Project_Name'] ?>.zip';
+                    tempLink.download = '<?= addslashes($project[0]['Project_Name'])  ?>.zip';
                     tempLink.href = URL.createObjectURL(content);
                     document.body.appendChild(tempLink);
                     tempLink.click();
@@ -1530,7 +1530,7 @@
                     type: "blob"
                 }).then(function(content) {
                     const tempLink = document.createElement('a');
-                    tempLink.download = '<?= $project[0]['Project_Name'] ?>.zip';
+                    tempLink.download = '<?= addslashes($project[0]['Project_Name'])  ?>.zip';
                     tempLink.href = URL.createObjectURL(content);
                     document.body.appendChild(tempLink);
                     tempLink.click();

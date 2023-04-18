@@ -24,8 +24,9 @@ class ClientModel extends Model
     }
     public function insertClient($ClientData)
     {
-        $ClientName = $ClientData['Client_Name'];
-        $Email_Address = $ClientData['Email_Address'];
+        $ClientName = addslashes($ClientData['Client_Name']);
+        $Email_Address = addslashes($ClientData['Email_Address']);
+        
         $Phone_Number = $ClientData['Phone_Number'];
         $Client_Type = $ClientData['Client_Type'];
         if (is_null($Client_Type)) {
@@ -44,8 +45,9 @@ class ClientModel extends Model
 
     public function updateClientById($Id, $Data)
     {
-        $Name = $Data['Client_Name'];
-        $Email_Address = $Data['Email_Address'];
+        $Name = addslashes($Data['Client_Name']);
+        $Email_Address = addslashes($Data['Email_Address']);
+        
         $Phone_Number = $Data['Phone_Number'];
         $Client_Type = $Data['Client_Type'];
         $query = "UPDATE `clients` SET `Name`='$Name',`Email_Address`='$Email_Address',`Phone_Number`='$Phone_Number',`Client_Type`='$Client_Type' WHERE Id=" . $Id;
@@ -62,8 +64,8 @@ class ClientModel extends Model
     {
         $query = "SELECT * FROM `clients` WHERE Id = $id";
         $client = $this->db->query($query)->getRowArray();
-        $username = $client['Name'];
-        $email = $client['Email_Address'];
+        $username = addslashes($client['Name']);
+        $email = addslashes($client['Email_Address']);
 
         $image_full_name = 'public/assets/img/avatars/user-avator.png';
         $password_data = $this->generate_password();

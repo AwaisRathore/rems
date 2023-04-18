@@ -185,7 +185,7 @@
 
 
 <div class="row">
-    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class=" <?php if(empty($clientproject)): ?> col-lg-12 <?php else: ?>col-lg-6 <?php endif ?> col-md-12 col-sm-12 col-12">
 
 
         <div class="card  mt-4">
@@ -219,6 +219,7 @@
     </div>
 
     <?php if (current_userRole()->name == 'Admin') : ?>
+        <?php if(!empty($clientproject)): ?>
         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="card mt-4">
                 <div class="bg-light d-flex justify-content-between">
@@ -233,8 +234,7 @@
                                 <div class="card-wrapper swiper-wrapper">
                                     <?php foreach ($clientproject as $value) : ?>
 
-                                        <?php $delivery_time = strtotime("+5 days");
-                                        if (strtotime($value['Delivery_Date']) <= $delivery_time && strtotime($value['Delivery_Date']) >= time()) : ?>
+                                        
                                             <div class="swiper-slide px-5 pb-5 mr-2">
                                                 <div class="col-xxl-12 col-xl-12 col-lg-4 col-md-12 col-sm-6 mt-5">
 
@@ -473,7 +473,7 @@
 
                                                 </div>
                                             </div>
-                                        <?php endif ?>
+                                        
 
                                     <?php endforeach ?>
 
@@ -498,6 +498,7 @@
 
 
         </div>
+        <?php endif ?>
     <?php endif ?>
 
     <?php if ($ProjectCount != 0) : ?>
@@ -538,7 +539,7 @@
 </div>
 
 <?php if(current_userRole()->name == 'Admin'): ?>
-<!-- <div class="row">
+<div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card mt-4">
             <div class="bg-light d-flex justify-content-between">
@@ -554,14 +555,14 @@
 
                                 <?php foreach($employees as $value): ?>
                                 <div class="swiper-slide mr-2">
-                                    <a href="#">
+                                    <a href="<?= site_url('Profile/employeeDetail/'.$value['id']) ?>">
                                         <div class="p-2" style="box-shadow : 0 2px 6px 0 rgba(67, 89, 113, .12); padding : 20px 5px;">
                                             <div class="img text-center" style=" width : 120px; height : 120px; border-radius: 50%; margin: auto; overflow : hidden;">
                                                 <img src="<?= site_url($value['profile_image']) ?>" class="w-100" alt="">
                                             </div>
                                             <div class="text-center">
                                                 <h5 style="margin-bottom: 2px; margin-top : 10px; font-size : 16px; color: #3a3a3a;"><?= $value['username'] ?></h5>
-                                                <span style="font-size : 14px; color: #666464;">Developer</span>
+                                                <span style="font-size : 14px; color: #666464;"><?= $value['type'] ?></span>
                                             </div>
 
                                         </div>
@@ -581,7 +582,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 <?php endif ?>
 
 <?= $this->endSection() ?>

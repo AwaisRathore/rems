@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 my-2">
                     <div class="form-floating">
-                        <input type="text" value="<?= $EmployeeType['type'] ?>" class="form-control" required id="employeetype" name="employeetype" placeholder="Designation">
+                        <input type="text" value="<?= htmlspecialchars($EmployeeType['type']) ?>" class="form-control" required id="employeetype" name="employeetype" placeholder="Designation">
                         <label for="employeetype">Type Name</label>
                     </div>
                 </div>

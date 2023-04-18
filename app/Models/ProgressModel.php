@@ -87,7 +87,8 @@ class ProgressModel extends Model
         $end_time = $data['end_time'];
         $project_id = $data['project_id'];
         $user_id = $data['user_id'];
-        $description = $data['description'];
+        $description = addslashes($data['description']);
+
         $file = $data['file'];
         $file = join(',', $file);
         $query = "INSERT INTO `projectprogress`(`progress`, `start_time`, `end_time`, `file`, `description`, `project_id`, `user_id`) VALUES ('$progress','$start_time','$end_time','$file','$description','$project_id','$user_id')";
